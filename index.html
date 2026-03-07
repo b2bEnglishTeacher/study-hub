@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-muted: #6B6560;
+    --border: #E8E4DD;
+    --accent: #C45D3E;
+    --accent-light: #F4E8E3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(247,245,240,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .nav-logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-light);
+    transition: transform 0.3s;
+  }
+
+  .nav-logo-img:hover { transform: scale(1.1); }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+  }
+
+  .logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    padding: 10rem 2rem 4rem;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  .hero-mascot {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--surface);
+    box-shadow: 0 8px 32px rgba(196,93,62,0.15), 0 0 0 1px var(--border);
+    margin: 0 auto 2rem;
+    display: block;
+    animation: float 4s ease-in-out infinite, fadeUp 0.8s ease-out;
+  }
+
+  .hero .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.35rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 3.5rem auto 0;
+    padding: 1.5rem 0;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .stat .label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+
+  /* SECTIONS */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .section-header .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .section-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 480px;
+    margin: 0.75rem auto 0;
+    font-weight: 300;
+  }
+
+  .divider {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* MODULE GRID */
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  /* LESSON CARD */
+  .lesson-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s ease-out both;
+  }
+
+  .lesson-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 16px 16px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .lesson-card:hover::before { opacity: 1; }
+
+  .lesson-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+    border-color: transparent;
+  }
+
+  .lesson-card .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .lesson-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .lesson-card .desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .lesson-card .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .lesson-card .tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .lesson-card .tag-sm {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--text-muted);
+  }
+
+  .lesson-card .arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+
+  .lesson-card:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  .lesson-card .arrow svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--text-muted);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* CARD COLORS */
+  .card-star::before { background: #C45D3E; }
+  .card-star .card-icon { background: #C45D3E; }
+  .card-star:hover .arrow { background: #FCEAE5; }
+
+  .card-elevator::before { background: #8B5CF6; }
+  .card-elevator .card-icon { background: #8B5CF6; }
+  .card-elevator:hover .arrow { background: #EDE9FE; }
+
+  .card-smalltalk::before { background: #0EA5E9; }
+  .card-smalltalk .card-icon { background: #0EA5E9; }
+  .card-smalltalk:hover .arrow { background: #E0F2FE; }
+
+  .card-negotiation::before { background: #D97706; }
+  .card-negotiation .card-icon { background: #D97706; }
+  .card-negotiation:hover .arrow { background: #FEF3C7; }
+
+  .card-feedback::before { background: #059669; }
+  .card-feedback .card-icon { background: #059669; }
+  .card-feedback:hover .arrow { background: #D1FAE5; }
+
+  /* COMING SOON */
+  .coming-soon .lesson-card {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .coming-soon .lesson-card::after {
+    content: 'COMING SOON';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    background: var(--bg);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  /* STAGGER */
+  .lesson-card:nth-child(1) { animation-delay: 0.05s; }
+  .lesson-card:nth-child(2) { animation-delay: 0.1s; }
+  .lesson-card:nth-child(3) { animation-delay: 0.15s; }
+  .lesson-card:nth-child(4) { animation-delay: 0.2s; }
+  .lesson-card:nth-child(5) { animation-delay: 0.25s; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    max-width: 900px;
+    margin: 2rem auto 0;
+  }
+
+  .footer-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+
+  .footer-logo:hover { opacity: 1; }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer a:hover { text-decoration: underline; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav ul { gap: 1.2rem; }
+    nav ul li a { font-size: 0.72rem; }
+    .nav-logo-img { width: 28px; height: 28px; }
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .hero-mascot { width: 90px; height: 90px; }
+    .stats-bar { gap: 1.5rem; }
+    .stat .num { font-size: 1.5rem; }
+    .section { padding: 3rem 1.5rem; }
+    .module-grid { grid-template-columns: 1fr; }
+    .section-header h2 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-group">
+    <img src="assets/logo.png" alt="Logo" class="nav-logo-img" />
+    <div class="logo">English<span>.</span>hub</div>
+  </div>
+  <ul>
+    <li><a href="#interview">Interview</a></li>
+    <li><a href="#communication">Communication</a></li>
+    <li><a href="#development">Development</a></li>
+    <li><a href="#softskills">Soft Skills</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="assets/logo.png" alt="Mascot" class="hero-mascot" />
+  <div class="tag">Business English — Study Hub</div>
+  <h1>Your English<br><em>Study Hub</em></h1>
+  <p>Interactive lessons with theory, vocabulary, quizzes, and writing exercises. Choose a topic and start learning.</p>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="num">13</div><div class="label">Lessons</div></div>
+    <div class="stat"><div class="num">130</div><div class="label">Quiz Questions</div></div>
+    <div class="stat"><div class="num">156</div><div class="label">Vocab Terms</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">Modules</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTERVIEW & CAREER SKILLS -->
+<section class="section" id="interview">
+  <div class="section-header">
+    <div class="num">MODULE 01</div>
+    <h2>Interview &amp; Career Skills</h2>
+    <p>Master the techniques and vocabulary for job interviews, networking, and professional growth.</p>
+  </div>
+
+  <div class="module-grid">
+    <a href="pages/star-method.html" class="lesson-card card-star">
+      <div class="card-icon">⭐</div>
+      <h3>STAR Method</h3>
+      <div class="desc">A structured framework for answering behavioural interview questions with clarity and impact.</div>
+      <div class="card-footer">
+        <div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Video</span></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a href="pages/elevator-pitch.html" class="lesson-card card-elevator">
+      <div class="card-icon">🚀</div>
+      <h3>Elevator Pitch</h3>
+      <div class="desc">Introduce yourself professionally in 30–60 seconds. Hook, value, goal, and call to action.</div>
+      <div class="card-footer">
+        <div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a href="pages/small-talk.html" class="lesson-card card-smalltalk">
+      <div class="card-icon">💬</div>
+      <h3>Small Talk in Business</h3>
+      <div class="desc">The art of casual professional conversation — opening, maintaining, and exiting gracefully.</div>
+      <div class="card-footer">
+        <div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a href="pages/negotiation-language.html" class="lesson-card card-negotiation">
+      <div class="card-icon">⚖️</div>
+      <h3>Negotiation Language</h3>
+      <div class="desc">Key phrases for negotiating salary, deadlines, and contracts — professionally and persuasively.</div>
+      <div class="card-footer">
+        <div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a href="pages/giving-receiving-feedback.html" class="lesson-card card-feedback">
+      <div class="card-icon">📋</div>
+      <h3>Giving &amp; Receiving Feedback</h3>
+      <div class="desc">The SBI model and the language of constructive feedback — how to share it and receive it well.</div>
+      <div class="card-footer">
+        <div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BUSINESS COMMUNICATION -->
+<section class="section" id="communication">
+  <div class="section-header">
+    <div class="num">MODULE 02</div>
+    <h2>Business Communication</h2>
+    <p>Professional writing and speaking for emails, meetings, presentations, and disagreements.</p>
+  </div>
+  <div class="module-grid">
+    <a href="pages/email-etiquette.html" class="lesson-card" style="--card-c:#6366F1">
+      <div class="card-icon" style="background:#6366F1">📧</div><h3>Email Etiquette</h3><div class="desc">Structure, tone, and key expressions for professional business emails.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </a>
+    <a href="pages/meetings-calls.html" class="lesson-card" style="--card-c:#EC4899">
+      <div class="card-icon" style="background:#EC4899">🎤</div><h3>Meetings &amp; Calls</h3><div class="desc">Vocabulary for leading and participating in meetings and conference calls.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </a>
+    <a href="pages/presentations.html" class="lesson-card" style="--card-c:#F59E0B">
+      <div class="card-icon" style="background:#F59E0B">📊</div><h3>Presentations</h3><div class="desc">How to structure and deliver a presentation in English with confidence.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </a>
+    <a href="pages/polite-disagreement.html" class="lesson-card" style="--card-c:#14B8A6">
+      <div class="card-icon" style="background:#14B8A6">🤔</div><h3>Polite Disagreement</h3><div class="desc">How to disagree professionally without damaging relationships.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROFESSIONAL DEVELOPMENT -->
+<section class="section" id="development">
+  <div class="section-header">
+    <div class="num">MODULE 03</div>
+    <h2>Professional Development</h2>
+    <p>Build your professional profile and master industry vocabulary.</p>
+  </div>
+  <div class="module-grid">
+    <a href="pages/action-verbs-cvs.html" class="lesson-card" style="--card-c:#EF4444">
+      <div class="card-icon" style="background:#EF4444">📝</div><h3>Action Verbs for CVs</h3><div class="desc">Power verbs that make your CV stand out to recruiters.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </a>
+    <a href="pages/linkedin-profile.html" class="lesson-card" style="--card-c:#3B82F6">
+      <div class="card-icon" style="background:#3B82F6">💼</div><h3>LinkedIn Profile Writing</h3><div class="desc">Build a compelling professional profile in English.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </a>
+    <a href="pages/swot-analysis.html" class="lesson-card" style="--card-c:#8B5CF6">
+      <div class="card-icon" style="background:#8B5CF6">📈</div><h3>SWOT Analysis Vocab</h3><div class="desc">Terminology for strategic analysis in English.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </a>
+    <a href="pages/agile-scrum.html" class="lesson-card" style="--card-c:#06B6D4">
+      <div class="card-icon" style="background:#06B6D4">🔄</div><h3>Agile &amp; Scrum Terms</h3><div class="desc">Key vocabulary for tech teams and project management.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOFT SKILLS -->
+<section class="section" id="softskills">
+  <div class="section-header">
+    <div class="num">MODULE 04</div>
+    <h2>Soft Skills &amp; Workplace</h2>
+    <p>Navigate workplace dynamics and cross-cultural communication in English.</p>
+  </div>
+  <div class="module-grid coming-soon">
+    <div class="lesson-card"><div class="card-icon" style="background:#DC2626">🔥</div><h3>Conflict Resolution</h3><div class="desc">Language for handling workplace disagreements constructively.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div>
+    <div class="lesson-card"><div class="card-icon" style="background:#F97316">⏰</div><h3>Time Management Vocab</h3><div class="desc">Expressions about deadlines, priorities, and delegation.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div>
+    <div class="lesson-card"><div class="card-icon" style="background:#10B981">🌍</div><h3>Cross-Cultural Comms</h3><div class="desc">Understanding cultural differences in professional settings.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div>
+    <div class="lesson-card"><div class="card-icon" style="background:#6366F1">🏠</div><h3>Remote Work Language</h3><div class="desc">Vocabulary for async, Slack, and distributed team communication.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div>
+  </div>
+</section>
+
+<footer>
+  <img src="assets/logo.png" alt="Logo" class="footer-logo" /><br>
+  English Study Hub — Business English Homework<br>
+  <span style="margin-top:0.5rem;display:inline-block;opacity:0.7;">Made with care for English learners</span>
+</footer>
+
+</body>
+</html>

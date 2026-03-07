@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Profile Writing — English Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F7F5F0;--surface:#FFFFFF;--text:#1A1A1A;--text-muted:#6B6560;--accent:#3B82F6;--accent-light:#DBEAFE;--accent-dark:#2563EB;--border:#E8E4DD;--success:#3A7D5C;--success-light:#E4F2EA;--error:#C45D3E;--error-light:#FCEAE5;--c1:#3B82F6;--c2:#8B5CF6;--c3:#EC4899;--c4:#F59E0B}
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between}nav .logo-group{display:flex;align-items:center;gap:.6rem}nav .nav-logo-img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-light);transition:transform .3s}nav .nav-logo-img:hover{transform:scale(1.1)}nav .logo{font-family:'DM Serif Display',serif;font-size:1.15rem;letter-spacing:-.02em}nav .logo span{color:var(--accent)}nav ul{list-style:none;display:flex;gap:2rem}nav ul li a{text-decoration:none;font-size:.82rem;font-weight:500;color:var(--text-muted);letter-spacing:.04em;text-transform:uppercase;transition:color .3s}nav ul li a:hover{color:var(--accent)}
+  .hero{padding:10rem 2rem 5rem;max-width:800px;margin:0 auto;text-align:center;animation:fadeUp .8s ease-out}.hero-mascot{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--surface);box-shadow:0 6px 24px rgba(59,130,246,.18);margin:0 auto 1.5rem;display:block;animation:float 4s ease-in-out infinite,fadeUp .8s ease-out}.hero .tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.35rem 1rem;border-radius:100px;margin-bottom:1.5rem}.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem}.hero p{font-size:1.1rem;color:var(--text-muted);max-width:540px;margin:0 auto;font-weight:300}
+  .profile-parts{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:3rem auto 0;max-width:480px}.profile-part{padding:.5rem 1rem;border-radius:100px;background:var(--surface);border:1px solid var(--border);font-size:.78rem;font-weight:500;color:var(--text-muted);transition:all .3s;cursor:default}.profile-part:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+  .section{max-width:740px;margin:0 auto;padding:4rem 2rem}.section-header{margin-bottom:2.5rem}.section-header .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;color:var(--accent);letter-spacing:.06em;margin-bottom:.5rem}.section-header h2{font-family:'DM Serif Display',serif;font-size:2rem;letter-spacing:-.02em;line-height:1.2}.divider{width:100%;max-width:740px;margin:0 auto;height:1px;background:var(--border)}
+  .theory-grid{display:grid;gap:1.25rem}.theory-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;display:grid;grid-template-columns:56px 1fr;gap:1.5rem;transition:transform .3s,box-shadow .3s;animation:fadeUp .6s ease-out both}.theory-card:nth-child(1){animation-delay:.05s}.theory-card:nth-child(2){animation-delay:.1s}.theory-card:nth-child(3){animation-delay:.15s}.theory-card:nth-child(4){animation-delay:.2s}.theory-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.04)}.theory-card .icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff}.theory-card:nth-child(1) .icon{background:var(--c1)}.theory-card:nth-child(2) .icon{background:var(--c2)}.theory-card:nth-child(3) .icon{background:var(--c3)}.theory-card:nth-child(4) .icon{background:var(--c4)}.theory-card h3{font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:.5rem}.theory-card p{color:var(--text-muted);font-size:.92rem;line-height:1.7}.theory-card .example{margin-top:1rem;padding:1rem 1.25rem;background:var(--bg);border-radius:8px;font-size:.85rem;color:var(--text);font-style:italic;border-left:3px solid var(--border)}
+  .tips-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-top:1.5rem}.tips-box h3{font-family:'DM Serif Display',serif;font-size:1.15rem;margin-bottom:1rem}.tip-item{display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.8rem;font-size:.92rem;color:var(--text-muted)}.tip-item .bullet{width:6px;height:6px;min-width:6px;background:var(--accent);border-radius:50%;margin-top:.55rem}
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-top:1rem}.vocab-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;transition:transform .2s}.vocab-item:hover{transform:translateY(-2px)}.vocab-item .word{font-weight:600;font-size:.88rem;margin-bottom:.25rem}.vocab-item .def{font-size:.78rem;color:var(--text-muted);line-height:1.5}
+  .quiz-container{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.5rem}.quiz-header{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}.quiz-header h3{font-family:'DM Serif Display',serif;font-size:1.1rem}.quiz-progress{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-muted)}.quiz-body{padding:2rem}.quiz-question{font-size:1rem;font-weight:500;margin-bottom:1.5rem;line-height:1.6}.quiz-options{display:grid;gap:.6rem}.quiz-option{padding:1rem 1.25rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;font-size:.9rem;transition:all .25s;background:var(--surface);display:flex;align-items:center;gap:.75rem}.quiz-option:hover:not(.disabled){border-color:var(--accent);background:var(--accent-light)}.quiz-option .opt-letter{width:28px;height:28px;min-width:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:500;background:var(--bg);color:var(--text-muted);transition:all .25s}.quiz-option.correct{border-color:var(--success);background:var(--success-light)}.quiz-option.correct .opt-letter{background:var(--success);color:#fff}.quiz-option.wrong{border-color:var(--error);background:var(--error-light)}.quiz-option.wrong .opt-letter{background:var(--error);color:#fff}.quiz-option.disabled{pointer-events:none;opacity:.6}.quiz-option.correct.disabled,.quiz-option.wrong.disabled{opacity:1}.quiz-feedback{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:.88rem;line-height:1.6;display:none}.quiz-feedback.show{display:block}.quiz-feedback.correct-fb{background:var(--success-light);color:var(--success)}.quiz-feedback.wrong-fb{background:var(--error-light);color:var(--error)}.quiz-footer{padding:1.25rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
+  .btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .25s}.btn-primary{background:var(--text);color:#fff}.btn-primary:hover{background:#333}.score-display{text-align:center;padding:3rem 2rem}.score-display .score-num{font-family:'DM Serif Display',serif;font-size:4rem;line-height:1;margin-bottom:.5rem}.score-display .score-label{font-size:.88rem;color:var(--text-muted);margin-bottom:2rem}
+  .exercise-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.25rem}.exercise-card h4{font-family:'DM Serif Display',serif;font-size:1.05rem;margin-bottom:.75rem}.exercise-card p{font-size:.9rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6}.exercise-card textarea{width:100%;min-height:120px;padding:1rem;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.9rem;line-height:1.6;resize:vertical;background:var(--bg);color:var(--text);transition:border-color .3s}.exercise-card textarea:focus{outline:none;border-color:var(--accent)}.exercise-card textarea::placeholder{color:#B5AFA8}
+  .exercise-label{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;margin-bottom:.75rem}.label-1{background:rgba(59,130,246,.12);color:var(--c1)}.label-2{background:rgba(139,92,246,.12);color:var(--c2)}.label-3{background:rgba(236,72,153,.12);color:var(--c3)}
+  footer{text-align:center;padding:3rem 2rem 2rem;font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border);max-width:740px;margin:2rem auto 0}.footer-logo{width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:.75rem;opacity:.7;transition:opacity .3s}.footer-logo:hover{opacity:1}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @media(max-width:640px){nav ul{gap:1rem}nav ul li a{font-size:.72rem}.nav-logo-img{width:28px;height:28px}.hero{padding:8rem 1.5rem 3rem}.hero-mascot{width:72px;height:72px}.section{padding:3rem 1.5rem}.theory-card{grid-template-columns:1fr;gap:1rem}.theory-card .icon{width:44px;height:44px;font-size:1.2rem}.quiz-header,.quiz-body,.quiz-footer{padding-left:1.25rem;padding-right:1.25rem}.vocab-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav><div class="logo-group"><img src="../assets/logo.png" alt="Logo" class="nav-logo-img"/><div class="logo">LinkedIn<span>.</span>profile</div></div><ul><li><a href="#theory">Theory</a></li><li><a href="#vocab">Vocab</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#practice">Practice</a></li></ul></nav>
+
+<section class="hero">
+  <img src="../assets/logo.png" alt="Mascot" class="hero-mascot"/>
+  <div class="tag">English Study Guide — Professional Development</div>
+  <h1>LinkedIn Profile Writing</h1>
+  <p>Build a compelling professional profile in English that attracts recruiters, clients, and opportunities.</p>
+  <div class="profile-parts">
+    <div class="profile-part">Headline</div><div class="profile-part">About / Summary</div><div class="profile-part">Experience</div><div class="profile-part">Skills</div><div class="profile-part">Recommendations</div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="theory">
+  <div class="section-header"><div class="num">01 — THEORY</div><h2>Building Your LinkedIn Presence</h2></div>
+  <p style="color:var(--text-muted);font-size:.95rem;margin-bottom:2rem;line-height:1.8">LinkedIn is often the <strong>first impression</strong> a recruiter or client has of you. Your profile should tell a story — who you are, what you do, what makes you unique, and what you're looking for. Write in <strong>first person</strong>, keep it professional but personable, and use keywords relevant to your industry.</p>
+  <div class="theory-grid">
+    <div class="theory-card">
+      <div class="icon">🏷️</div>
+      <div><h3>The Headline</h3><p>Your headline is the most visible text after your name. Don't just use your job title — add value by describing what you do and who you help. Include keywords recruiters search for.</p>
+      <div class="example">Weak: "Developer at TechCorp"<br>Strong: "Full-Stack Developer | Building Scalable Web Apps | React, Node.js, Python"<br>Better: "I help startups ship products faster — Full-Stack Developer specialising in React &amp; Node.js"</div></div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">📝</div>
+      <div><h3>The About Section</h3><p>This is your personal pitch — 3 to 5 short paragraphs. Start with a hook, describe your expertise and passions, highlight key achievements, and end with a call to action. Write in <strong>first person</strong>.</p>
+      <div class="example">"I'm a product manager passionate about turning complex problems into simple, elegant solutions. Over the past 6 years, I've launched 12 products across fintech and e-commerce, reaching over 2M users. I'm currently exploring new opportunities — let's connect!"</div></div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">💼</div>
+      <div><h3>Experience Section</h3><p>Treat this like a CV, but with more personality. Use action verbs, quantify achievements, and describe impact. Include 3–5 bullet points per role, focusing on results rather than responsibilities.</p>
+      <div class="example">"Spearheaded the migration to a microservices architecture, reducing deployment time by 60% and server costs by 30%."</div></div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">🔑</div>
+      <div><h3>Skills &amp; Keywords</h3><p>LinkedIn's algorithm matches profiles to searches using keywords. Include relevant technical and soft skills, industry terms, and certifications. Endorse others' skills — they'll often return the favour.</p>
+      <div class="example">Skills: "Project Management, Agile, Python, Data Analysis, Stakeholder Communication, Strategic Planning"</div></div>
+    </div>
+  </div>
+  <div class="tips-box">
+    <h3>LinkedIn Best Practices</h3>
+    <div class="tip-item"><div class="bullet"></div><div>Use a <strong>professional photo</strong> — profiles with photos get 21x more views.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Write in <strong>first person</strong> ("I lead…" not "He leads…") — it's more authentic.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Customise your <strong>profile URL</strong> (e.g., linkedin.com/in/yourname).</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Ask for <strong>recommendations</strong> from colleagues, managers, or clients.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Post and engage regularly — <strong>activity boosts visibility</strong> in search results.</div></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="vocab">
+  <div class="section-header"><div class="num">02 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
+  <div class="vocab-grid">
+    <div class="vocab-item"><div class="word">Headline</div><div class="def">The text under your name on LinkedIn</div></div>
+    <div class="vocab-item"><div class="word">Open to opportunities</div><div class="def">Available and interested in new roles</div></div>
+    <div class="vocab-item"><div class="word">Keyword optimisation</div><div class="def">Including terms recruiters search for</div></div>
+    <div class="vocab-item"><div class="word">Endorsement</div><div class="def">A one-click confirmation of someone's skill</div></div>
+    <div class="vocab-item"><div class="word">Recommendation</div><div class="def">A written testimonial from a connection</div></div>
+    <div class="vocab-item"><div class="word">Personal branding</div><div class="def">How you present yourself professionally online</div></div>
+    <div class="vocab-item"><div class="word">Value proposition</div><div class="def">What you uniquely offer to employers/clients</div></div>
+    <div class="vocab-item"><div class="word">Thought leadership</div><div class="def">Sharing expert content to build credibility</div></div>
+    <div class="vocab-item"><div class="word">Let's connect</div><div class="def">Invitation to add someone to your network</div></div>
+    <div class="vocab-item"><div class="word">Passionate about…</div><div class="def">Common phrase to express strong interest</div></div>
+    <div class="vocab-item"><div class="word">Track record</div><div class="def">History of achievements and results</div></div>
+    <div class="vocab-item"><div class="word">Results-driven</div><div class="def">Focused on achieving measurable outcomes</div></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="quiz">
+  <div class="section-header"><div class="num">03 — QUIZ</div><h2>Test Your Knowledge</h2></div>
+  <div id="quizArea"></div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="practice">
+  <div class="section-header"><div class="num">04 — PRACTICE</div><h2>Writing Exercises</h2></div>
+  <p style="color:var(--text-muted);font-size:.92rem;margin-bottom:2rem">Write or improve your own LinkedIn profile sections.</p>
+  <div class="exercise-card">
+    <span class="exercise-label label-1">Headline</span>
+    <h4>Write your LinkedIn headline</h4>
+    <p>Go beyond your job title. Include what you do, who you help, and relevant keywords.</p>
+    <textarea placeholder="Example: Full-Stack Developer | Building Scalable Web Apps | React, Node.js, Python"></textarea>
+  </div>
+  <div class="exercise-card">
+    <span class="exercise-label label-2">About</span>
+    <h4>Write your About section</h4>
+    <p>3–5 short paragraphs in first person: a hook, your expertise, key achievements, and a call to action.</p>
+    <textarea placeholder="I'm a [role] with [X years] of experience in [industry]. I specialise in…&#10;&#10;Over my career, I've [key achievement]…&#10;&#10;I'm currently [what you're looking for]. Let's connect!"></textarea>
+  </div>
+  <div class="exercise-card">
+    <span class="exercise-label label-3">Connection Request</span>
+    <h4>Write a personalised connection message</h4>
+    <p>You want to connect with a hiring manager at a company you're interested in. Write a short, personalised message.</p>
+    <textarea placeholder="Hi [Name], I came across your profile while researching [Company]. I'm particularly interested in…"></textarea>
+  </div>
+</section>
+
+<footer><img src="../assets/logo.png" alt="Logo" class="footer-logo"/><br>LinkedIn Profile Writing — English Class Homework</footer>
+
+<script>
+const quizData=[
+  {question:"What should your LinkedIn headline include?",options:["Only your job title","Your salary expectations","What you do, who you help, and relevant keywords","Your home address"],correct:2,feedback:{correct:"Right! A strong headline goes beyond a title to describe your value and include searchable keywords.",wrong:"Your headline should describe what you do, who you help, and include relevant keywords."}},
+  {question:"Should you write your LinkedIn About section in first or third person?",options:["Third person (He/She)","First person (I)","It doesn't matter","In bullet points only"],correct:1,feedback:{correct:"Correct! First person is more authentic and personal.",wrong:"Write in first person ('I lead…') — it's more authentic and engaging."}},
+  {question:"What is a LinkedIn 'endorsement'?",options:["A written recommendation","A one-click confirmation of someone's skill","A job offer","A payment"],correct:1,feedback:{correct:"That's right! Endorsements are quick skill confirmations from your connections.",wrong:"An endorsement is a one-click confirmation that someone has a particular skill."}},
+  {question:"How many bullet points should you have per role in Experience?",options:["10-15","1","3-5 focused on results","None — just a paragraph"],correct:2,feedback:{correct:"Right! 3-5 focused bullet points per role is the sweet spot.",wrong:"Aim for 3-5 bullet points per role, each highlighting results and achievements."}},
+  {question:"What is 'keyword optimisation' on LinkedIn?",options:["Using fancy vocabulary","Including terms that recruiters search for","Writing as many words as possible","Using hashtags"],correct:1,feedback:{correct:"Correct! Including industry-relevant keywords helps your profile appear in recruiter searches.",wrong:"Keyword optimisation means including terms recruiters search for in your profile."}},
+  {question:"What is 'thought leadership'?",options:["Being the boss","Sharing expert content to build professional credibility","Thinking about leading a team","Reading leadership books"],correct:1,feedback:{correct:"That's right! Thought leadership means sharing insights and expertise through content.",wrong:"Thought leadership is sharing expert knowledge and insights to build your professional reputation."}},
+  {question:"Why should you customise your LinkedIn URL?",options:["It's mandatory","It looks more professional and is easier to share","It costs extra money","It's only for premium users"],correct:1,feedback:{correct:"Right! A custom URL (linkedin.com/in/yourname) looks professional on CVs and email signatures.",wrong:"A custom URL looks cleaner, more professional, and is easier to share."}},
+  {question:"What does 'results-driven' mean?",options:["You drive to work","Focused on achieving measurable outcomes","You only care about money","You work very fast"],correct:1,feedback:{correct:"Correct! Results-driven means you focus on delivering measurable, tangible outcomes.",wrong:"'Results-driven' means focused on achieving specific, measurable outcomes."}},
+  {question:"How can activity on LinkedIn boost your profile?",options:["It doesn't help at all","Regular posting and engagement increase visibility in search results","Only paid posts help","You need 1000+ connections first"],correct:1,feedback:{correct:"That's right! The algorithm favours active users — posting and engaging boosts your visibility.",wrong:"Regular activity (posting, commenting, sharing) increases your visibility in LinkedIn's algorithm."}},
+  {question:"What is a LinkedIn recommendation?",options:["A suggested connection","A written testimonial from a colleague or manager","An automated message","A skill endorsement"],correct:1,feedback:{correct:"Correct! Recommendations are written testimonials that add credibility to your profile.",wrong:"A recommendation is a written testimonial from someone you've worked with."}}
+];
+const letters=['A','B','C','D'];let currentQ=0,score=0,answered=false;
+function renderQuiz(){const a=document.getElementById('quizArea');if(currentQ>=quizData.length){const p=Math.round(score/quizData.length*100);let m=p>=80?"Excellent!":p>=60?"Good effort!":"Keep studying!";a.innerHTML=`<div class="quiz-container"><div class="score-display"><div class="score-num" style="color:${p>=60?'var(--success)':'var(--error)'}">${score}/${quizData.length}</div><div class="score-label">${p}% — ${m}</div><button class="btn btn-primary" onclick="resetQuiz()">Restart Quiz</button></div></div>`;return;}const q=quizData[currentQ];a.innerHTML=`<div class="quiz-container"><div class="quiz-header"><h3>Question ${currentQ+1}</h3><div class="quiz-progress">${currentQ+1} / ${quizData.length}</div></div><div class="quiz-body"><div class="quiz-question">${q.question}</div><div class="quiz-options">${q.options.map((o,i)=>`<div class="quiz-option" onclick="selectAnswer(${i})" id="opt-${i}"><div class="opt-letter">${letters[i]}</div><div>${o}</div></div>`).join('')}</div><div class="quiz-feedback" id="feedback"></div></div><div class="quiz-footer"><button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next →</button></div></div>`;answered=false;}
+function selectAnswer(i){if(answered)return;answered=true;const q=quizData[currentQ],c=i===q.correct;if(c)score++;for(let j=0;j<q.options.length;j++){const e=document.getElementById('opt-'+j);if(j===q.correct)e.classList.add('correct');else if(j===i&&!c)e.classList.add('wrong');if(j!==i&&j!==q.correct)e.classList.add('disabled');}const f=document.getElementById('feedback');f.textContent=c?q.feedback.correct:q.feedback.wrong;f.className=`quiz-feedback show ${c?'correct-fb':'wrong-fb'}`;document.getElementById('nextBtn').style.display='inline-flex';}
+function nextQuestion(){currentQ++;renderQuiz();}function resetQuiz(){currentQ=0;score=0;renderQuiz();}renderQuiz();
+</script>
+</body>
+</html>

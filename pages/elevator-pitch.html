@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevator Pitch — English Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-muted: #6B6560;
+    --accent: #8B5CF6;
+    --accent-light: #EDE9FE;
+    --accent-dark: #6D28D9;
+    --border: #E8E4DD;
+    --success: #3A7D5C;
+    --success-light: #E4F2EA;
+    --error: #C45D3E;
+    --error-light: #FCEAE5;
+    --c1: #8B5CF6;
+    --c2: #EC4899;
+    --c3: #F59E0B;
+    --c4: #10B981;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(247,245,240,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  nav .logo-group { display: flex; align-items: center; gap: 0.6rem; }
+  nav .nav-logo-img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-light); transition: transform 0.3s; }
+  nav .nav-logo-img:hover { transform: scale(1.1); }
+  nav .logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--text); letter-spacing: -0.02em; }
+  nav .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul li a { text-decoration: none; font-size: 0.82rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.3s; }
+  nav ul li a:hover { color: var(--accent); }
+
+  .hero { padding: 10rem 2rem 5rem; max-width: 800px; margin: 0 auto; text-align: center; animation: fadeUp 0.8s ease-out; }
+  .hero-mascot { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); box-shadow: 0 6px 24px rgba(139,92,246,0.18); margin: 0 auto 1.5rem; display: block; animation: float 4s ease-in-out infinite, fadeUp 0.8s ease-out; }
+  .hero .tag { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+  .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 540px; margin: 0 auto; font-weight: 300; }
+
+  .pitch-steps { display: flex; justify-content: center; gap: 1rem; margin: 3rem auto 0; max-width: 520px; }
+  .pitch-step { flex: 1; text-align: center; padding: 1.2rem 0.5rem; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; cursor: default; }
+  .pitch-step:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+  .pitch-step .step-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+  .pitch-step .label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+
+  .section { max-width: 740px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-header { margin-bottom: 2.5rem; }
+  .section-header .num { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+  .section-header h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; letter-spacing: -0.02em; line-height: 1.2; }
+  .divider { width: 100%; max-width: 740px; margin: 0 auto; height: 1px; background: var(--border); }
+
+  .theory-grid { display: grid; gap: 1.25rem; }
+  .theory-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; animation: fadeUp 0.6s ease-out both; }
+  .theory-card:nth-child(1) { animation-delay: 0.05s; }
+  .theory-card:nth-child(2) { animation-delay: 0.1s; }
+  .theory-card:nth-child(3) { animation-delay: 0.15s; }
+  .theory-card:nth-child(4) { animation-delay: 0.2s; }
+  .theory-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); }
+  .theory-card .icon { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; }
+  .theory-card:nth-child(1) .icon { background: var(--c1); }
+  .theory-card:nth-child(2) .icon { background: var(--c2); }
+  .theory-card:nth-child(3) .icon { background: var(--c3); }
+  .theory-card:nth-child(4) .icon { background: var(--c4); }
+  .theory-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .theory-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; }
+  .theory-card .example { margin-top: 1rem; padding: 1rem 1.25rem; background: var(--bg); border-radius: 8px; font-size: 0.85rem; color: var(--text); font-style: italic; border-left: 3px solid var(--border); }
+
+  .tips-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; margin-top: 1.5rem; }
+  .tips-box h3 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; margin-bottom: 1rem; }
+  .tip-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.8rem; font-size: 0.92rem; color: var(--text-muted); }
+  .tip-item .bullet { width: 6px; height: 6px; min-width: 6px; background: var(--accent); border-radius: 50%; margin-top: 0.55rem; }
+
+  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  .vocab-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; transition: transform 0.2s; }
+  .vocab-item:hover { transform: translateY(-2px); }
+  .vocab-item .word { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.25rem; }
+  .vocab-item .def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+  .quiz-container { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; }
+  .quiz-header { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .quiz-header h3 { font-family: 'DM Serif Display', serif; font-size: 1.1rem; }
+  .quiz-progress { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-muted); }
+  .quiz-body { padding: 2rem; }
+  .quiz-question { font-size: 1rem; font-weight: 500; margin-bottom: 1.5rem; line-height: 1.6; }
+  .quiz-options { display: grid; gap: 0.6rem; }
+  .quiz-option { padding: 1rem 1.25rem; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 0.9rem; transition: all 0.25s; background: var(--surface); display: flex; align-items: center; gap: 0.75rem; }
+  .quiz-option:hover:not(.disabled) { border-color: var(--accent); background: var(--accent-light); }
+  .quiz-option .opt-letter { width: 28px; height: 28px; min-width: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 500; background: var(--bg); color: var(--text-muted); transition: all 0.25s; }
+  .quiz-option.correct { border-color: var(--success); background: var(--success-light); }
+  .quiz-option.correct .opt-letter { background: var(--success); color: white; }
+  .quiz-option.wrong { border-color: var(--error); background: var(--error-light); }
+  .quiz-option.wrong .opt-letter { background: var(--error); color: white; }
+  .quiz-option.disabled { pointer-events: none; opacity: 0.6; }
+  .quiz-option.correct.disabled, .quiz-option.wrong.disabled { opacity: 1; }
+  .quiz-feedback { margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: 10px; font-size: 0.88rem; line-height: 1.6; display: none; }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct-fb { background: var(--success-light); color: var(--success); }
+  .quiz-feedback.wrong-fb { background: var(--error-light); color: var(--error); }
+  .quiz-footer { padding: 1.25rem 2rem; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; }
+  .btn { padding: 0.6rem 1.5rem; border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.25s; }
+  .btn-primary { background: var(--text); color: white; }
+  .btn-primary:hover { background: #333; }
+  .score-display { text-align: center; padding: 3rem 2rem; }
+  .score-display .score-num { font-family: 'DM Serif Display', serif; font-size: 4rem; line-height: 1; margin-bottom: 0.5rem; }
+  .score-display .score-label { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 2rem; }
+
+  .exercise-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; margin-bottom: 1.25rem; }
+  .exercise-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.05rem; margin-bottom: 0.75rem; }
+  .exercise-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6; }
+  .exercise-card textarea { width: 100%; min-height: 100px; padding: 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; line-height: 1.6; resize: vertical; background: var(--bg); color: var(--text); transition: border-color 0.3s; }
+  .exercise-card textarea:focus { outline: none; border-color: var(--accent); }
+  .exercise-card textarea::placeholder { color: #B5AFA8; }
+  .exercise-label { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.75rem; }
+  .label-1 { background: rgba(139,92,246,0.12); color: var(--c1); }
+  .label-2 { background: rgba(236,72,153,0.12); color: var(--c2); }
+  .label-3 { background: rgba(245,158,11,0.12); color: var(--c3); }
+  .label-4 { background: rgba(16,185,129,0.12); color: var(--c4); }
+
+  footer { text-align: center; padding: 3rem 2rem 2rem; font-size: 0.78rem; color: var(--text-muted); border-top: 1px solid var(--border); max-width: 740px; margin: 2rem auto 0; }
+  .footer-logo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; margin-bottom: 0.75rem; opacity: 0.7; transition: opacity 0.3s; }
+  .footer-logo:hover { opacity: 1; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  @media (max-width: 640px) {
+    nav ul { gap: 1rem; }
+    nav ul li a { font-size: 0.72rem; }
+    .nav-logo-img { width: 28px; height: 28px; }
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .hero-mascot { width: 72px; height: 72px; }
+    .section { padding: 3rem 1.5rem; }
+    .theory-card { grid-template-columns: 1fr; gap: 1rem; }
+    .theory-card .icon { width: 44px; height: 44px; font-size: 1.2rem; border-radius: 10px; }
+    .pitch-steps { gap: 0.5rem; flex-wrap: wrap; }
+    .quiz-header, .quiz-body, .quiz-footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .vocab-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-group">
+    <img src="../assets/logo.png" alt="Logo" class="nav-logo-img" />
+    <div class="logo">Elevator<span>.</span>pitch</div>
+  </div>
+  <ul>
+    <li><a href="#theory">Theory</a></li>
+    <li><a href="#vocab">Vocab</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#practice">Practice</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <img src="../assets/logo.png" alt="Study mascot" class="hero-mascot" />
+  <div class="tag">English Study Guide — Interview Skills</div>
+  <h1>The Elevator Pitch</h1>
+  <p>Learn how to introduce yourself professionally in 30–60 seconds, making a lasting first impression in any business context.</p>
+
+  <div class="pitch-steps">
+    <div class="pitch-step"><div class="step-icon">👋</div><div class="label">Hook</div></div>
+    <div class="pitch-step"><div class="step-icon">💼</div><div class="label">Value</div></div>
+    <div class="pitch-step"><div class="step-icon">🎯</div><div class="label">Goal</div></div>
+    <div class="pitch-step"><div class="step-icon">🤝</div><div class="label">Call to Action</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THEORY -->
+<section class="section" id="theory">
+  <div class="section-header">
+    <div class="num">01 — THEORY</div>
+    <h2>What is an Elevator Pitch?</h2>
+  </div>
+
+  <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:2rem; line-height:1.8;">
+    An elevator pitch is a brief, persuasive speech that you use to introduce yourself, your product, or your idea. The name comes from the idea that you should be able to deliver it during a short elevator ride — typically <strong>30 to 60 seconds</strong>. It's essential for networking events, job interviews, career fairs, and even casual professional encounters.
+  </p>
+
+  <div class="theory-grid">
+    <div class="theory-card">
+      <div class="icon">👋</div>
+      <div>
+        <h3>The Hook</h3>
+        <p>Start with something that grabs attention — a compelling question, a surprising fact, or a confident self-introduction. This is your first impression, so make it count.</p>
+        <div class="example">"Hi, I'm Maria. Have you ever wondered why 70% of online shoppers abandon their carts before checkout?"</div>
+      </div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">💼</div>
+      <div>
+        <h3>Your Value Proposition</h3>
+        <p>Explain what you do and what makes you unique. Focus on the <strong>value you bring</strong> — not just your job title. Use concrete language and avoid jargon.</p>
+        <div class="example">"I'm a UX designer specialising in e-commerce. I help companies redesign their checkout flows to reduce cart abandonment by up to 35%."</div>
+      </div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">🎯</div>
+      <div>
+        <h3>Your Goal</h3>
+        <p>Briefly state what you're looking for — a new role, a collaboration, a client, or simply to connect. Be specific but not pushy.</p>
+        <div class="example">"I'm currently exploring opportunities at companies that are passionate about creating seamless digital experiences."</div>
+      </div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">🤝</div>
+      <div>
+        <h3>Call to Action</h3>
+        <p>End with an invitation to continue the conversation. This could be exchanging contact details, scheduling a meeting, or simply asking a question.</p>
+        <div class="example">"I'd love to hear about what your team is working on. Could we grab a coffee sometime this week?"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-box">
+    <h3>Key Tips for Your Elevator Pitch</h3>
+    <div class="tip-item"><div class="bullet"></div><div>Keep it under <strong>60 seconds</strong> — practice with a timer until it feels natural.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Tailor your pitch to the <strong>audience</strong> — a recruiter wants different info than a potential client.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Avoid industry jargon — use <strong>plain, clear language</strong> that anyone can understand.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Show <strong>enthusiasm</strong> — your energy and confidence matter as much as your words.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>End with a <strong>question or invitation</strong> — turn a monologue into a conversation.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Prepare <strong>2–3 versions</strong>: a 15-second, 30-second, and 60-second version for different contexts.</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VOCABULARY -->
+<section class="section" id="vocab">
+  <div class="section-header">
+    <div class="num">02 — VOCABULARY</div>
+    <h2>Useful Words &amp; Phrases</h2>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-item"><div class="word">Elevator pitch</div><div class="def">A brief, persuasive self-introduction</div></div>
+    <div class="vocab-item"><div class="word">Value proposition</div><div class="def">What makes you or your offer unique</div></div>
+    <div class="vocab-item"><div class="word">To network</div><div class="def">To build professional relationships</div></div>
+    <div class="vocab-item"><div class="word">First impression</div><div class="def">The initial opinion someone forms of you</div></div>
+    <div class="vocab-item"><div class="word">Call to action</div><div class="def">An invitation for the next step</div></div>
+    <div class="vocab-item"><div class="word">To stand out</div><div class="def">To be noticeably different or better</div></div>
+    <div class="vocab-item"><div class="word">Concise</div><div class="def">Brief but covering all important points</div></div>
+    <div class="vocab-item"><div class="word">To tailor</div><div class="def">To adapt something for a specific purpose</div></div>
+    <div class="vocab-item"><div class="word">Compelling</div><div class="def">Very convincing or interesting</div></div>
+    <div class="vocab-item"><div class="word">To follow up</div><div class="def">To contact someone after an initial meeting</div></div>
+    <div class="vocab-item"><div class="word">Career fair</div><div class="def">An event where employers meet candidates</div></div>
+    <div class="vocab-item"><div class="word">Rapport</div><div class="def">A close, harmonious relationship</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- QUIZ -->
+<section class="section" id="quiz">
+  <div class="section-header">
+    <div class="num">03 — QUIZ</div>
+    <h2>Test Your Knowledge</h2>
+  </div>
+  <div id="quizArea"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRACTICE -->
+<section class="section" id="practice">
+  <div class="section-header">
+    <div class="num">04 — PRACTICE</div>
+    <h2>Writing Exercises</h2>
+  </div>
+  <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:2rem;">
+    Write your own elevator pitch using the four-step framework. Imagine you are at a networking event and someone asks <em>"So, what do you do?"</em>
+  </p>
+
+  <div class="exercise-card">
+    <span class="exercise-label label-1">Hook</span>
+    <h4>Grab their attention</h4>
+    <p>Start with your name and an engaging opening — a question, a fact, or a bold statement.</p>
+    <textarea placeholder="Example: Hi, I'm [name]. Did you know that…"></textarea>
+  </div>
+  <div class="exercise-card">
+    <span class="exercise-label label-2">Value</span>
+    <h4>Explain what you do</h4>
+    <p>Describe your role and the value you bring. Focus on impact, not job titles.</p>
+    <textarea placeholder="Example: I specialise in… / I help companies to…"></textarea>
+  </div>
+  <div class="exercise-card">
+    <span class="exercise-label label-3">Goal</span>
+    <h4>State what you're looking for</h4>
+    <p>Mention your current objective — a new role, a partnership, a project.</p>
+    <textarea placeholder="Example: I'm currently looking for… / I'm exploring opportunities in…"></textarea>
+  </div>
+  <div class="exercise-card">
+    <span class="exercise-label label-4">Call to Action</span>
+    <h4>Invite the next step</h4>
+    <p>End with something that opens the door to further conversation.</p>
+    <textarea placeholder="Example: I'd love to connect — could we exchange details?"></textarea>
+  </div>
+</section>
+
+<footer>
+  <img src="../assets/logo.png" alt="Logo" class="footer-logo" /><br>
+  Elevator Pitch Study Guide — English Class Homework
+</footer>
+
+<script>
+const quizData = [
+  { question: "How long should an elevator pitch typically last?", options: ["5 minutes", "30–60 seconds", "2–3 minutes", "10 seconds"], correct: 1, feedback: { correct: "That's right! An elevator pitch should be 30–60 seconds — short, focused, and memorable.", wrong: "An elevator pitch should last 30–60 seconds — enough time for a short elevator ride." } },
+  { question: "What is the main purpose of the 'hook' in an elevator pitch?", options: ["To list your qualifications", "To grab the listener's attention", "To ask for a job", "To describe your education"], correct: 1, feedback: { correct: "Exactly! The hook is designed to capture interest immediately.", wrong: "The hook is meant to grab the listener's attention right from the start." } },
+  { question: "What does 'value proposition' mean?", options: ["Your salary expectations", "What makes you or your offer uniquely valuable", "A list of your skills", "Your company's revenue"], correct: 1, feedback: { correct: "Correct! Your value proposition communicates what makes you stand out.", wrong: "A value proposition describes what makes you or your offer uniquely valuable to others." } },
+  { question: "Which of these is the best way to end an elevator pitch?", options: ["Just stop talking", "Say 'that's all' and walk away", "Ask a question or suggest a next step", "Repeat everything you said"], correct: 2, feedback: { correct: "Well done! Ending with a question or invitation turns your pitch into a conversation.", wrong: "The best ending is a call to action — a question or suggestion for a next step." } },
+  { question: "Why should you avoid jargon in your elevator pitch?", options: ["It makes you sound too smart", "Not everyone will understand technical language", "Jargon is always incorrect", "It takes too long to say"], correct: 1, feedback: { correct: "Right! Your pitch should be understandable to anyone, not just people in your field.", wrong: "You should avoid jargon because not everyone will understand industry-specific language." } },
+  { question: "How many versions of your pitch should you prepare?", options: ["Just one", "2–3 versions for different contexts", "A new one every time", "None — always improvise"], correct: 1, feedback: { correct: "Correct! Having 2–3 versions (15s, 30s, 60s) gives you flexibility.", wrong: "You should prepare 2–3 versions to adapt to different situations and time constraints." } },
+  { question: "What does 'to tailor' mean in the context of an elevator pitch?", options: ["To make clothes", "To speak louder", "To adapt your message for a specific audience", "To memorise your speech"], correct: 2, feedback: { correct: "Exactly! Tailoring means adapting your pitch to suit the person or situation.", wrong: "'To tailor' means to adapt your message for a specific audience or context." } },
+  { question: "Which of these is a good example of a hook?", options: ["I have a degree in marketing.", "Did you know that 80% of startups fail in their first year?", "I'm looking for a job.", "My name is João and I'm 28 years old."], correct: 1, feedback: { correct: "That's a great hook! A surprising fact immediately captures attention.", wrong: "A compelling question or surprising fact makes the best hook — it grabs attention instantly." } },
+  { question: "What should the 'value' section focus on?", options: ["Your education history", "The impact and results you deliver", "Your hobbies", "Your salary requirements"], correct: 1, feedback: { correct: "Right! Focus on the impact you create, not just credentials.", wrong: "The value section should focus on the results and impact you deliver — not just your background." } },
+  { question: "What does 'rapport' mean?", options: ["A type of report", "A financial document", "A close, harmonious professional relationship", "A formal presentation"], correct: 2, feedback: { correct: "Correct! Building rapport means creating a genuine connection with someone.", wrong: "Rapport is a close, harmonious relationship — building it is key to effective networking." } }
+];
+
+const letters = ['A','B','C','D'];
+let currentQ = 0, score = 0, answered = false;
+
+function renderQuiz() {
+  const area = document.getElementById('quizArea');
+  if (currentQ >= quizData.length) {
+    const pct = Math.round((score / quizData.length) * 100);
+    let msg = pct >= 80 ? "Excellent work!" : pct >= 60 ? "Good effort — review the theory!" : "Keep studying!";
+    area.innerHTML = `<div class="quiz-container"><div class="score-display"><div class="score-num" style="color:${pct >= 60 ? 'var(--success)' : 'var(--error)'}">${score}/${quizData.length}</div><div class="score-label">${pct}% — ${msg}</div><button class="btn btn-primary" onclick="resetQuiz()">Restart Quiz</button></div></div>`;
+    return;
+  }
+  const q = quizData[currentQ];
+  area.innerHTML = `<div class="quiz-container"><div class="quiz-header"><h3>Question ${currentQ+1}</h3><div class="quiz-progress">${currentQ+1} / ${quizData.length}</div></div><div class="quiz-body"><div class="quiz-question">${q.question}</div><div class="quiz-options">${q.options.map((opt,i)=>`<div class="quiz-option" onclick="selectAnswer(${i})" id="opt-${i}"><div class="opt-letter">${letters[i]}</div><div>${opt}</div></div>`).join('')}</div><div class="quiz-feedback" id="feedback"></div></div><div class="quiz-footer"><button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next →</button></div></div>`;
+  answered = false;
+}
+
+function selectAnswer(idx) {
+  if (answered) return; answered = true;
+  const q = quizData[currentQ], isCorrect = idx === q.correct;
+  if (isCorrect) score++;
+  for (let i = 0; i < q.options.length; i++) { const el = document.getElementById('opt-'+i); if (i===q.correct) el.classList.add('correct'); else if (i===idx&&!isCorrect) el.classList.add('wrong'); if (i!==idx&&i!==q.correct) el.classList.add('disabled'); }
+  const fb = document.getElementById('feedback'); fb.textContent = isCorrect ? q.feedback.correct : q.feedback.wrong; fb.className = `quiz-feedback show ${isCorrect?'correct-fb':'wrong-fb'}`;
+  document.getElementById('nextBtn').style.display = 'inline-flex';
+}
+function nextQuestion() { currentQ++; renderQuiz(); }
+function resetQuiz() { currentQ=0; score=0; renderQuiz(); }
+renderQuiz();
+</script>
+</body>
+</html>

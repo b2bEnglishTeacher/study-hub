@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR Method — English Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-muted: #6B6560;
+    --accent: #C45D3E;
+    --accent-light: #F4E8E3;
+    --accent-dark: #9E3A20;
+    --border: #E8E4DD;
+    --success: #3A7D5C;
+    --success-light: #E4F2EA;
+    --error: #C45D3E;
+    --error-light: #FCEAE5;
+    --star-s: #C45D3E;
+    --star-t: #D4883E;
+    --star-a: #3A7D5C;
+    --star-r: #3E6BC4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(247,245,240,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  nav .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  nav .logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    padding: 10rem 2rem 5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  .hero .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  /* STAR LETTERS */
+  .star-bar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 3rem auto 0;
+    max-width: 480px;
+  }
+
+  .star-letter {
+    flex: 1;
+    text-align: center;
+    padding: 1.2rem 0.5rem;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+
+  .star-letter:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .star-letter .letter {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .star-letter:nth-child(1) .letter { color: var(--star-s); }
+  .star-letter:nth-child(2) .letter { color: var(--star-t); }
+  .star-letter:nth-child(3) .letter { color: var(--star-a); }
+  .star-letter:nth-child(4) .letter { color: var(--star-r); }
+
+  .star-letter .label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* VIDEO */
+  .video-wrapper {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .video-frame {
+    background: #0f0f0f;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .video-frame iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border: none;
+  }
+
+  .video-caption {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .video-caption strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-header .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .divider {
+    width: 100%;
+    max-width: 740px;
+    margin: 0 auto;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* THEORY CARDS */
+  .theory-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .theory-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeUp 0.6s ease-out both;
+  }
+
+  .theory-card:nth-child(1) { animation-delay: 0.05s; }
+  .theory-card:nth-child(2) { animation-delay: 0.1s; }
+  .theory-card:nth-child(3) { animation-delay: 0.15s; }
+  .theory-card:nth-child(4) { animation-delay: 0.2s; }
+
+  .theory-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  }
+
+  .theory-card .icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .theory-card:nth-child(1) .icon { background: var(--star-s); }
+  .theory-card:nth-child(2) .icon { background: var(--star-t); }
+  .theory-card:nth-child(3) .icon { background: var(--star-a); }
+  .theory-card:nth-child(4) .icon { background: var(--star-r); }
+
+  .theory-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .theory-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .theory-card .example {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text);
+    font-style: italic;
+    border-left: 3px solid var(--border);
+  }
+
+  /* TIPS */
+  .tips-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .tips-box h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .tip-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+
+  .tip-item .bullet {
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 0.55rem;
+  }
+
+  /* VOCABULARY */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .vocab-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    transition: transform 0.2s;
+  }
+
+  .vocab-item:hover { transform: translateY(-2px); }
+
+  .vocab-item .word {
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .vocab-item .def {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* QUIZ SECTION */
+  .quiz-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .quiz-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .quiz-header h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+  }
+
+  .quiz-progress {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .quiz-body { padding: 2rem; }
+
+  .quiz-question {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .quiz-options { display: grid; gap: 0.6rem; }
+
+  .quiz-option {
+    padding: 1rem 1.25rem;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.25s;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .quiz-option:hover:not(.disabled) {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .quiz-option .opt-letter {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--bg);
+    color: var(--text-muted);
+    transition: all 0.25s;
+  }
+
+  .quiz-option.correct {
+    border-color: var(--success);
+    background: var(--success-light);
+  }
+
+  .quiz-option.correct .opt-letter {
+    background: var(--success);
+    color: white;
+  }
+
+  .quiz-option.wrong {
+    border-color: var(--error);
+    background: var(--error-light);
+  }
+
+  .quiz-option.wrong .opt-letter {
+    background: var(--error);
+    color: white;
+  }
+
+  .quiz-option.disabled { pointer-events: none; opacity: 0.6; }
+  .quiz-option.correct.disabled, .quiz-option.wrong.disabled { opacity: 1; }
+
+  .quiz-feedback {
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    display: none;
+  }
+
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct-fb { background: var(--success-light); color: var(--success); }
+  .quiz-feedback.wrong-fb { background: var(--error-light); color: var(--error); }
+
+  .quiz-footer {
+    padding: 1.25rem 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: white;
+  }
+
+  .btn-primary:hover { background: #333; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover { border-color: var(--text-muted); }
+
+  /* SCORE */
+  .score-display {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .score-display .score-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .score-display .score-label {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* EXERCISE SECTION */
+  .exercise-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .exercise-card h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .exercise-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .exercise-card textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: vertical;
+    background: var(--bg);
+    color: var(--text);
+    transition: border-color 0.3s;
+  }
+
+  .exercise-card textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .exercise-card textarea::placeholder { color: #B5AFA8; }
+
+  .exercise-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  .label-s { background: rgba(196,93,62,0.12); color: var(--star-s); }
+  .label-t { background: rgba(212,136,62,0.12); color: var(--star-t); }
+  .label-a { background: rgba(58,125,92,0.12); color: var(--star-a); }
+  .label-r { background: rgba(62,107,196,0.12); color: var(--star-r); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    max-width: 740px;
+    margin: 2rem auto 0;
+  }
+
+  .footer-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+
+  .footer-logo:hover { opacity: 1; }
+
+  /* NAV LOGO IMG */
+  .nav-logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-light);
+    transition: transform 0.3s;
+  }
+
+  .nav-logo-img:hover { transform: scale(1.1); }
+
+  .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  /* HERO MASCOT */
+  .hero-mascot {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--surface);
+    box-shadow: 0 6px 24px rgba(196,93,62,0.18);
+    margin: 0 auto 1.5rem;
+    display: block;
+    animation: float 4s ease-in-out infinite, fadeUp 0.8s ease-out;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav ul { gap: 1rem; }
+    nav ul li a { font-size: 0.72rem; }
+    .nav-logo-img { width: 28px; height: 28px; }
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .hero-mascot { width: 72px; height: 72px; }
+    .section { padding: 3rem 1.5rem; }
+    .theory-card { grid-template-columns: 1fr; gap: 1rem; }
+    .theory-card .icon { width: 44px; height: 44px; font-size: 1.2rem; border-radius: 10px; }
+    .star-bar { gap: 0.5rem; }
+    .quiz-header, .quiz-body, .quiz-footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .vocab-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-group">
+    <img src="../assets/logo.png" alt="Logo" class="nav-logo-img" />
+    <div class="logo">STAR<span>.</span>method</div>
+  </div>
+  <ul>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#theory">Theory</a></li>
+    <li><a href="#vocab">Vocab</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#practice">Practice</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="../assets/logo.png" alt="Study mascot" class="hero-mascot" />
+  <div class="tag">English Study Guide — Homework</div>
+  <h1>Master the STAR Method</h1>
+  <p>A structured technique for answering behavioural interview questions clearly, concisely, and with impact.</p>
+
+  <div class="star-bar">
+    <div class="star-letter"><div class="letter">S</div><div class="label">Situation</div></div>
+    <div class="star-letter"><div class="letter">T</div><div class="label">Task</div></div>
+    <div class="star-letter"><div class="letter">A</div><div class="label">Action</div></div>
+    <div class="star-letter"><div class="letter">R</div><div class="label">Result</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VIDEO -->
+<section class="section" id="video">
+  <div class="section-header">
+    <div class="num">00 — VIDEO LESSON</div>
+    <h2>Watch &amp; Learn</h2>
+  </div>
+  <div class="video-wrapper" style="padding:0;">
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/WRLF8ULhZmw?si=y5MfI6Y96sRPAw96"
+        title="STAR Method Explained"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p class="video-caption"><strong>Tip:</strong> Watch the video first, then read the theory below to reinforce the concepts.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THEORY -->
+<section class="section" id="theory">
+  <div class="section-header">
+    <div class="num">01 — THEORY</div>
+    <h2>What is the STAR Method?</h2>
+  </div>
+
+  <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:2rem; line-height:1.8;">
+    The STAR method is a structured framework used to answer <strong>behavioural interview questions</strong> — questions that begin with phrases like <em>"Tell me about a time when…"</em> or <em>"Give me an example of…"</em>. Each letter represents a step in building a clear, compelling response.
+  </p>
+
+  <div class="theory-grid">
+    <!-- S -->
+    <div class="theory-card">
+      <div class="icon">S</div>
+      <div>
+        <h3>Situation</h3>
+        <p>Set the scene. Describe the context — where you were, what was happening, and any relevant background. Keep it brief but specific enough so the interviewer understands the scenario.</p>
+        <div class="example">"In my previous role as a project coordinator at a tech startup, our team was behind schedule on a product launch with only two weeks left before the deadline."</div>
+      </div>
+    </div>
+    <!-- T -->
+    <div class="theory-card">
+      <div class="icon">T</div>
+      <div>
+        <h3>Task</h3>
+        <p>Explain your responsibility. What was expected of you? What challenge or goal were you facing? This separates your role from the team's overall objective.</p>
+        <div class="example">"I was responsible for coordinating between the design and development teams to ensure all deliverables were completed on time."</div>
+      </div>
+    </div>
+    <!-- A -->
+    <div class="theory-card">
+      <div class="icon">A</div>
+      <div>
+        <h3>Action</h3>
+        <p>Describe what <strong>you</strong> specifically did. Focus on your individual contribution, the steps you took, and the skills you applied. Use "I" rather than "we".</p>
+        <div class="example">"I organised daily stand-up meetings, created a shared task tracker, and personally took over the QA process to identify blockers early."</div>
+      </div>
+    </div>
+    <!-- R -->
+    <div class="theory-card">
+      <div class="icon">R</div>
+      <div>
+        <h3>Result</h3>
+        <p>Share the outcome. Quantify when possible — numbers, percentages, and measurable improvements make your answer more convincing. Mention what you learned if relevant.</p>
+        <div class="example">"We launched the product on time, and the client rated our delivery 9/10. The process I introduced was adopted as a standard for future projects."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-box">
+    <h3>Key Tips for Using STAR</h3>
+    <div class="tip-item"><div class="bullet"></div><div>Be <strong>specific</strong> — avoid vague or generic answers. Use real examples from your experience.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Keep the <strong>Situation</strong> and <strong>Task</strong> concise (about 20% of your answer) and spend more time on <strong>Action</strong> and <strong>Result</strong>.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Always highlight <strong>your</strong> personal contribution, not just the team's effort.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Use <strong>quantifiable results</strong> whenever possible: numbers, percentages, time saved.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Prepare <strong>3–5 STAR stories</strong> before any interview, covering different competencies (leadership, teamwork, problem-solving, conflict).</div></div>
+    <div class="tip-item"><div class="bullet"></div><div>Common question starters: <em>"Tell me about a time…"</em>, <em>"Describe a situation where…"</em>, <em>"Give an example of…"</em></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VOCABULARY -->
+<section class="section" id="vocab">
+  <div class="section-header">
+    <div class="num">02 — VOCABULARY</div>
+    <h2>Useful Words &amp; Phrases</h2>
+  </div>
+
+  <div class="vocab-grid">
+    <div class="vocab-item"><div class="word">Behavioural question</div><div class="def">A question asking you to describe past experiences</div></div>
+    <div class="vocab-item"><div class="word">Competency</div><div class="def">A skill or ability evaluated in an interview</div></div>
+    <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">A person with interest in the outcome of a project</div></div>
+    <div class="vocab-item"><div class="word">Deliverable</div><div class="def">A product or result that must be completed</div></div>
+    <div class="vocab-item"><div class="word">To take the lead</div><div class="def">To assume responsibility and guide others</div></div>
+    <div class="vocab-item"><div class="word">Deadline</div><div class="def">The latest time by which something must be done</div></div>
+    <div class="vocab-item"><div class="word">To prioritise</div><div class="def">To decide which tasks are most important</div></div>
+    <div class="vocab-item"><div class="word">Outcome</div><div class="def">The final result or consequence of an action</div></div>
+    <div class="vocab-item"><div class="word">To exceed expectations</div><div class="def">To do better than what was anticipated</div></div>
+    <div class="vocab-item"><div class="word">Conflict resolution</div><div class="def">The process of solving a disagreement</div></div>
+    <div class="vocab-item"><div class="word">Quantifiable</div><div class="def">Able to be measured with numbers</div></div>
+    <div class="vocab-item"><div class="word">To collaborate</div><div class="def">To work together with others towards a goal</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- QUIZ -->
+<section class="section" id="quiz">
+  <div class="section-header">
+    <div class="num">03 — QUIZ</div>
+    <h2>Test Your Knowledge</h2>
+  </div>
+
+  <div id="quizArea"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRACTICE -->
+<section class="section" id="practice">
+  <div class="section-header">
+    <div class="num">04 — PRACTICE</div>
+    <h2>Writing Exercises</h2>
+  </div>
+
+  <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:2rem;">
+    Choose one of the interview questions below and write a full STAR response. Fill in each box with your answer.
+  </p>
+
+  <div class="exercise-card" style="background: var(--bg); border-style: dashed;">
+    <h4>Choose your prompt:</h4>
+    <p style="margin-bottom:0;">
+      <strong>A)</strong> "Tell me about a time you had to meet a tight deadline."<br>
+      <strong>B)</strong> "Describe a situation where you had to work with a difficult colleague."<br>
+      <strong>C)</strong> "Give me an example of a time you showed leadership."
+    </p>
+  </div>
+
+  <div class="exercise-card">
+    <span class="exercise-label label-s">Situation</span>
+    <h4>Set the scene</h4>
+    <p>Where were you? What was happening? Give the context briefly.</p>
+    <textarea placeholder="Example: In my role as…, our team was facing…"></textarea>
+  </div>
+
+  <div class="exercise-card">
+    <span class="exercise-label label-t">Task</span>
+    <h4>Define your responsibility</h4>
+    <p>What was your specific role or challenge?</p>
+    <textarea placeholder="Example: I was responsible for… / My task was to…"></textarea>
+  </div>
+
+  <div class="exercise-card">
+    <span class="exercise-label label-a">Action</span>
+    <h4>Describe what you did</h4>
+    <p>What steps did you take? Focus on your individual actions.</p>
+    <textarea placeholder="Example: First, I… Then, I decided to… I also…"></textarea>
+  </div>
+
+  <div class="exercise-card">
+    <span class="exercise-label label-r">Result</span>
+    <h4>Share the outcome</h4>
+    <p>What happened? Use numbers or measurable results if possible.</p>
+    <textarea placeholder="Example: As a result, we achieved… / This led to a 20% increase in…"></textarea>
+  </div>
+</section>
+
+<footer>
+  <img src="../assets/logo.png" alt="Logo" class="footer-logo" /><br>
+  STAR Method Study Guide — English Class Homework
+</footer>
+
+<script>
+const quizData = [
+  {
+    question: "What does the \"S\" in STAR stand for?",
+    options: ["Strategy", "Situation", "Solution", "Summary"],
+    correct: 1,
+    feedback: {
+      correct: "Correct! The \"S\" stands for Situation — setting the scene and providing context.",
+      wrong: "Not quite. \"S\" stands for Situation — it's about describing the context and background of your example."
+    }
+  },
+  {
+    question: "Which part of the STAR method should take up the most time in your answer?",
+    options: ["Situation", "Task", "Action", "Result"],
+    correct: 2,
+    feedback: {
+      correct: "That's right! The Action section should be the longest part, as it showcases what you personally did.",
+      wrong: "The Action section should take up the most time — it's where you demonstrate your skills and contributions."
+    }
+  },
+  {
+    question: "Which of these is a behavioural interview question?",
+    options: [
+      "What is your greatest strength?",
+      "Tell me about a time you solved a problem at work.",
+      "Where do you see yourself in five years?",
+      "What is your expected salary?"
+    ],
+    correct: 1,
+    feedback: {
+      correct: "Exactly! Behavioural questions ask about specific past experiences using phrases like \"Tell me about a time…\"",
+      wrong: "The correct answer is \"Tell me about a time you solved a problem at work.\" Behavioural questions always ask about specific past experiences."
+    }
+  },
+  {
+    question: "In the Task section, you should explain:",
+    options: [
+      "What the company does",
+      "Your specific responsibility or goal",
+      "The result you achieved",
+      "How many people were on the team"
+    ],
+    correct: 1,
+    feedback: {
+      correct: "Well done! The Task describes your specific responsibility or the goal you needed to achieve.",
+      wrong: "The Task section should describe your specific responsibility or the goal you were working towards — not the team or the result."
+    }
+  },
+  {
+    question: "Why is it important to use \"I\" instead of \"we\" in the Action section?",
+    options: [
+      "To sound more confident",
+      "Because teamwork is not valued",
+      "To highlight your individual contribution",
+      "To make the story shorter"
+    ],
+    correct: 2,
+    feedback: {
+      correct: "Exactly! Using \"I\" ensures the interviewer understands your personal contribution to the outcome.",
+      wrong: "The reason is to highlight your individual contribution. Interviewers want to know what YOU specifically did."
+    }
+  },
+  {
+    question: "Which of these is the best example of a Result?",
+    options: [
+      "The project went well and everyone was happy.",
+      "We launched on time and increased client retention by 15%.",
+      "I worked really hard on it.",
+      "My manager said good job."
+    ],
+    correct: 1,
+    feedback: {
+      correct: "That's the best answer. A strong Result includes quantifiable outcomes — numbers make your answer concrete and convincing.",
+      wrong: "The best Result is \"We launched on time and increased client retention by 15%.\" Strong results are specific and quantifiable."
+    }
+  },
+  {
+    question: "How many STAR stories should you ideally prepare before an interview?",
+    options: ["1", "3–5", "10+", "None — improvise everything"],
+    correct: 1,
+    feedback: {
+      correct: "Right! Having 3–5 prepared stories covering different competencies gives you flexibility during the interview.",
+      wrong: "The recommendation is 3–5 stories. This gives you enough variety to handle different types of behavioural questions."
+    }
+  },
+  {
+    question: "Which phrase is most likely to start a STAR-method question?",
+    options: [
+      "What would you do if…",
+      "Describe a situation where…",
+      "How would you define…",
+      "What is your opinion on…"
+    ],
+    correct: 1,
+    feedback: {
+      correct: "Correct! \"Describe a situation where…\" asks for a specific past experience, which is the hallmark of a behavioural question.",
+      wrong: "\"Describe a situation where…\" is the classic behavioural question starter. It asks for a real example from your past."
+    }
+  },
+  {
+    question: "What percentage of your answer should the Situation and Task sections represent?",
+    options: ["About 50%", "About 80%", "About 20%", "About 10%"],
+    correct: 2,
+    feedback: {
+      correct: "That's right! Keep the setup brief (~20%) and dedicate the rest to your Action and Result.",
+      wrong: "The Situation and Task should be about 20% of your answer. The majority should focus on your Action and the Result."
+    }
+  },
+  {
+    question: "What makes a STAR answer \"quantifiable\"?",
+    options: [
+      "Using technical jargon",
+      "Including specific numbers, percentages, or measurable outcomes",
+      "Making the answer very long",
+      "Mentioning your job title"
+    ],
+    correct: 1,
+    feedback: {
+      correct: "Exactly! Quantifiable means using specific numbers, percentages, or measurable outcomes to prove impact.",
+      wrong: "\"Quantifiable\" means including specific numbers, percentages, or measurable outcomes — concrete data that proves your impact."
+    }
+  }
+];
+
+const letters = ['A','B','C','D'];
+let currentQ = 0;
+let score = 0;
+let answered = false;
+
+function renderQuiz() {
+  const area = document.getElementById('quizArea');
+
+  if (currentQ >= quizData.length) {
+    const pct = Math.round((score / quizData.length) * 100);
+    let msg = pct >= 80 ? "Excellent work!" : pct >= 60 ? "Good effort — review the theory and try again!" : "Keep studying — you'll get there!";
+    area.innerHTML = `
+      <div class="quiz-container">
+        <div class="score-display">
+          <div class="score-num" style="color:${pct >= 60 ? 'var(--success)' : 'var(--accent)'}">${score}/${quizData.length}</div>
+          <div class="score-label">${pct}% — ${msg}</div>
+          <button class="btn btn-primary" onclick="resetQuiz()">Restart Quiz</button>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const q = quizData[currentQ];
+  area.innerHTML = `
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <h3>Question ${currentQ + 1}</h3>
+        <div class="quiz-progress">${currentQ + 1} / ${quizData.length}</div>
+      </div>
+      <div class="quiz-body">
+        <div class="quiz-question">${q.question}</div>
+        <div class="quiz-options">
+          ${q.options.map((opt, i) => `
+            <div class="quiz-option" onclick="selectAnswer(${i})" id="opt-${i}">
+              <div class="opt-letter">${letters[i]}</div>
+              <div>${opt}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="quiz-feedback" id="feedback"></div>
+      </div>
+      <div class="quiz-footer">
+        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next →</button>
+      </div>
+    </div>`;
+  answered = false;
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answered = true;
+
+  const q = quizData[currentQ];
+  const isCorrect = idx === q.correct;
+
+  if (isCorrect) score++;
+
+  // Mark options
+  for (let i = 0; i < q.options.length; i++) {
+    const el = document.getElementById('opt-' + i);
+    if (i === q.correct) el.classList.add('correct');
+    else if (i === idx && !isCorrect) el.classList.add('wrong');
+    if (i !== idx && i !== q.correct) el.classList.add('disabled');
+  }
+
+  // Feedback
+  const fb = document.getElementById('feedback');
+  fb.textContent = isCorrect ? q.feedback.correct : q.feedback.wrong;
+  fb.className = `quiz-feedback show ${isCorrect ? 'correct-fb' : 'wrong-fb'}`;
+
+  document.getElementById('nextBtn').style.display = 'inline-flex';
+}
+
+function nextQuestion() {
+  currentQ++;
+  renderQuiz();
+}
+
+function resetQuiz() {
+  currentQ = 0;
+  score = 0;
+  renderQuiz();
+}
+
+renderQuiz();
+</script>
+
+</body>
+</html>
