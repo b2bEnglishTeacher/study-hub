@@ -27,7 +27,8 @@
       '<li><a href="#development" onclick="closeMenu()">Development</a></li>' +
       '<li><a href="#softskills" onclick="closeMenu()">Soft Skills</a></li>' +
       '<li><a href="#writing" onclick="closeMenu()">Writing</a></li>' +
-      '<li><a href="#sales" onclick="closeMenu()">Sales</a></li>';
+      '<li><a href="#sales" onclick="closeMenu()">Sales</a></li>' +
+      '<li><a href="#finance" onclick="closeMenu()">Finance</a></li>';
   } else {
     // Link back to the hub
     linksHtml = '<li><a href="' + basePath + 'index.html" onclick="closeMenu()">Home</a></li>';
