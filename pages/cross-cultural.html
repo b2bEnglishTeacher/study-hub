@@ -21,16 +21,30 @@
   footer{text-align:center;padding:3rem 2rem 2rem;font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border);max-width:740px;margin:2rem auto 0}.footer-logo{width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:.75rem;opacity:.7;transition:opacity .3s}.footer-logo:hover{opacity:1}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
   @media(max-width:640px){.hero{padding:8rem 1.5rem 3rem}.hero-mascot{width:72px;height:72px}.section{padding:3rem 1.5rem}.theory-card{grid-template-columns:1fr;gap:1rem}.theory-card .icon{width:44px;height:44px;font-size:1.2rem}.quiz-header,.quiz-body,.quiz-footer{padding-left:1.25rem;padding-right:1.25rem}.vocab-grid{grid-template-columns:1fr 1fr}}
+.video-wrapper{max-width:740px;margin:0 auto;padding:0 2rem}.video-frame{background:#0f0f0f;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.06)}.video-frame iframe{width:100%;aspect-ratio:16/9;display:block;border:none}.video-caption{text-align:center;margin-top:1rem;font-size:.82rem;color:var(--text-muted)}.video-caption strong{color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
-<script src="../assets/navbar.js" data-title="Cross" data-subtitle="cultural" data-sections="theory,vocab,quiz,practice"></script>
+<script src="../assets/navbar.js" data-title="Cross" data-subtitle="cultural" data-sections="video,theory,vocab,quiz,practice"></script>
 
 <section class="hero"><img src="../assets/logo.png" alt="Mascot" class="hero-mascot"/><div class="tag">English Study Guide — Soft Skills & Workplace</div><h1>Cross-Cultural Communication</h1><p>Understand how cultural differences impact workplace communication and learn to navigate them with confidence and sensitivity.</p></section>
 <div class="divider"></div>
 
+
+<section class="section" id="video">
+  <div class="section-header"><div class="num">01 — VIDEO LESSON</div><h2>Watch &amp; Learn</h2></div>
+  <div class="video-wrapper" style="padding:0">
+    <div class="video-frame">
+      <iframe src="" title="Video Lesson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption"><strong>Tip:</strong> Watch the video first, then read the theory below to reinforce the concepts.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section class="section" id="theory">
-  <div class="section-header"><div class="num">01 — THEORY</div><h2>Culture &amp; Communication at Work</h2></div>
+  <div class="section-header"><div class="num">02 — THEORY</div><h2>Culture &amp; Communication at Work</h2></div>
   <p style="color:var(--text-muted);font-size:.95rem;margin-bottom:2rem;line-height:1.8">In global workplaces, colleagues come from different cultural backgrounds — each with their own communication norms. Understanding the spectrum from <strong>direct to indirect</strong> communication, <strong>individual to collective</strong> decision-making, and <strong>formal to informal</strong> relationships helps you collaborate more effectively across borders.</p>
   <div class="theory-grid">
     <div class="theory-card"><div class="icon">🗣️</div><div><h3>Direct vs. Indirect Communication</h3><p>Some cultures value <strong>direct</strong> communication (e.g., Germany, Netherlands, US) — saying exactly what you mean. Others prefer <strong>indirect</strong> styles (e.g., Japan, UK, Brazil) — using context, tone, and implication. Neither is better; being aware helps prevent misunderstandings.</p><div class="example">Direct: "I disagree with that approach."<br>Indirect: "That's an interesting idea. I wonder if we might also consider another option…"</div></div></div>
@@ -50,7 +64,7 @@
 <div class="divider"></div>
 
 <section class="section" id="vocab">
-  <div class="section-header"><div class="num">02 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
+  <div class="section-header"><div class="num">03 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
   <div class="vocab-grid">
     <div class="vocab-item"><div class="word">Cultural intelligence (CQ)</div><div class="def">Ability to adapt to different cultural contexts</div></div>
     <div class="vocab-item"><div class="word">Direct communication</div><div class="def">Saying exactly what you mean, explicitly</div></div>
@@ -69,13 +83,13 @@
 <div class="divider"></div>
 
 <section class="section" id="quiz">
-  <div class="section-header"><div class="num">03 — QUIZ</div><h2>Test Your Knowledge</h2></div>
+  <div class="section-header"><div class="num">04 — QUIZ</div><h2>Test Your Knowledge</h2></div>
   <div id="quizArea"></div>
 </section>
 <div class="divider"></div>
 
 <section class="section" id="practice">
-  <div class="section-header"><div class="num">04 — PRACTICE</div><h2>Writing Exercises</h2></div>
+  <div class="section-header"><div class="num">05 — PRACTICE</div><h2>Writing Exercises</h2></div>
   <p style="color:var(--text-muted);font-size:.92rem;margin-bottom:2rem">Reflect on cross-cultural situations and write your responses.</p>
   <div class="exercise-card"><span class="exercise-label label-1">Reflect</span><h4>Describe a cultural difference you've experienced</h4><p>Write about a time when a cultural difference affected communication at work or in life. What happened and what did you learn?</p><textarea placeholder="When I first worked with colleagues from [country], I noticed that…"></textarea></div>
   <div class="exercise-card"><span class="exercise-label label-2">Adapt</span><h4>Adjust your communication style</h4><p>You're joining a team call with colleagues from Japan, where communication tends to be indirect and hierarchical. How would you adapt?</p><textarea placeholder="I would make sure to… I'd avoid… I'd pay attention to…"></textarea></div>

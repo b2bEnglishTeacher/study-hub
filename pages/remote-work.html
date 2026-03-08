@@ -22,18 +22,32 @@
   footer{text-align:center;padding:3rem 2rem 2rem;font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border);max-width:740px;margin:2rem auto 0}.footer-logo{width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:.75rem;opacity:.7;transition:opacity .3s}.footer-logo:hover{opacity:1}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
   @media(max-width:640px){.hero{padding:8rem 1.5rem 3rem}.hero-mascot{width:72px;height:72px}.section{padding:3rem 1.5rem}.theory-card{grid-template-columns:1fr;gap:1rem}.theory-card .icon{width:44px;height:44px;font-size:1.2rem}.quiz-header,.quiz-body,.quiz-footer{padding-left:1.25rem;padding-right:1.25rem}.vocab-grid{grid-template-columns:1fr 1fr}}
+.video-wrapper{max-width:740px;margin:0 auto;padding:0 2rem}.video-frame{background:#0f0f0f;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.06)}.video-frame iframe{width:100%;aspect-ratio:16/9;display:block;border:none}.video-caption{text-align:center;margin-top:1rem;font-size:.82rem;color:var(--text-muted)}.video-caption strong{color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
-<script src="../assets/navbar.js" data-title="Remote" data-subtitle="work" data-sections="theory,vocab,quiz,practice"></script>
+<script src="../assets/navbar.js" data-title="Remote" data-subtitle="work" data-sections="video,theory,vocab,quiz,practice"></script>
 
 <section class="hero"><img src="../assets/logo.png" alt="Mascot" class="hero-mascot"/><div class="tag">English Study Guide — Soft Skills & Workplace</div><h1>Remote Work Language</h1><p>Master the vocabulary and communication patterns for async, Slack, video calls, and distributed team collaboration.</p>
   <div class="tools-bar"><div class="tool-pill">Slack</div><div class="tool-pill">Zoom</div><div class="tool-pill">Notion</div><div class="tool-pill">Teams</div><div class="tool-pill">Async</div><div class="tool-pill">Loom</div></div>
 </section>
 <div class="divider"></div>
 
+
+<section class="section" id="video">
+  <div class="section-header"><div class="num">01 — VIDEO LESSON</div><h2>Watch &amp; Learn</h2></div>
+  <div class="video-wrapper" style="padding:0">
+    <div class="video-frame">
+      <iframe src="" title="Video Lesson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption"><strong>Tip:</strong> Watch the video first, then read the theory below to reinforce the concepts.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section class="section" id="theory">
-  <div class="section-header"><div class="num">01 — THEORY</div><h2>Communicating in Remote Teams</h2></div>
+  <div class="section-header"><div class="num">02 — THEORY</div><h2>Communicating in Remote Teams</h2></div>
   <p style="color:var(--text-muted);font-size:.95rem;margin-bottom:2rem;line-height:1.8">Remote work has its own communication culture. Without hallway chats and body language, <strong>written communication</strong> becomes your primary tool. The shift from synchronous (real-time) to <strong>asynchronous</strong> (at your own time) communication requires clarity, intentionality, and new vocabulary.</p>
   <div class="theory-grid">
     <div class="theory-card"><div class="icon">⏱️</div><div><h3>Async vs. Sync Communication</h3><p><strong>Synchronous</strong> = real-time (meetings, calls, live chat). <strong>Asynchronous</strong> = at your own pace (email, Slack messages, Loom videos, docs). Remote teams default to async to respect time zones and deep work.</p><div class="example">"This doesn't need a meeting — I'll record a Loom and share the doc async. Feel free to leave comments by EOD Thursday."</div></div></div>
@@ -53,7 +67,7 @@
 <div class="divider"></div>
 
 <section class="section" id="vocab">
-  <div class="section-header"><div class="num">02 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
+  <div class="section-header"><div class="num">03 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
   <div class="vocab-grid">
     <div class="vocab-item"><div class="word">Async / Asynchronous</div><div class="def">Communication that doesn't require everyone online at once</div></div>
     <div class="vocab-item"><div class="word">Sync / Synchronous</div><div class="def">Real-time communication (calls, meetings)</div></div>
@@ -72,13 +86,13 @@
 <div class="divider"></div>
 
 <section class="section" id="quiz">
-  <div class="section-header"><div class="num">03 — QUIZ</div><h2>Test Your Knowledge</h2></div>
+  <div class="section-header"><div class="num">04 — QUIZ</div><h2>Test Your Knowledge</h2></div>
   <div id="quizArea"></div>
 </section>
 <div class="divider"></div>
 
 <section class="section" id="practice">
-  <div class="section-header"><div class="num">04 — PRACTICE</div><h2>Writing Exercises</h2></div>
+  <div class="section-header"><div class="num">05 — PRACTICE</div><h2>Writing Exercises</h2></div>
   <p style="color:var(--text-muted);font-size:.92rem;margin-bottom:2rem">Practise writing messages for common remote work situations.</p>
   <div class="exercise-card"><span class="exercise-label label-1">Slack Message</span><h4>Ask for async feedback</h4><p>You've finished a project proposal and need feedback from your team. Write a Slack message that's clear, concise, and includes a deadline.</p><textarea placeholder="Hey team! The Q4 proposal is ready for review. I've shared it in the #projects channel. Could you…"></textarea></div>
   <div class="exercise-card"><span class="exercise-label label-2">Status Update</span><h4>Share your weekly update</h4><p>Write a brief weekly status update for your team channel covering: what you completed, what you're working on, and any blockers.</p><textarea placeholder="Weekly update:&#10;✅ Completed: …&#10;🔄 In progress: …&#10;🚧 Blockers: …"></textarea></div>

@@ -22,10 +22,11 @@
   footer{text-align:center;padding:3rem 2rem 2rem;font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border);max-width:740px;margin:2rem auto 0}.footer-logo{width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:.75rem;opacity:.7;transition:opacity .3s}.footer-logo:hover{opacity:1}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
   @media(max-width:640px){.hero{padding:8rem 1.5rem 3rem}.hero-mascot{width:72px;height:72px}.section{padding:3rem 1.5rem}.theory-card{grid-template-columns:1fr;gap:1rem}.theory-card .icon{width:44px;height:44px;font-size:1.2rem}.quiz-header,.quiz-body,.quiz-footer{padding-left:1.25rem;padding-right:1.25rem}.vocab-grid{grid-template-columns:1fr 1fr}}
+.video-wrapper{max-width:740px;margin:0 auto;padding:0 2rem}.video-frame{background:#0f0f0f;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.06)}.video-frame iframe{width:100%;aspect-ratio:16/9;display:block;border:none}.video-caption{text-align:center;margin-top:1rem;font-size:.82rem;color:var(--text-muted)}.video-caption strong{color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
-<script src="../assets/navbar.js" data-title="SWOT" data-subtitle="vocab" data-sections="theory,vocab,quiz,practice"></script>
+<script src="../assets/navbar.js" data-title="SWOT" data-subtitle="vocab" data-sections="video,theory,vocab,quiz,practice"></script>
 
 <section class="hero">
   <img src="../assets/logo.png" alt="Mascot" class="hero-mascot"/>
@@ -39,8 +40,21 @@
 </section>
 <div class="divider"></div>
 
+
+<section class="section" id="video">
+  <div class="section-header"><div class="num">01 — VIDEO LESSON</div><h2>Watch &amp; Learn</h2></div>
+  <div class="video-wrapper" style="padding:0">
+    <div class="video-frame">
+      <iframe src="" title="Video Lesson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption"><strong>Tip:</strong> Watch the video first, then read the theory below to reinforce the concepts.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section class="section" id="theory">
-  <div class="section-header"><div class="num">01 — THEORY</div><h2>Understanding SWOT Analysis</h2></div>
+  <div class="section-header"><div class="num">02 — THEORY</div><h2>Understanding SWOT Analysis</h2></div>
   <p style="color:var(--text-muted);font-size:.95rem;margin-bottom:2rem;line-height:1.8">A SWOT analysis is a strategic planning tool used to evaluate <strong>internal</strong> factors (Strengths and Weaknesses) and <strong>external</strong> factors (Opportunities and Threats). It's used in business planning, project evaluation, career development, and competitive analysis. Being able to discuss SWOT in English is essential for any professional setting.</p>
   <div class="theory-grid">
     <div class="theory-card">
@@ -75,7 +89,7 @@
 <div class="divider"></div>
 
 <section class="section" id="vocab">
-  <div class="section-header"><div class="num">02 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
+  <div class="section-header"><div class="num">03 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
   <div class="vocab-grid">
     <div class="vocab-item"><div class="word">Competitive advantage</div><div class="def">Something that puts you ahead of competitors</div></div>
     <div class="vocab-item"><div class="word">Market share</div><div class="def">Percentage of total sales in an industry</div></div>
@@ -94,13 +108,13 @@
 <div class="divider"></div>
 
 <section class="section" id="quiz">
-  <div class="section-header"><div class="num">03 — QUIZ</div><h2>Test Your Knowledge</h2></div>
+  <div class="section-header"><div class="num">04 — QUIZ</div><h2>Test Your Knowledge</h2></div>
   <div id="quizArea"></div>
 </section>
 <div class="divider"></div>
 
 <section class="section" id="practice">
-  <div class="section-header"><div class="num">04 — PRACTICE</div><h2>Writing Exercises</h2></div>
+  <div class="section-header"><div class="num">05 — PRACTICE</div><h2>Writing Exercises</h2></div>
   <p style="color:var(--text-muted);font-size:.92rem;margin-bottom:2rem">Conduct a SWOT analysis in English. Choose a company you know well (or use your own) and complete each quadrant.</p>
   <div class="exercise-card"><span class="exercise-label label-s">Strengths</span><h4>What are the key strengths?</h4><p>List 3 internal strengths with specific details.</p><textarea placeholder="1. Strong brand recognition in the domestic market…&#10;2. Highly skilled development team with expertise in…&#10;3. Proprietary technology that…"></textarea></div>
   <div class="exercise-card"><span class="exercise-label label-w">Weaknesses</span><h4>What are the key weaknesses?</h4><p>List 3 internal weaknesses that need improvement.</p><textarea placeholder="1. Limited online presence compared to…&#10;2. High employee turnover in…&#10;3. Dependence on a single…"></textarea></div>

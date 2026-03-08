@@ -23,10 +23,11 @@
   footer{text-align:center;padding:3rem 2rem 2rem;font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border);max-width:740px;margin:2rem auto 0}.footer-logo{width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:.75rem;opacity:.7;transition:opacity .3s}.footer-logo:hover{opacity:1}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
   @media(max-width:640px){.hero{padding:8rem 1.5rem 3rem}.hero-mascot{width:72px;height:72px}.section{padding:3rem 1.5rem}.theory-card{grid-template-columns:1fr;gap:1rem}.theory-card .icon{width:44px;height:44px;font-size:1.2rem}.quiz-header,.quiz-body,.quiz-footer{padding-left:1.25rem;padding-right:1.25rem}.vocab-grid{grid-template-columns:1fr 1fr}}
+.video-wrapper{max-width:740px;margin:0 auto;padding:0 2rem}.video-frame{background:#0f0f0f;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.06)}.video-frame iframe{width:100%;aspect-ratio:16/9;display:block;border:none}.video-caption{text-align:center;margin-top:1rem;font-size:.82rem;color:var(--text-muted)}.video-caption strong{color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
-<script src="../assets/navbar.js" data-title="Email" data-subtitle="etiquette" data-sections="theory,vocab,quiz,practice"></script>
+<script src="../assets/navbar.js" data-title="Email" data-subtitle="etiquette" data-sections="video,theory,vocab,quiz,practice"></script>
 
 <section class="hero">
   <img src="../assets/logo.png" alt="Mascot" class="hero-mascot"/>
@@ -41,8 +42,21 @@
 
 <div class="divider"></div>
 
+
+<section class="section" id="video">
+  <div class="section-header"><div class="num">01 — VIDEO LESSON</div><h2>Watch &amp; Learn</h2></div>
+  <div class="video-wrapper" style="padding:0">
+    <div class="video-frame">
+      <iframe src="" title="Video Lesson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption"><strong>Tip:</strong> Watch the video first, then read the theory below to reinforce the concepts.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section class="section" id="theory">
-  <div class="section-header"><div class="num">01 — THEORY</div><h2>Anatomy of a Professional Email</h2></div>
+  <div class="section-header"><div class="num">02 — THEORY</div><h2>Anatomy of a Professional Email</h2></div>
   <p style="color:var(--text-muted);font-size:.95rem;margin-bottom:2rem;line-height:1.8">
     A professional email follows a clear structure. Each part has a purpose — from a concise <strong>subject line</strong> that tells the reader what to expect, to a <strong>sign-off</strong> that sets the right tone. Getting these right shows competence, respect, and clarity.
   </p>
@@ -82,7 +96,7 @@
 <div class="divider"></div>
 
 <section class="section" id="vocab">
-  <div class="section-header"><div class="num">02 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
+  <div class="section-header"><div class="num">03 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
   <div class="vocab-grid">
     <div class="vocab-item"><div class="word">I'm writing to…</div><div class="def">Standard opening to state your purpose</div></div>
     <div class="vocab-item"><div class="word">Please find attached</div><div class="def">Formal way to reference an attachment</div></div>
@@ -102,14 +116,14 @@
 <div class="divider"></div>
 
 <section class="section" id="quiz">
-  <div class="section-header"><div class="num">03 — QUIZ</div><h2>Test Your Knowledge</h2></div>
+  <div class="section-header"><div class="num">04 — QUIZ</div><h2>Test Your Knowledge</h2></div>
   <div id="quizArea"></div>
 </section>
 
 <div class="divider"></div>
 
 <section class="section" id="practice">
-  <div class="section-header"><div class="num">04 — PRACTICE</div><h2>Writing Exercises</h2></div>
+  <div class="section-header"><div class="num">05 — PRACTICE</div><h2>Writing Exercises</h2></div>
   <p style="color:var(--text-muted);font-size:.92rem;margin-bottom:2rem">Write professional emails for the following scenarios.</p>
   <div class="exercise-card">
     <span class="exercise-label label-1">Formal Request</span>
