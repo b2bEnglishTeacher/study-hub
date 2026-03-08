@@ -52,7 +52,8 @@
           '<div class="mega-grid">' + megaItems + '</div>' +
         '</div>' +
       '</li>' +
-      '<li><a href="pages/glossary.html">Glossary</a></li>';
+      '<li><a href="pages/glossary.html">Glossary</a></li>' +
+      '<li><a href="pages/quizzes.html">Quizzes</a></li>';
   } else {
     // Link back to the hub
     linksHtml = '<li><a href="' + basePath + 'index.html" onclick="closeMenu()">Home</a></li>';
@@ -66,6 +67,7 @@
       '</li>';
     // Glossary link
     linksHtml += '<li><a href="' + basePath + 'pages/glossary.html" onclick="closeMenu()">Glossary</a></li>';
+    linksHtml += '<li><a href="' + basePath + 'pages/quizzes.html" onclick="closeMenu()">Quizzes</a></li>';
     // Page section links
     if (sections) {
       var parts = sections.split(',');

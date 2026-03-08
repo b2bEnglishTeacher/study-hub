@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Hub — Bia Business English</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/navbar.css">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-muted: #6B6560;
+    --accent: #C45D3E;
+    --accent-light: #F4E8E3;
+    --border: #E8E4DD;
+    --success: #3A7D5C;
+    --success-light: #E4F2EA;
+    --error: #C45D3E;
+    --error-light: #FCEAE5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .hero {
+    padding: 10rem 2rem 4rem;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  .hero-mascot {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--surface);
+    box-shadow: 0 8px 32px rgba(196,93,62,0.15), 0 0 0 1px var(--border);
+    margin: 0 auto 2rem;
+    display: block;
+    animation: float 4s ease-in-out infinite, fadeUp 0.8s ease-out;
+  }
+
+  .hero .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.35rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 span { color: var(--accent); }
+
+  .hero p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* MODE SELECTOR */
+  .mode-selector {
+    max-width: 740px;
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .mode-btn {
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: var(--surface);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .mode-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .mode-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  /* FILTER */
+  .filter-bar {
+    max-width: 740px;
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filter-chip {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: var(--surface);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.02em;
+  }
+
+  .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-chip.active { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+
+  /* QUIZ AREA */
+  .quiz-hub {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .quiz-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+
+  .quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .quiz-header h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+  }
+
+  .quiz-progress {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .quiz-lesson-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .quiz-body { padding: 1.5rem; }
+
+  .quiz-question {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+  }
+
+  .quiz-option:hover { border-color: var(--accent-light); background: rgba(196,93,62,0.03); }
+
+  .opt-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .quiz-option.correct { border-color: var(--success); background: var(--success-light); }
+  .quiz-option.correct .opt-letter { background: var(--success); color: white; }
+  .quiz-option.wrong { border-color: var(--error); background: var(--error-light); }
+  .quiz-option.wrong .opt-letter { background: var(--error); color: white; }
+  .quiz-option.disabled { opacity: 0.4; pointer-events: none; }
+
+  .quiz-feedback {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    display: none;
+  }
+
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct-fb { background: var(--success-light); color: var(--success); }
+  .quiz-feedback.wrong-fb { background: var(--error-light); color: var(--error); }
+
+  .quiz-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .btn-primary { background: var(--accent); color: white; }
+  .btn-primary:hover { background: var(--accent-dark, #A94B2F); }
+  .btn-secondary { background: var(--bg); color: var(--text-muted); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SCORE DISPLAY */
+  .score-display {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .score-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  .score-label {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  .score-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .score-detail {
+    text-align: center;
+  }
+
+  .score-detail-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .score-detail-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+
+  /* LESSON CARDS (browse mode) */
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .lesson-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .lesson-card:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 4px 16px rgba(196,93,62,0.08);
+    transform: translateY(-2px);
+  }
+
+  .lesson-card-module {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+  }
+
+  .lesson-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .lesson-card-count {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .lesson-card-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--success);
+    margin-top: 0.3rem;
+  }
+
+  .module-section {
+    margin-bottom: 2rem;
+  }
+
+  .module-section-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    max-width: 740px;
+    margin: 2rem auto 0;
+  }
+
+  .footer-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+
+  .footer-logo:hover { opacity: 1; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  @media (max-width: 640px) {
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero-mascot { width: 72px; height: 72px; }
+    .quiz-hub { padding: 0 1.5rem 3rem; }
+    .lesson-grid { grid-template-columns: 1fr; }
+    .stats { gap: 1.5rem; }
+    .stat-num { font-size: 1.3rem; }
+    .mode-selector { padding: 0 1.5rem; }
+    .filter-bar { padding: 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<script src="../assets/navbar.js" data-title="Quiz" data-subtitle="hub" data-sections=""></script>
+
+<section class="hero">
+  <img src="../assets/logo.png" alt="Mascot" class="hero-mascot"/>
+  <div class="tag">Test Your Knowledge</div>
+  <h1>Quiz <span>Hub</span></h1>
+  <p>All 410 questions from every lesson. Choose a module, pick a quiz, or challenge yourself with a random mix.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">410</div><div class="stat-label">Questions</div></div>
+    <div class="stat"><div class="stat-num">41</div><div class="stat-label">Lessons</div></div>
+    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Modules</div></div>
+  </div>
+</section>
+
+<div class="mode-selector">
+  <button class="mode-btn active" onclick="setMode('browse')">Browse Lessons</button>
+  <button class="mode-btn" onclick="setMode('random10')">Random 10</button>
+  <button class="mode-btn" onclick="setMode('random25')">Random 25</button>
+  <button class="mode-btn" onclick="setMode('all')">All Questions</button>
+</div>
+
+<div class="filter-bar" id="filterBar">
+  <button class="filter-chip active" onclick="filterModule('all')">All Modules</button>
+  <button class="filter-chip" onclick="filterModule('01')">01 Interview</button>
+  <button class="filter-chip" onclick="filterModule('02')">02 Communication</button>
+  <button class="filter-chip" onclick="filterModule('03')">03 Development</button>
+  <button class="filter-chip" onclick="filterModule('04')">04 Soft Skills</button>
+  <button class="filter-chip" onclick="filterModule('05')">05 Writing</button>
+  <button class="filter-chip" onclick="filterModule('06')">06 Sales</button>
+  <button class="filter-chip" onclick="filterModule('07')">07 Finance</button>
+  <button class="filter-chip" onclick="filterModule('08')">08 Tech</button>
+  <button class="filter-chip" onclick="filterModule('09')">09 Leadership</button>
+  <button class="filter-chip" onclick="filterModule('10')">10 Office</button>
+</div>
+
+<div class="quiz-hub" id="quizHub"></div>
+
+<footer>
+  <img src="../assets/logo.png" alt="Bia" class="footer-logo"/>
+  <p>Bia Business English &mdash; Your complete quiz reference</p>
+</footer>
+
+<script>
+var allQuizzes = [
+  {lesson:'Master the STAR Method',file:'star-method.html',module:'01',moduleName:'Interview & Career Skills',questions:[
+    {q:'What does the \\',opts:['Strategy','Situation','Solution','Summary'],c:1,fb:{y:'Correct! The \\',n:'Not quite. \\'}},
+    {q:'Which part of the STAR method should take up the most time in your answer?',opts:['Situation','Task','Action','Result'],c:2,fb:{y:'That',n:'The Action section should take up the most time — it'}},
+    {q:'Which of these is a behavioural interview question?',opts:['What is your greatest strength?','Tell me about a time you solved a problem at work.','Where do you see yourself in five years?','What is your expected salary?'],c:1,fb:{y:'Exactly! Behavioural questions ask about specific past experiences using phrases like \\',n:'The correct answer is \\'}},
+    {q:'In the Task section, you should explain:',opts:['What the company does','Your specific responsibility or goal','The result you achieved','How many people were on the team'],c:1,fb:{y:'Well done! The Task describes your specific responsibility or the goal you needed to achieve.',n:'The Task section should describe your specific responsibility or the goal you were working towards — not the team or the result.'}},
+    {q:'Why is it important to use \\',opts:['To sound more confident','Because teamwork is not valued','To highlight your individual contribution','To make the story shorter'],c:2,fb:{y:'Exactly! Using \\',n:'The reason is to highlight your individual contribution. Interviewers want to know what YOU specifically did.'}},
+    {q:'Which of these is the best example of a Result?',opts:['The project went well and everyone was happy.','We launched on time and increased client retention by 15%.','I worked really hard on it.','My manager said good job.'],c:1,fb:{y:'That',n:'The best Result is \\'}},
+    {q:'How many STAR stories should you ideally prepare before an interview?',opts:['1','3–5','10+','None — improvise everything'],c:1,fb:{y:'Right! Having 3–5 prepared stories covering different competencies gives you flexibility during the interview.',n:'The recommendation is 3–5 stories. This gives you enough variety to handle different types of behavioural questions.'}},
+    {q:'Which phrase is most likely to start a STAR-method question?',opts:['What would you do if…','Describe a situation where…','How would you define…','What is your opinion on…'],c:1,fb:{y:'Correct! \\',n:'\\'}},
+    {q:'What percentage of your answer should the Situation and Task sections represent?',opts:['About 50%','About 80%','About 20%','About 10%'],c:2,fb:{y:'That',n:'The Situation and Task should be about 20% of your answer. The majority should focus on your Action and the Result.'}},
+    {q:'What makes a STAR answer \\',opts:['Using technical jargon','Including specific numbers, percentages, or measurable outcomes','Making the answer very long','Mentioning your job title'],c:1,fb:{y:'Exactly! Quantifiable means using specific numbers, percentages, or measurable outcomes to prove impact.',n:'\\'}},
+  ]},
+  {lesson:'The Elevator Pitch',file:'elevator-pitch.html',module:'01',moduleName:'Interview & Career Skills',questions:[
+    {q:'How long should an elevator pitch typically last?',opts:['5 minutes','30–60 seconds','2–3 minutes','10 seconds'],c:1,fb:{y:'That',n:'An elevator pitch should last 30–60 seconds — enough time for a short elevator ride.'}},
+    {q:'What is the main purpose of the ',opts:['To list your qualifications','To grab the listener',', ',', '],c:1,fb:{y:'Exactly! The hook is designed to capture interest immediately.',n:'The hook is meant to grab the listener'}},
+    {q:'What does ',opts:['Your salary expectations','What makes you or your offer uniquely valuable','A list of your skills','Your company'],c:1,fb:{y:'Correct! Your value proposition communicates what makes you stand out.',n:'A value proposition describes what makes you or your offer uniquely valuable to others.'}},
+    {q:'Which of these is the best way to end an elevator pitch?',opts:['Just stop talking','Say ','s all',', ',', '],c:2,fb:{y:'Well done! Ending with a question or invitation turns your pitch into a conversation.',n:'The best ending is a call to action — a question or suggestion for a next step.'}},
+    {q:'Why should you avoid jargon in your elevator pitch?',opts:['It makes you sound too smart','Not everyone will understand technical language','Jargon is always incorrect','It takes too long to say'],c:1,fb:{y:'Right! Your pitch should be understandable to anyone, not just people in your field.',n:'You should avoid jargon because not everyone will understand industry-specific language.'}},
+    {q:'How many versions of your pitch should you prepare?',opts:['Just one','2–3 versions for different contexts','A new one every time','None — always improvise'],c:1,fb:{y:'Correct! Having 2–3 versions (15s, 30s, 60s) gives you flexibility.',n:'You should prepare 2–3 versions to adapt to different situations and time constraints.'}},
+    {q:'What does ',opts:['To make clothes','To speak louder','To adapt your message for a specific audience','To memorise your speech'],c:2,fb:{y:'Exactly! Tailoring means adapting your pitch to suit the person or situation.',n:'\'To tailor'}},
+    {q:'Which of these is a good example of a hook?',opts:['I have a degree in marketing.','Did you know that 80% of startups fail in their first year?','I',', ','m 28 years old.'],c:1,fb:{y:'That',n:'A compelling question or surprising fact makes the best hook — it grabs attention instantly.'}},
+    {q:'What should the ',opts:['Your education history','The impact and results you deliver','Your hobbies','Your salary requirements'],c:1,fb:{y:'Right! Focus on the impact you create, not just credentials.',n:'The value section should focus on the results and impact you deliver — not just your background.'}},
+    {q:'What does ',opts:['A type of report','A financial document','A close, harmonious professional relationship','A formal presentation'],c:2,fb:{y:'Correct! Building rapport means creating a genuine connection with someone.',n:'Rapport is a close, harmonious relationship — building it is key to effective networking.'}},
+  ]},
+  {lesson:'Small Talk in Business',file:'small-talk.html',module:'01',moduleName:'Interview & Career Skills',questions:[
+    {q:'What is the main purpose of small talk in business?',opts:['To waste time before meetings','To build rapport and trust','To show off your vocabulary','To avoid doing work'],c:1,fb:{y:'Exactly! Small talk builds trust and creates comfortable professional relationships.',n:'Small talk'}},
+    {q:'Which of these is a safe topic for business small talk?',opts:['Salary and bonuses','Political opinions','Weekend plans','Religious beliefs'],c:2,fb:{y:'Right! Weekend plans are a neutral, positive topic perfect for small talk.',n:'Safe topics include things like weekend plans, travel, the event, and weather — avoid politics, religion, and salary.'}},
+    {q:'What is an ',opts:['A question with no answer','A question that can',', ',', '],c:1,fb:{y:'Correct! Open-ended questions encourage longer, more engaging responses.',n:'An open-ended question requires more than a yes/no answer — it encourages discussion.'}},
+    {q:'What does ',opts:['To literally break something frozen','To end a meeting','To start a conversation in a new situation','To disagree with someone'],c:2,fb:{y:'That',n:'\'To break the ice'}},
+    {q:'Which is the best follow-up to: ',opts:['OK.','How much is your rent?','Oh really? What brought you here? How are you finding it so far?','I don'],c:2,fb:{y:'Great choice! This shows genuine interest and invites them to share more.',n:'A good follow-up shows interest and is open-ended, like asking what brought them there.'}},
+    {q:'How should you ideally balance talking vs. listening?',opts:['Talk 80%, listen 20%','Talk 50%, listen 50%','Listen more — about 60% listening, 40% talking','Only listen, never talk'],c:2,fb:{y:'Right! Leaning slightly towards listening shows genuine interest.',n:'Aim for about 60% listening and 40% talking — it shows you value the other person.'}},
+    {q:'What does ',opts:['A shared office space','Shared interests or experiences','A type of coffee','A meeting room'],c:1,fb:{y:'Exactly! Finding common ground helps build connection quickly.',n:'Common ground refers to shared interests, experiences, or opinions between people.'}},
+    {q:'Which is the best way to exit a small talk conversation?',opts:['Just walk away','Look at your phone until they leave','Thank them and suggest connecting later','Say '],c:2,fb:{y:'Well done! A graceful exit thanks the person and leaves the door open.',n:'The best exit is polite — thank them and suggest connecting again later.'}},
+    {q:'What does ',opts:['To play baseball','To make brief contact with someone','To start a new project','To end a relationship'],c:1,fb:{y:'Correct! ',n:'\'To touch base'}},
+    {q:'Which of these should you avoid during small talk?',opts:['Asking about their weekend','Commenting on the event','Checking your phone while they speak','Asking about their travel'],c:2,fb:{y:'Right! Looking at your phone is disrespectful and kills conversation.',n:'Avoid checking your phone while someone is talking — it signals disinterest.'}},
+  ]},
+  {lesson:'Negotiation Language',file:'negotiation-language.html',module:'01',moduleName:'Interview & Career Skills',questions:[
+    {q:'What does BATNA stand for?',opts:['Best Action Towards New Agreements','Best Alternative to a Negotiated Agreement','Business Agreement for Trade and Negotiation','Basic Approach to Negotiation Analysis'],c:1,fb:{y:'Correct! BATNA is your best alternative if negotiations fail — it',n:'BATNA stands for Best Alternative to a Negotiated Agreement — your plan B.'}},
+    {q:'Which phrase is most diplomatic for proposing a salary?',opts:['I want €50,000.','I demand at least €50,000.','What if we considered a figure around €50,000?','Give me €50,000 or I'],c:2,fb:{y:'Well done! ',n:'The most diplomatic option uses tentative language: '}},
+    {q:'What is a ',opts:['A type of contract','Something you give up to reach agreement','A confession of guilt','A new demand'],c:1,fb:{y:'Right! A concession is something you give up in exchange for something else.',n:'A concession is something you give up or accept to help reach an agreement.'}},
+    {q:'What does ',opts:['A type of lever','Power or advantage in a discussion','A legal requirement','A type of contract clause'],c:1,fb:{y:'Exactly! Having leverage means having an advantage that strengthens your position.',n:'Leverage means having power or advantage that strengthens your negotiating position.'}},
+    {q:'Which is the best way to push back on an offer?',opts:['That',',',',','t work for me.','I'],c:1,fb:{y:'Great choice! Acknowledging the offer before presenting your counter is professional and effective.',n:'The best approach acknowledges the offer politely, then presents your counter-argument.'}},
+    {q:'What is a ',opts:['When you win and they lose','When both sides feel they',',',','],c:1,fb:{y:'Correct! A win-win means both parties feel the outcome is fair and beneficial.',n:'A win-win outcome is one where both sides feel they'}},
+    {q:'What does ',opts:['The last line of a document','The lowest price in a shop','The minimum acceptable outcome','A type of graph'],c:2,fb:{y:'Right! Your bottom line is the minimum you',n:'Your bottom line is the minimum outcome you'}},
+    {q:'Why should you use silence strategically?',opts:['To be rude','To make the other person uncomfortable','To give yourself time to think and let your proposal sink in','Because you don'],c:2,fb:{y:'Exactly! Silence after a proposal shows confidence and gives the other side time to consider.',n:'Strategic silence shows confidence and gives the other party time to process your proposal.'}},
+    {q:'What is a ',opts:['A type of stock exchange','Exchanging one benefit for another','Ending a negotiation','A written contract'],c:1,fb:{y:'That',n:'A trade-off means accepting less of one thing in exchange for more of another.'}},
+    {q:'How should you close a negotiation?',opts:['Just say ',' and leave','Summarise the agreement, confirm terms, and express enthusiasm','Demand a written contract immediately','Ask for more concessions'],c:1,fb:{y:'Well done! A good close summarises the deal, confirms understanding, and ends positively.',n:'Close by summarising what was agreed, confirming the terms, and expressing enthusiasm.'}},
+  ]},
+  {lesson:'Giving & Receiving Feedback',file:'giving-receiving-feedback.html',module:'01',moduleName:'Interview & Career Skills',questions:[
+    {q:'What does SBI stand for in the SBI feedback model?',opts:['Simple, Brief, Important','Situation, Behaviour, Impact','Start, Build, Improve','Specific, Balanced, Insightful'],c:1,fb:{y:'Correct! SBI stands for Situation, Behaviour, Impact — a clear framework for structuring feedback.',n:'SBI stands for Situation, Behaviour, Impact — describe what happened, what was done, and the effect.'}},
+    {q:'Why is ',opts:['It',',','t specify what was done well or why it mattered','It',',','s grammatically incorrect'],c:1,fb:{y:'Right! Effective praise names the specific behaviour and its impact.',n:'\'Good job'}},
+    {q:'What should you focus on when giving constructive feedback?',opts:['The person',',',',',','],c:2,fb:{y:'Exactly! Focus on observable behaviour, not personality or character.',n:'Always focus on specific, observable behaviour — never personality or character traits.'}},
+    {q:'What is the first thing you should do when receiving feedback?',opts:['Defend yourself immediately','Explain why the feedback is wrong','Listen without interrupting','Change the subject'],c:2,fb:{y:'That',n:'The first step is always to listen without interrupting — even if you disagree.'}},
+    {q:'Why is the ',opts:['It',',',',','s only used in America','It requires too much preparation'],c:1,fb:{y:'Correct! Burying criticism between praise can confuse the message and feel insincere.',n:'The feedback sandwich is discouraged because it can feel manipulative and dilutes the constructive message.'}},
+    {q:'Which is a better ',opts:['You always miss deadlines.','I',',','re so disorganised.','Everyone thinks you'],c:1,fb:{y:'Well done! This is specific, factual, and focuses on behaviour, not character.',n:'The best approach uses '}},
+    {q:'What does ',opts:['To get on a ship','To ignore feedback','To accept and seriously consider feedback','To give feedback to others'],c:2,fb:{y:'Right! ',n:'\'To take on board'}},
+    {q:'When is the best time to give feedback?',opts:['During a team meeting in front of everyone','Months after the event','As soon as possible, in private','Only during annual performance reviews'],c:2,fb:{y:'Exactly! Timely, private feedback is the most effective.',n:'The best time is as soon as possible after the event, and always in a private setting.'}},
+    {q:'What does ',opts:['Feedback that leads to legal action','Feedback with specific steps the person can take','Feedback that is aggressive','Feedback that is optional'],c:1,fb:{y:'Correct! Actionable feedback gives clear, practical steps for improvement.',n:'Actionable feedback includes specific, practical suggestions the person can actually act on.'}},
+    {q:'How should you respond if feedback feels unfair?',opts:['Get angry and walk out','Ignore it completely','Thank them, ask for examples, and reflect on it later','Tell them they'],c:2,fb:{y:'Well done! Even if feedback feels unfair, responding gracefully and reflecting later is always best.',n:'The best response is to thank them, ask for specific examples, and take time to reflect before reacting.'}},
+  ]},
+  {lesson:'Email Etiquette',file:'email-etiquette.html',module:'02',moduleName:'Business Communication',questions:[
+    {q:'What should a professional email subject line be?',opts:['As long and detailed as possible','Vague, like ',' or ','",',','],c:2,fb:{y:'Right! A specific, action-oriented subject helps the reader prioritise your email.',n:'Subject lines should be specific and action-oriented so the reader knows exactly what to expect.'}},
+    {q:'Which greeting is appropriate for a first email to a client you haven',opts:['Hey!'],c:1,fb:{y:'Correct! ',n:'For a first contact, use '}},
+    {q:'What does ',opts:['Please look for my email','I have included a file with this email','Please attach your document','I lost the attachment'],c:1,fb:{y:'That',n:'\'Please find attached'}},
+    {q:'How long should email paragraphs be?',opts:['1 paragraph for the whole email','2–3 sentences per paragraph','At least 10 sentences each','It doesn'],c:1,fb:{y:'Correct! Short paragraphs make emails easier to read and scan.',n:'Keep paragraphs to 2–3 sentences — busy people skim emails.'}},
+    {q:'When should you use ',opts:['Always, so everyone stays informed','Only when everyone on the thread needs the information','Never — it',','],c:1,fb:{y:'Right! Only use Reply All when all recipients genuinely need your response.',n:'Only use Reply All when everyone on the thread truly needs to see your response.'}},
+    {q:'Which sign-off is the safest professional default?',opts:['Cheers mate','Best regards','XOXO','Sent from my iPhone'],c:1,fb:{y:'Well done! ',n:'\'Best regards'}},
+    {q:'What does ',opts:['To send them in circles','To add them to an email conversation','To remove them from a thread','To call them'],c:1,fb:{y:'Exactly! Looping someone in means adding them to an ongoing email exchange.',n:'\'To loop someone in'}},
+    {q:'What should you do if you',opts:['Write it immediately while your emotions are fresh','Write it in ALL CAPS to show urgency','Draft it, wait 24 hours, then revise before sending','Send it and apologise later'],c:2,fb:{y:'Smart choice! Waiting prevents regrettable emails.',n:'Always draft emotional emails, wait 24 hours, and revise before sending.'}},
+    {q:'What does ',opts:['Do it right now','Whenever you have time — no rush','It',','],c:1,fb:{y:'Correct! It',n:'\'At your earliest convenience'}},
+    {q:'Which opening line clearly states the purpose of the email?',opts:['Hope you had a great weekend!','Just checking in.','I',','],c:2,fb:{y:'That',n:'A strong opening states the purpose directly: '}},
+  ]},
+  {lesson:'Meetings & Conference Calls',file:'meetings-calls.html',module:'02',moduleName:'Business Communication',questions:[
+    {q:'What should you do first when opening a meeting?',opts:['Jump straight into the first topic','Welcome everyone and state the agenda','Ask who',','],c:1,fb:{y:'Right! A good opening welcomes participants and sets clear expectations.',n:'Always start by welcoming participants and outlining the agenda.'}},
+    {q:'What does ',opts:['To cancel the meeting','To set a topic aside for later','To leave the room','To take a break'],c:1,fb:{y:'Correct! Parking a topic means saving it for a later discussion.',n:'\'To park something'}},
+    {q:'What are ',opts:['The duration of a meeting','A written record of what was discussed and decided','A countdown timer','The meeting invitation'],c:1,fb:{y:'That',n:'Meeting minutes are a written summary of what was discussed and decided.'}},
+    {q:'Which phrase politely redirects an off-topic discussion?',opts:['Stop talking about that.','That',',','s a great point — could we park that and come back to it?','Nobody cares about that.'],c:2,fb:{y:'Well done! This acknowledges the contribution while steering back to the agenda.',n:'A diplomatic redirect acknowledges the point before suggesting to return to the topic later.'}},
+    {q:'What does ',opts:['Always On Budget','Any Other Business','Attendance Of Board','Agenda Of Business'],c:1,fb:{y:'Correct! AOB is the section at the end for topics not on the original agenda.',n:'AOB stands for Any Other Business — additional items raised at the end.'}},
+    {q:'What should you always do on a video call when not speaking?',opts:['Turn off your camera','Mute your microphone','Leave the meeting','Start typing'],c:1,fb:{y:'Right! Muting prevents background noise from disrupting the call.',n:'Always mute yourself when not speaking to avoid background noise.'}},
+    {q:'What is an ',opts:['A type of meeting','A task assigned to someone with a deadline','An agenda topic','A meeting room'],c:1,fb:{y:'Exactly! Action items are specific tasks with owners and deadlines.',n:'An action item is a task assigned to someone during a meeting, with a clear deadline.'}},
+    {q:'What does ',opts:['To walk in circles','To return to a previously discussed topic','To cancel a decision','To invite more people'],c:1,fb:{y:'Correct! Circling back means revisiting a topic you discussed earlier.',n:'\'To circle back'}},
+    {q:'How should you end a meeting effectively?',opts:['Just say ',' and hang up','Summarise decisions, assign action items, confirm next meeting','Keep talking until everyone leaves','Send an email instead of closing verbally'],c:1,fb:{y:'That',n:'End by summarising key decisions, assigning action items, and confirming the next meeting.'}},
+    {q:'What does ',opts:['To sit in a chair during the meeting','To take notes','To lead and facilitate the meeting','To attend but not participate'],c:2,fb:{y:'Right! The chair leads the discussion, manages time, and ensures the agenda is followed.',n:'\'To chair a meeting'}},
+  ]},
+  {lesson:'Presentations & Public Speaking',file:'presentations.html',module:'02',moduleName:'Business Communication',questions:[
+    {q:'What is the ',opts:['Present for exactly 3 minutes','Always use 3 slides','Organise content into 3 main points for memorability','Invite 3 people to your presentation'],c:2,fb:{y:'Right! People naturally remember information better in groups of three.',n:'The Rule of Three means organising your content into 3 main points — it aids memory and clarity.'}},
+    {q:'What is ',opts:['Using road signs as visual aids','Language that guides the audience through your structure','Pointing at your slides','Writing directions on a whiteboard'],c:1,fb:{y:'Correct! Signposting phrases like ',n:'Signposting is language that guides the audience through your talk'}},
+    {q:'What is the best way to open a presentation?',opts:['Apologise for being nervous','Read your first slide word by word','Grab attention with a story, question, or surprising fact','Say ','s get this over with'],c:2,fb:{y:'That',n:'Open with something attention-grabbing — a story, question, or surprising statistic.'}},
+    {q:'What should you do when asked a question in Q&A?',opts:['Answer immediately without thinking','Say ','t know',',',','],c:2,fb:{y:'Well done! Repeating the question buys you time and ensures everyone heard it.',n:'Repeat the question before answering — it gives you time to think and ensures clarity.'}},
+    {q:'Which phrase is a good transition between sections?',opts:['Anyway…','So yeah…','Now that we','s turn to Y.','Moving on, I guess.'],c:2,fb:{y:'That',n:'A strong transition explicitly connects sections: '}},
+    {q:'How should you end a presentation?',opts:['Say ','s all I','",',',',','],c:1,fb:{y:'Right! A strong close summarises and leaves the audience with a clear next step.',n:'End by summarising your key points and delivering a memorable call to action.'}},
+    {q:'What does ',opts:['To make something shorter','To explain in more detail','To add slides','To change the topic'],c:1,fb:{y:'Correct! ',n:'\'To elaborate'}},
+    {q:'Why should you make eye contact during a presentation?',opts:['It',',','s reactions and create connection','To intimidate the audience','To find the exit'],c:1,fb:{y:'Right! Eye contact builds trust, shows confidence, and helps you read the room.',n:'Eye contact creates connection, builds trust, and shows confidence.'}},
+    {q:'What is a ',opts:['A balcony in a conference room','The set of slides used in a presentation','A card game','A type of projector'],c:1,fb:{y:'That',n:'A '}},
+    {q:'What is a ',opts:['Asking the audience to clap','Telling the audience what you want them to do next','Calling someone on the phone','Ending with a joke'],c:1,fb:{y:'Exactly! A call to action gives the audience a clear next step.',n:'A call to action tells the audience what you want them to do after the presentation.'}},
+  ]},
+  {lesson:'Polite Disagreement',file:'polite-disagreement.html',module:'02',moduleName:'Business Communication',questions:[
+    {q:'What should you do before disagreeing in a professional setting?',opts:['Raise your voice to show conviction','Acknowledge the other person',',','You','",'],c:1,fb:{y:'Right! Acknowledging first shows respect and makes your counter more persuasive.',n:'Always acknowledge the other person'}},
+    {q:'Which word is softer than ',opts:['And','However / That said','Because','So'],c:1,fb:{y:'Correct! ',n:'\'However'}},
+    {q:'What does ',opts:['To be evil','To argue the opposite side for the sake of discussion','To agree with everyone','To refuse to participate'],c:1,fb:{y:'That',n:'Playing devil'}},
+    {q:'Which phrase is the most diplomatic way to disagree?',opts:['That',',','t thought this through.','I see your point, however I wonder if we might consider…','No, that won'],c:2,fb:{y:'Well done! This acknowledges, softens, and suggests — all in one sentence.',n:'The most diplomatic approach acknowledges first, uses softening language, and suggests an alternative.'}},
+    {q:'Why should you avoid saying ',opts:['It',',',',','s too long','It'],c:1,fb:{y:'Right! ',n:'\'But'}},
+    {q:'What does ',opts:['To physically push someone','To resist or challenge an idea respectfully','To agree under pressure','To postpone a meeting'],c:1,fb:{y:'Correct! Pushing back means challenging a proposal or decision professionally.',n:'\'To push back'}},
+    {q:'Which is better: challenging the person or the idea?',opts:['Always challenge the person directly','Challenge the idea, not the person','Neither — just agree','It doesn'],c:1,fb:{y:'Exactly! ',n:'Always challenge ideas, not people — it keeps the discussion constructive.'}},
+    {q:'\'Have we considered…?',opts:['A direct command','An indirect challenge using a question','A rhetorical question with no purpose','An accusation'],c:1,fb:{y:'Right! Using questions to challenge is a key diplomatic technique.',n:'Framing disagreement as a question ('}},
+    {q:'When should you be more indirect in your disagreement?',opts:['With close team members','With senior leaders or external clients','When you',','],c:1,fb:{y:'That',n:'Use more indirect language with senior leaders and clients to show respect for hierarchy.'}},
+    {q:'How should you end a professional disagreement?',opts:['Walk away','Prove the other person is wrong','Invite other perspectives or suggest a collaborative next step','Demand they change their mind'],c:2,fb:{y:'Well done! Ending collaboratively keeps the discussion productive and relationships intact.',n:'End on a collaborative note — invite other views or suggest working together on a solution.'}},
+  ]},
+  {lesson:'Action Verbs for CVs',file:'action-verbs-cvs.html',module:'03',moduleName:'Professional Development',questions:[
+    {q:'Why are action verbs important on a CV?',opts:['They make the CV longer','They grab attention and communicate impact quickly','They',','],c:1,fb:{y:'Right! Action verbs show initiative and communicate results in the 6-7 seconds recruiters spend scanning.',n:'Action verbs grab attention instantly and communicate your impact — essential given how briefly CVs are scanned.'}},
+    {q:'Which is a stronger CV bullet point?',opts:['Was responsible for managing the team','Spearheaded a team of 8 to deliver the project ahead of deadline','Helped with team stuff','Did some management work'],c:1,fb:{y:'Exactly! It uses a power verb, includes specifics, and shows a result.',n:'The strongest option uses a power verb ('}},
+    {q:'What does ',opts:['Made something more complicated','Made a process more efficient','Removed completely','Made something bigger'],c:1,fb:{y:'Correct! Streamlined means you improved a process to make it faster or more efficient.',n:'\'Streamlined'}},
+    {q:'What formula should you use for CV bullet points?',opts:['Name + Date + Description','Action Verb + Task + Result','Company + Role + Salary','Introduction + Body + Conclusion'],c:1,fb:{y:'That',n:'The winning formula is: Action Verb + Task + Result — always lead with what you did.'}},
+    {q:'Which verb best replaces ',opts:['Did','Spearheaded','Was','Tried'],c:1,fb:{y:'Well done! ',n:'\'Spearheaded'}},
+    {q:'What does ',opts:['To be the last person to do something','To copy someone else',',',','],c:2,fb:{y:'Correct! Pioneering means you introduced something new — a very impressive verb for a CV.',n:'\'Pioneered'}},
+    {q:'Why should you avoid the phrase ',opts:['It',',','s vague and doesn',',','s too long','It'],c:1,fb:{y:'Right! ',n:'\'Helped with'}},
+    {q:'What does ',opts:['Left a company','Communicated between different groups or departments','Argued with colleagues','Wrote a report'],c:1,fb:{y:'That',n:'\'Liaised'}},
+    {q:'Which is the best way to show impact on a CV?',opts:['Use lots of adjectives','Include quantifiable results (numbers, percentages)','Write very long descriptions','Use complex vocabulary'],c:1,fb:{y:'Exactly! Numbers and percentages make your achievements concrete and credible.',n:'Quantifiable results (numbers, percentages, money saved) are the most convincing way to show impact.'}},
+    {q:'What does ',opts:['Won a championship','Advocated strongly for an idea or cause','Fired someone','Completed a race'],c:1,fb:{y:'Correct! ',n:'\'Championed'}},
+  ]},
+  {lesson:'LinkedIn Profile Writing',file:'linkedin-profile.html',module:'03',moduleName:'Professional Development',questions:[
+    {q:'What should your LinkedIn headline include?',opts:['Only your job title','Your salary expectations','What you do, who you help, and relevant keywords','Your home address'],c:2,fb:{y:'Right! A strong headline goes beyond a title to describe your value and include searchable keywords.',n:'Your headline should describe what you do, who you help, and include relevant keywords.'}},
+    {q:'Should you write your LinkedIn About section in first or third person?',opts:['Third person (He/She)','First person (I)','It doesn',','],c:1,fb:{y:'Correct! First person is more authentic and personal.',n:'Write in first person ('}},
+    {q:'What is a LinkedIn ',opts:['A written recommendation','A one-click confirmation of someone',',',','],c:1,fb:{y:'That',n:'An endorsement is a one-click confirmation that someone has a particular skill.'}},
+    {q:'How many bullet points should you have per role in Experience?',opts:['10-15','1','3-5 focused on results','None — just a paragraph'],c:2,fb:{y:'Right! 3-5 focused bullet points per role is the sweet spot.',n:'Aim for 3-5 bullet points per role, each highlighting results and achievements.'}},
+    {q:'What is ',opts:['Using fancy vocabulary','Including terms that recruiters search for','Writing as many words as possible','Using hashtags'],c:1,fb:{y:'Correct! Including industry-relevant keywords helps your profile appear in recruiter searches.',n:'Keyword optimisation means including terms recruiters search for in your profile.'}},
+    {q:'What is ',opts:['Being the boss','Sharing expert content to build professional credibility','Thinking about leading a team','Reading leadership books'],c:1,fb:{y:'That',n:'Thought leadership is sharing expert knowledge and insights to build your professional reputation.'}},
+    {q:'Why should you customise your LinkedIn URL?',opts:['It',',',',',',','s only for premium users'],c:1,fb:{y:'Right! A custom URL (linkedin.com/in/yourname) looks professional on CVs and email signatures.',n:'A custom URL looks cleaner, more professional, and is easier to share.'}},
+    {q:'What does ',opts:['You drive to work','Focused on achieving measurable outcomes','You only care about money','You work very fast'],c:1,fb:{y:'Correct! Results-driven means you focus on delivering measurable, tangible outcomes.',n:'\'Results-driven'}},
+    {q:'How can activity on LinkedIn boost your profile?',opts:['It doesn',',',',',','],c:1,fb:{y:'That',n:'Regular activity (posting, commenting, sharing) increases your visibility in LinkedIn'}},
+    {q:'What is a LinkedIn recommendation?',opts:['A suggested connection','A written testimonial from a colleague or manager','An automated message','A skill endorsement'],c:1,fb:{y:'Correct! Recommendations are written testimonials that add credibility to your profile.',n:'A recommendation is a written testimonial from someone you'}},
+  ]},
+  {lesson:'SWOT Analysis Vocabulary',file:'swot-analysis.html',module:'03',moduleName:'Professional Development',questions:[
+    {q:'What does SWOT stand for?',opts:['Sales, Workforce, Output, Technology','Strengths, Weaknesses, Opportunities, Threats','Strategy, Work, Organisation, Teams','Systems, Workflows, Operations, Targets'],c:1,fb:{y:'Correct! SWOT stands for Strengths, Weaknesses, Opportunities, and Threats.',n:'SWOT = Strengths, Weaknesses, Opportunities, Threats — a strategic analysis framework.'}},
+    {q:'Which SWOT elements are internal factors?',opts:['Opportunities and Threats','Strengths and Opportunities','Strengths and Weaknesses','Weaknesses and Threats'],c:2,fb:{y:'Right! Strengths and Weaknesses are internal — things you can control.',n:'Internal factors are Strengths and Weaknesses — things within your control.'}},
+    {q:'What does ',opts:['To lift something heavy','To use a strength to your advantage','To borrow money','To hire more people'],c:1,fb:{y:'Correct! To leverage means to use something (usually a strength) to gain an advantage.',n:'\'To leverage'}},
+    {q:'Where does ',opts:['Strengths','Weaknesses','Opportunities','Threats'],c:3,fb:{y:'Right! New regulations are external and potentially negative — a Threat.',n:'Government regulations are external factors — they belong in Threats (or Opportunities, depending on impact).'}},
+    {q:'What does ',opts:['To make something worse','To reduce the impact of a risk','To celebrate success','To increase spending'],c:1,fb:{y:'Correct! To mitigate means to reduce the severity or impact of something negative.',n:'\'To mitigate'}},
+    {q:'What is a ',opts:['A temporary skill','A key ability that defines and differentiates a business','An external opportunity','A legal requirement'],c:1,fb:{y:'That',n:'A core competency is a key ability that defines a business and differentiates it from competitors.'}},
+    {q:'\'Growing demand for eco-friendly products',opts:['A Strength','A Weakness','An Opportunity','A Threat'],c:2,fb:{y:'Correct! It',n:'Growing market demand is external and positive — it'}},
+    {q:'What does ',opts:['Sharing a product with the market','The percentage of total sales a company holds in its industry','A type of stock','The number of employees'],c:1,fb:{y:'Right! Market share is the proportion of total industry sales held by a company.',n:'Market share is the percentage of total sales in an industry that belongs to a particular company.'}},
+    {q:'What does ',opts:['To write in capital letters','To take advantage of a favourable situation','To invest money','To close a business'],c:1,fb:{y:'Correct! To capitalise on an opportunity means to take full advantage of it.',n:'\'To capitalise on'}},
+    {q:'Why should you link SWOT findings to action?',opts:['It',',',',',','],c:1,fb:{y:'Right! A SWOT is only useful if it informs decisions — leverage strengths, address weaknesses, pursue opportunities, mitigate threats.',n:'SWOT should lead to action: leverage strengths, address weaknesses, pursue opportunities, mitigate threats.'}},
+  ]},
+  {lesson:'Agile & Scrum Terminology',file:'agile-scrum.html',module:'03',moduleName:'Professional Development',questions:[
+    {q:'What is a ',opts:['Running fast','A time-boxed work cycle, usually 1–4 weeks','A type of meeting','A project deadline'],c:1,fb:{y:'Correct! A sprint is a fixed period during which the team delivers a set of work.',n:'A sprint is a time-boxed work cycle (usually 1–4 weeks) where the team delivers planned features.'}},
+    {q:'What are the 3 Scrum roles?',opts:['CEO, CTO, Developer','Product Owner, Scrum Master, Development Team','Manager, Designer, Tester','Lead, Senior, Junior'],c:1,fb:{y:'Right! These three roles form the core of any Scrum team.',n:'The three Scrum roles are Product Owner, Scrum Master, and Development Team.'}},
+    {q:'What format should user stories follow?',opts:['Title + Description + Date'],c:1,fb:{y:'Correct! This format keeps stories user-focused and outcome-oriented.',n:'User stories follow: '}},
+    {q:'What is a ',opts:['A person who blocks others','An obstacle preventing progress on a task','A type of meeting','A Scrum role'],c:1,fb:{y:'That',n:'A blocker is an obstacle preventing someone from making progress — it needs attention.'}},
+    {q:'What happens in a Sprint Retrospective?',opts:['The team demos the product','The team reflects on what went well and what to improve','The backlog is created','New team members are onboarded'],c:1,fb:{y:'Correct! The retro is about continuous improvement — process, not blame.',n:'A retrospective is where the team reflects on the sprint: what went well, what can improve.'}},
+    {q:'What does MVP stand for?',opts:['Most Valuable Player','Minimum Viable Product','Maximum Value Proposition','Major Version Product'],c:1,fb:{y:'Right! An MVP is the simplest version of a product that delivers value to users.',n:'MVP stands for Minimum Viable Product — the simplest version that solves the core problem.'}},
+    {q:'What is ',opts:['How fast you type','The amount of work completed per sprint','The number of team members','The project budget'],c:1,fb:{y:'Correct! Velocity helps teams predict how much they can deliver in future sprints.',n:'Velocity measures how much work (usually in story points) a team completes per sprint.'}},
+    {q:'What is ',opts:['Money owed for technology','Shortcuts in code that create future work','A type of user story','A sprint planning tool'],c:1,fb:{y:'That',n:'Technical debt is the future cost of code shortcuts that need to be fixed later.'}},
+    {q:'How long should a daily stand-up last?',opts:['1 hour','30 minutes','15 minutes maximum','As long as needed'],c:2,fb:{y:'Right! Stand-ups should be brief — 15 minutes max, covering yesterday/today/blockers.',n:'Daily stand-ups should be 15 minutes maximum — brief and focused.'}},
+    {q:'What is the ',opts:['When the manager says it',',',',',','],c:1,fb:{y:'Correct! Having a clear DoD ensures consistent quality across all completed work.',n:'The Definition of Done is a checklist of criteria that must be met before a task is considered complete.'}},
+  ]},
+  {lesson:'Conflict Resolution',file:'conflict-resolution.html',module:'04',moduleName:'Soft Skills & Workplace',questions:[
+    {q:'What is the first step in resolving a workplace conflict?',opts:['Complain to HR immediately','Identify the actual issue and separate person from problem','Send an angry email','Ignore it and hope it goes away'],c:1,fb:{y:'Right! Clarifying the real issue calmly is always the first step.',n:'Start by identifying the actual problem — separate the person from the issue.'}},
+    {q:'Why should you use ',opts:['They sound more professional','They express your feelings without blaming the other person','They',','],c:1,fb:{y:'Correct! ',n:'\'I'}},
+    {q:'What does ',opts:['To make things worse','To calm down a tense situation','To use an escalator','To avoid the problem'],c:1,fb:{y:'That',n:'\'To de-escalate'}},
+    {q:'Where should you have a conflict conversation?',opts:['In front of the whole team','In the company cafeteria','Privately, one-on-one','On social media'],c:2,fb:{y:'Right! Privacy allows both people to be honest without losing face.',n:'Always address conflicts privately — public confrontation embarrasses and escalates.'}},
+    {q:'What does ',opts:['To open a window','To resolve tension through honest conversation','To clean the office','To change the subject'],c:1,fb:{y:'Correct! Clearing the air means having an honest talk to resolve underlying tension.',n:'\'To clear the air'}},
+    {q:'Which phrase should you avoid during conflict?',opts:['I understand your concern','From my perspective…','You always do this!','I feel frustrated when…'],c:2,fb:{y:'Right! ',n:'Avoid '}},
+    {q:'What does ',opts:['A meditation session','A third party helping resolve a dispute','Sending an email','Avoiding the problem'],c:1,fb:{y:'Correct! A mediator is a neutral person who helps both sides reach agreement.',n:'Mediation involves a neutral third party helping the conflicting parties find a resolution.'}},
+    {q:'What does ',opts:['To meet in the middle of the office','To compromise equally from both sides','To arrive at the same time','To split the bill'],c:1,fb:{y:'That',n:'\'To meet halfway'}},
+    {q:'When should you address a workplace conflict?',opts:['Never — conflicts resolve themselves','After a few months','Early — before resentment builds','Only if HR tells you to'],c:2,fb:{y:'Right! Addressing issues early prevents them from growing into bigger problems.',n:'Address conflicts early — waiting allows resentment and frustration to build.'}},
+    {q:'What should you focus on when resolving conflict?',opts:['Winning the argument','Proving the other person wrong','Finding a shared solution that works for both sides','Getting your way no matter what'],c:2,fb:{y:'Exactly! The goal is collaboration, not competition.',n:'Focus on shared goals and finding a solution that works for everyone involved.'}},
+  ]},
+  {lesson:'Time Management Vocabulary',file:'time-management.html',module:'04',moduleName:'Soft Skills & Workplace',questions:[
+    {q:'What does ',opts:['End of Discussion','End of Day','Every Other Day','End of Document'],c:1,fb:{y:'Correct! EOD means End of Day — commonly used for deadlines.',n:'EOD stands for End of Day — a common deadline abbreviation.'}},
+    {q:'What does ',opts:['Internet speed','Available capacity to take on work','Salary range','Office space'],c:1,fb:{y:'Right! ',n:'In work context, bandwidth means your available capacity to take on additional tasks.'}},
+    {q:'What is a ',opts:['A type of bottle','A point that slows down the whole process','A quick win','A meeting'],c:1,fb:{y:'Correct! A bottleneck is where the process gets stuck or slows down.',n:'A bottleneck is a point in a process that slows everything else down.'}},
+    {q:'How should you communicate a deadline risk?',opts:['Wait until the deadline passes','Flag it early and suggest alternatives','Blame a colleague','Just work faster'],c:1,fb:{y:'Right! Early communication allows time to adjust plans.',n:'Always flag deadline risks as early as possible and suggest alternatives.'}},
+    {q:'What does ',opts:['To delete a task','To assign a task to someone else','To ignore a task','To complete a task alone'],c:1,fb:{y:'Correct! Delegating means entrusting work to someone else with clear expectations.',n:'\'To delegate'}},
+    {q:'What is a ',opts:['Winning a race quickly','An easy task with immediate positive impact','A bonus payment','A short meeting'],c:1,fb:{y:'That',n:'A quick win is a simple task that delivers immediate, visible value.'}},
+    {q:'What does ',opts:['To make it earlier','To cancel it','To move it to a later date','To ignore it'],c:2,fb:{y:'Correct! Pushing back means extending the deadline to a later date.',n:'\'To push back a deadline'}},
+    {q:'What',opts:['Just say ','",',',',','],c:1,fb:{y:'Right! Show your current commitments and offer alternatives like reprioritising.',n:'The professional approach is to explain your workload and suggest alternatives.'}},
+    {q:'What does ',opts:['The time to turn around physically','How long it takes to complete and return work','The time a meeting lasts','How long a project has existed'],c:1,fb:{y:'Correct! ',n:'Turnaround time is how long it takes to complete and deliver a piece of work.'}},
+    {q:'What does ',opts:['To put a clock in a box','To set a fixed time limit for an activity','To work overtime','To schedule a meeting'],c:1,fb:{y:'Right! Time-boxing keeps activities focused and prevents scope creep.',n:'\'To time-box'}},
+  ]},
+  {lesson:'Cross-Cultural Communication',file:'cross-cultural.html',module:'04',moduleName:'Soft Skills & Workplace',questions:[
+    {q:'What is ',opts:['Knowing many languages','The ability to adapt to different cultural contexts','Being very smart','Knowing world history'],c:1,fb:{y:'Correct! CQ is about awareness and ability to adapt across cultures.',n:'Cultural intelligence is the ability to understand and adapt to different cultural contexts.'}},
+    {q:'In a ',opts:['Relationships and flexibility','Punctuality and schedules','Creativity and spontaneity','Hierarchy and titles'],c:1,fb:{y:'Right! Monochronic cultures prioritise time, schedules, and punctuality.',n:'Monochronic cultures value punctuality, schedules, and structured time management.'}},
+    {q:'What is ',opts:['Speaking very quietly','Using context and implication rather than being blunt','Not communicating at all','Only using email'],c:1,fb:{y:'Correct! Indirect communicators convey meaning through context, tone, and implication.',n:'Indirect communication uses context, suggestion, and implication rather than explicit statements.'}},
+    {q:'Why should you avoid idioms in cross-cultural teams?',opts:['They',',',',','re too informal','They'],c:1,fb:{y:'Right! Idioms like ',n:'Idioms often don'}},
+    {q:'What does ',opts:['A lost document','Meaning changed or lost when moving between languages/cultures','A translation software error','Forgetting a word'],c:1,fb:{y:'Correct! It refers to meaning or nuance that doesn',n:'\'Lost in translation'}},
+    {q:'In a hierarchical culture, how might you address your CEO?',opts:['Hey, first name!','By their title and surname','With a nickname','Just wave'],c:1,fb:{y:'Right! In hierarchical cultures, titles and formality matter — especially with senior leaders.',n:'In hierarchical cultures, you'}},
+    {q:'What should you do when you notice a cultural difference?',opts:['Judge it as wrong','Ignore it completely','Observe, ask questions, and adapt','Complain to HR'],c:2,fb:{y:'Exactly! Curiosity and adaptation are key to building cultural intelligence.',n:'The best approach is to observe, ask questions, and adapt your behaviour accordingly.'}},
+    {q:'What is a ',opts:['A type of speaker','An oversimplified assumption about a group of people','A cultural tradition','A communication style'],c:1,fb:{y:'Correct! Stereotypes are generalisations that can be harmful and inaccurate.',n:'A stereotype is an oversimplified, often inaccurate assumption about a group of people.'}},
+    {q:'Why might silence in a meeting be cultural?',opts:['The person is bored','In some cultures, silence shows respect or thoughtfulness','The microphone is broken','They don'],c:1,fb:{y:'Right! In cultures like Japan or Finland, silence can indicate respect or careful thinking.',n:'In many cultures, silence during a meeting signals respect, reflection, or agreement — not disinterest.'}},
+    {q:'What is ',opts:['Language spoken by everyone','Words that don',',',','],c:1,fb:{y:'Correct! Inclusive language ensures no one feels excluded based on gender, culture, or background.',n:'Inclusive language is words and expressions that don'}},
+  ]},
+  {lesson:'Remote Work Language',file:'remote-work.html',module:'04',moduleName:'Soft Skills & Workplace',questions:[
+    {q:'What does ',opts:['Everyone must be online at the same time','Communication that doesn',',',','],c:1,fb:{y:'Correct! Async means people communicate at their own pace, not in real-time.',n:'Asynchronous means communication that doesn'}},
+    {q:'What does ',opts:['Looking at the floor','Focused deep work, not available for interruptions','Taking a nap','In a meeting'],c:1,fb:{y:'Right! ',n:'\'Heads down'}},
+    {q:'Why should remote teams ',opts:['Meetings are always bad','To respect time zones and allow deep work','Because email is faster','To avoid talking to people'],c:1,fb:{y:'Correct! Async respects different schedules and protects focused work time.',n:'Defaulting to async respects different time zones and protects deep work periods.'}},
+    {q:'What does OOO stand for?',opts:['Out Of Order','Out Of Office','Only On Online','Open Office Operations'],c:1,fb:{y:'That',n:'OOO stands for Out Of Office — you'}},
+    {q:'What is a ',opts:['A type of clothing','A sub-conversation within a channel message','A private message','A video call'],c:1,fb:{y:'Correct! Threads keep conversations organised within channels.',n:'A thread is a sub-conversation under a specific message, keeping the main channel clean.'}},
+    {q:'What does ',opts:['To call them on the phone','To send them a quick message','To delete their message','To block them'],c:1,fb:{y:'Right! ',n:'\'To ping someone'}},
+    {q:'When should you use a Loom video instead of text?',opts:['Always','When the explanation is too complex for text and needs tone/visuals','Never — text is always better','Only for formal presentations'],c:1,fb:{y:'Correct! Loom is great when text would be too long or confusing, and tone matters.',n:'Use video messages when text feels too complex and tone or visual context would help.'}},
+    {q:'What does ',opts:['Email To All','Estimated Time of Arrival or completion','End The Activity','Every Tuesday Afternoon'],c:1,fb:{y:'That',n:'ETA stands for Estimated Time of Arrival — when something will be done.'}},
+    {q:'What is ',opts:['Working underwater','Uninterrupted, focused work on complex tasks','Working overtime','Any work done remotely'],c:1,fb:{y:'Correct! Deep work is focused, uninterrupted effort on cognitively demanding tasks.',n:'Deep work means focused, uninterrupted concentration on complex tasks.'}},
+    {q:'Why is over-communication important in remote teams?',opts:['To annoy colleagues','Because without physical presence, people need more context to stay aligned','It',','],c:1,fb:{y:'Right! Without in-person cues, sharing context proactively keeps everyone aligned.',n:'In remote work, proactive communication compensates for the lack of physical presence and informal interactions.'}},
+  ]},
+  {lesson:'Report Writing',file:'report-writing.html',module:'05',moduleName:'Writing & Documents',questions:[
+    {q:'What is the purpose of an executive summary?',opts:['To list all data tables','To provide a standalone overview of the report','To introduce the team','To replace the conclusion'],c:1,fb:{y:'Correct! The executive summary gives busy readers a complete overview without reading the full report.',n:'The executive summary provides a standalone overview of the report'}},
+    {q:'Which phrase introduces a data-driven observation?',opts:['\\','",','In my opinion…\\',',','The data indicates that…\\',',','Everyone knows…\\'],c:2,fb:{y:'Right! ',n:'In professional reports, use '}},
+    {q:'What does \\',opts:['Every year without fail','Comparing data to the same period last year','A yearly subscription','Annual leave'],c:1,fb:{y:'Correct! Year-on-year (YoY) compares data to the same period in the previous year.',n:'Year-on-year means comparing data to the same period last year — e.g., Q3 2025 vs Q3 2024.'}},
+    {q:'Which section should contain action-oriented suggestions?',opts:['Introduction','Findings','Methodology','Recommendations'],c:3,fb:{y:'That',n:'Action-oriented suggestions belong in the Recommendations section of the report.'}},
+    {q:'How should a report introduction begin?',opts:['With a joke','By stating context, scope, and objectives','With the recommendations','With a personal anecdote'],c:1,fb:{y:'Correct! The introduction sets the context, scope, and objectives for the reader.',n:'A report introduction should begin by stating the context, scope, and objectives.'}},
+    {q:'What does \\',opts:['To blame someone','To add an attribute','To identify the cause of something','To give credit'],c:2,fb:{y:'Right! ',n:'\'To attribute to'}},
+    {q:'Which writing style is most appropriate for formal reports?',opts:['First person casual (\\',')','Third person with passive voice (\\',')','Text message style','Stream of consciousness'],c:1,fb:{y:'Correct! Formal reports typically use third person and passive voice for objectivity.',n:'Formal reports use third person with passive voice — e.g., '}},
+    {q:'What is a benchmark?',opts:['A park bench','A mark on a document','A standard for comparing performance','A type of report'],c:2,fb:{y:'Well done! A benchmark is a standard or reference point for comparing performance.',n:'A benchmark is a standard for comparing performance — used to measure progress or results.'}},
+    {q:'Which phrase best introduces a recommendation?',opts:['\\','",','We recommend that the company…\\',',','Just do it\\',',','Someone should probably…\\'],c:1,fb:{y:'That',n:'Use '}},
+    {q:'What should findings in a report be based on?',opts:['Personal feelings','Rumours','Objective data and evidence','Assumptions'],c:2,fb:{y:'Correct! Findings must be based on objective data and evidence to maintain credibility.',n:'Report findings should always be based on objective data and evidence — not opinions or assumptions.'}},
+  ]},
+  {lesson:'Minutes & Summaries',file:'minutes-summaries.html',module:'05',moduleName:'Writing & Documents',questions:[
+    {q:'What is the primary purpose of meeting minutes?',opts:['To record every word spoken','To document decisions and action items','To replace the meeting','To evaluate attendees'],c:1,fb:{y:'Correct! Minutes exist to document key decisions and action items, not to transcribe everything.',n:'The primary purpose of minutes is to document decisions and action items — not to record every word.'}},
+    {q:'What should every action item include?',opts:['Only the task','A responsible person and a deadline','A budget','An apology'],c:1,fb:{y:'Right! Every action item needs a clear owner and a deadline to ensure accountability.',n:'Action items should always include a responsible person and a deadline.'}},
+    {q:'What does ',opts:['All Over Business','Any Other Business','Annual Operating Budget','Association of Businesses'],c:1,fb:{y:'Correct! AOB stands for ',n:'AOB stands for '}},
+    {q:'What does it mean to ',opts:['To put it on the table','To postpone it to a later meeting','To resolve it immediately','To cancel it'],c:1,fb:{y:'That',n:'To '}},
+    {q:'Which phrase is best for recording a decision?',opts:['Everyone seemed to agree','It was decided that…','Most people liked the idea','The vibe was positive'],c:1,fb:{y:'Correct! ',n:'Use clear, formal language like '}},
+    {q:'What are ',opts:['Saying sorry for mistakes','A note that someone couldn',',',','],c:1,fb:{y:'Right! In meeting minutes, ',n:'In meeting minutes, '}},
+    {q:'What does ',opts:['A type of meeting room','The minimum number of people for valid decisions','A voting system','A quarterly report'],c:1,fb:{y:'Correct! A quorum is the minimum number of people required for decisions to be valid.',n:'A quorum is the minimum number of people needed to make valid decisions.'}},
+    {q:'What is the best approach to writing discussion summaries?',opts:['Copy conversations word for word','Summarise the key points objectively','Only record what the chair said','Write in bullet points only'],c:1,fb:{y:'That',n:'The best approach is to summarise the key points objectively — don'}},
+    {q:'When should minutes ideally be written?',opts:['A week later','As soon as possible after the meeting','Before the meeting','Only if requested'],c:1,fb:{y:'Correct! Writing minutes promptly ensures accuracy while details are still fresh.',n:'Minutes should be written as soon as possible after the meeting while details are fresh.'}},
+    {q:'What does ',opts:['To physically carry documents','To move an unresolved item to the next meeting','To delete an item','To complete a task'],c:1,fb:{y:'Right! ',n:'\'To carry forward'}},
+  ]},
+  {lesson:'Proposal Writing',file:'proposal-writing.html',module:'05',moduleName:'Writing & Documents',questions:[
+    {q:'What should a proposal',opts:['Your company history','That you understand the client',',',','],c:1,fb:{y:'Right! A strong problem statement shows you',n:'The problem statement should demonstrate that you understand the client'}},
+    {q:'What does ROI stand for?',opts:['Rate of Interest','Return on Investment','Range of Ideas','Report on Issues'],c:1,fb:{y:'Correct! ROI stands for Return on Investment — the financial benefit compared to the cost.',n:'ROI stands for Return on Investment — it measures the financial benefit compared to the cost.'}},
+    {q:'Which phrase best introduces a proposed solution?',opts:['You should probably try…','We propose implementing…','Maybe we could…','Here'],c:1,fb:{y:'That',n:'\'We propose implementing…'}},
+    {q:'What is a deliverable?',opts:['A delivery truck','A tangible output of a project phase','An email','A deadline'],c:1,fb:{y:'Correct! A deliverable is a tangible result or output produced during a project phase.',n:'A deliverable is a tangible output of a project phase — something concrete you hand over to the client.'}},
+    {q:'Why should proposals be tailored to each client?',opts:['To make them longer','Because generic proposals rarely win','It',','],c:1,fb:{y:'Exactly! Tailored proposals show the client you understand their specific needs.',n:'Generic proposals rarely win — clients want to see that you understand their specific situation and needs.'}},
+    {q:'What is a value proposition?',opts:['A discount offer','A statement of benefits you offer','A financial report','A business card'],c:1,fb:{y:'Well done! A value proposition clearly states the benefits and value you bring to the client.',n:'A value proposition is a statement of the benefits you offer — it explains why the client should choose you.'}},
+    {q:'What should the end of a proposal include?',opts:['An apology','A joke','A clear call to action','A list of competitors'],c:2,fb:{y:'Right! Always end with a clear call to action so the client knows exactly what to do next.',n:'The end of a proposal should include a clear call to action — tell the client exactly what to do next.'}},
+    {q:'What does ',opts:['Making a purchase','Agreement from key decision-makers','A type of investment','Joining a company'],c:1,fb:{y:'Correct! Buy-in means getting agreement or support from the people who matter.',n:'\'Buy-in'}},
+    {q:'What is a milestone in project management?',opts:['A unit of distance','A significant checkpoint in a timeline','A type of budget item','A meeting invite'],c:1,fb:{y:'That',n:'A milestone is a significant checkpoint in a project timeline — it helps track progress and keep things on schedule.'}},
+    {q:'What does ',opts:['How easy something is to sell','Whether a plan is practical and achievable','The financial cost','The team structure'],c:1,fb:{y:'Correct! Feasibility is about whether a plan is realistic and can actually be carried out.',n:'Feasibility refers to whether a plan is practical and achievable — can it realistically be done?'}},
+  ]},
+  {lesson:'Proofreading & Editing',file:'proofreading-editing.html',module:'05',moduleName:'Writing & Documents',questions:[
+    {q:'Which sentence is grammatically correct?',opts:['The team are meeting at 3pm','The team is meeting at 3pm','The team be meeting at 3pm','The team were meeting at 3pm always'],c:1,fb:{y:'Correct! In American English, ',n:'\'The team is meeting at 3pm'}},
+    {q:'What is the difference between ',opts:['They mean the same thing','\'Affect','effect',',','Effect','affect',','],c:1,fb:{y:'Right! ',n:'\'Affect'}},
+    {q:'Which sentence uses ',opts:['Its a great company','It',',',','],c:2,fb:{y:'Correct! ',n:'\'Its'}},
+    {q:'What is a dangling modifier?',opts:['A phrase that clearly modifies the subject','A phrase that doesn',',',','],c:1,fb:{y:'That',n:'A dangling modifier is a phrase that doesn'}},
+    {q:'Which is more concise?',opts:['At this point in time','In the current moment','Now','As of the present date'],c:2,fb:{y:'Exactly! ',n:'\'Now'}},
+    {q:'What is a run-on sentence?',opts:['A very long sentence','Two sentences incorrectly joined without proper punctuation','A sentence with too many commas','A sentence that runs off the page'],c:1,fb:{y:'Correct! Run-on sentences happen when independent clauses are joined without proper punctuation or conjunctions.',n:'A run-on sentence is two or more sentences incorrectly joined without proper punctuation.'}},
+    {q:'When should you use a semicolon?',opts:['Before every ','",',',',','],c:1,fb:{y:'Right! A semicolon connects two related independent clauses that could each stand alone as sentences.',n:'Semicolons are used to join two related independent clauses.'}},
+    {q:'Which proofreading technique helps catch individual errors?',opts:['Reading faster','Reading the text backwards, sentence by sentence','Only using spell-check','Skimming'],c:1,fb:{y:'Correct! Reading backwards forces you to focus on each sentence individually, rather than getting caught up in the flow.',n:'Reading backwards, sentence by sentence, helps you focus on individual errors rather than the overall flow.'}},
+    {q:'What does ',opts:['Writing every day','Using the same style and format throughout','Being persistent','Writing long texts'],c:1,fb:{y:'That',n:'In writing, consistency means using the same style and format throughout your text.'}},
+    {q:'Which revision improves clarity?',opts:['\\',' → \\','",',',',','],c:0,fb:{y:'Correct! Cutting unnecessary words makes your message clearer and more direct.',n:'Removing unnecessary words improves clarity: '}},
+  ]},
+  {lesson:'Sales Vocabulary',file:'sales-vocabulary.html',module:'06',moduleName:'Sales & Client Management',questions:[
+    {q:'What is a \\',opts:['A phone call in winter','Contacting someone without prior relationship','A follow-up call','A conference call'],c:1,fb:{y:'Correct! A cold call means reaching out to someone you have no prior relationship with.',n:'A '}},
+    {q:'What does \\',opts:['A plumbing system','A visual overview of deals at each stage','A type of report','A marketing strategy'],c:1,fb:{y:'Right! The pipeline shows where each deal stands in the sales process.',n:'In sales, a '}},
+    {q:'What is a \\',opts:['Currency exchange rate','The percentage of leads that become customers','The speed of a sale','A type of discount'],c:1,fb:{y:'Exactly! Conversion rate measures how many leads turn into paying customers.',n:'A '}},
+    {q:'What does BANT stand for?',opts:['Business, Account, Network, Time','Budget, Authority, Need, Timeline','Buy, Assess, Negotiate, Trade','Brand, Audience, Niche, Target'],c:1,fb:{y:'That',n:'BANT stands for Budget, Authority, Need, Timeline — a framework for qualifying prospects.'}},
+    {q:'What is \\',opts:['The rate of new customer acquisition','The rate at which customers leave','The speed of deal closure','The turnover rate of staff'],c:1,fb:{y:'Correct! Churn rate measures how quickly customers stop doing business with you.',n:'\'Churn rate'}},
+    {q:'What does it mean to \\',opts:['To end a negotiation without agreement','To finalise a sale or agreement','To close a shop','To reject a proposal'],c:1,fb:{y:'Well done! Closing a deal means securing the final agreement or sale.',n:'\'To close a deal'}},
+    {q:'What is a \\',opts:['A lead generated in summer','Someone who has already shown interest','A very urgent deal','A referral from a friend'],c:1,fb:{y:'Right! A warm lead is someone who has already expressed some level of interest.',n:'A '}},
+    {q:'What is \\',opts:['A type of report','A sales target for a specific period','A percentage discount','A customer segment'],c:1,fb:{y:'Exactly! A quota is the sales target a rep is expected to hit in a given period.',n:'In sales, a '}},
+    {q:'What is a \\',opts:['A physical location','Any interaction between company and customer','A final meeting','A product feature'],c:1,fb:{y:'Correct! A touchpoint is any interaction between a company and a customer.',n:'A '}},
+    {q:'What does MRR stand for?',opts:['Maximum Revenue Rate','Monthly Recurring Revenue','Market Research Report','Minimum Required Return'],c:1,fb:{y:'That',n:'MRR stands for Monthly Recurring Revenue.'}},
+  ]},
+  {lesson:'Client Onboarding',file:'client-onboarding.html',module:'06',moduleName:'Sales & Client Management',questions:[
+    {q:'What is the purpose of a kickoff meeting?',opts:['To celebrate a new deal','To align on goals, scope, and timeline','To negotiate pricing','To introduce competitors'],c:1,fb:{y:'Correct! The kickoff meeting is all about aligning both teams on goals, scope, and timeline.',n:'The purpose of a kickoff meeting is to align on goals, scope, and timeline — not to celebrate or negotiate.'}},
+    {q:'What does ',opts:['A physical meeting place','The main person for communication','A phone number','A contact list'],c:1,fb:{y:'That',n:'\'Point of contact'}},
+    {q:'Which phrase is appropriate for a welcome email?',opts:['Hey, you',',','re delighted to welcome you to our team','About time you signed','Let'],c:1,fb:{y:'Well done! This is warm, professional, and sets a positive tone.',n:'A welcome email should be warm and professional — '}},
+    {q:'What is an SLA?',opts:['A sales document','A contract defining service standards','A type of meeting','A marketing strategy'],c:1,fb:{y:'Correct! An SLA (Service Level Agreement) defines the standards of service a client can expect.',n:'An SLA is a Service Level Agreement — a contract that defines service standards.'}},
+    {q:'What does ',opts:['To stand in a line','To reach agreement or shared understanding','To disagree politely','To schedule a meeting'],c:1,fb:{y:'Exactly! ',n:'\'To align on'}},
+    {q:'What is an ',opts:['A staircase','The process for raising unresolved issues','A promotion pathway','A sales funnel'],c:1,fb:{y:'Right! An escalation path is the process for raising issues that haven',n:'An '}},
+    {q:'When should expectations be set with a new client?',opts:['After problems occur','During the onboarding process, early on','Only if the client asks','At the end of the contract'],c:1,fb:{y:'Correct! Setting expectations early prevents misunderstandings later.',n:'Expectations should be set during the onboarding process, early on — don'}},
+    {q:'What does ',opts:['To give a gift','To transfer responsibility to another person','To wave goodbye','To finish a project'],c:1,fb:{y:'That',n:'\'To hand over'}},
+    {q:'What is a ',opts:['A hotel procedure','A regular meeting to review progress','A security check','A payment'],c:1,fb:{y:'Correct! A check-in is a regular meeting to review progress and maintain the relationship.',n:'In client management, a '}},
+    {q:'Which phrase sets clear expectations?',opts:['We',',',',','t worry about details','It depends'],c:1,fb:{y:'Well done! This phrase is specific, measurable, and sets a clear expectation.',n:'\'You can expect a weekly status update every Friday'}},
+  ]},
+  {lesson:'Handling Complaints',file:'handling-complaints.html',module:'06',moduleName:'Sales & Client Management',questions:[
+    {q:'What is the first step in handling a complaint?',opts:['Offer a discount immediately','Listen and acknowledge the issue','Transfer to another department','Ask the client to calm down'],c:1,fb:{y:'Correct! Listening and acknowledging the issue shows the client you take their concern seriously.',n:'The first step is to listen and acknowledge the issue — this builds trust before moving to a solution.'}},
+    {q:'Which phrase shows empathy?',opts:['That',',',',',','],c:1,fb:{y:'Right! ',n:'\'I understand your frustration'}},
+    {q:'What is a ',opts:['A handshake','A voluntary act to maintain a positive relationship','A legal requirement','A marketing tactic'],c:1,fb:{y:'Exactly! A goodwill gesture is a voluntary act to show you value the relationship.',n:'A goodwill gesture is a voluntary act to maintain a positive relationship with the client.'}},
+    {q:'What does it mean to ',opts:['To make it worse','To raise it to a higher level of authority','To ignore it','To close the ticket'],c:1,fb:{y:'Correct! Escalating means raising the issue to someone with more authority to resolve it.',n:'To escalate means to raise an issue to a higher level of authority for resolution.'}},
+    {q:'Which response is most professional?',opts:['That',',',',','ll have to wait','I don'],c:1,fb:{y:'Well done! Taking ownership shows professionalism and builds client confidence.',n:'The most professional response is to take ownership: '}},
+    {q:'What is ',opts:['Recovering lost data','Turning a negative experience into a positive one','Restarting a service','A backup system'],c:1,fb:{y:'Right! Service recovery is about turning a complaint into a positive experience.',n:'Service recovery is the process of turning a negative customer experience into a positive one.'}},
+    {q:'When should you follow up after resolving a complaint?',opts:['Never — the case is closed','Always — to confirm satisfaction','Only if the client contacts you again','After 6 months'],c:1,fb:{y:'Correct! Always follow up to ensure the client is satisfied with the resolution.',n:'You should always follow up after resolving a complaint to confirm the client'}},
+    {q:'What does ',opts:['To stay at a hotel','To formally submit a complaint','To ignore a problem','To resolve an issue'],c:1,fb:{y:'Exactly! To lodge a complaint means to formally submit it.',n:'\'To lodge a complaint'}},
+    {q:'What is an SLA breach?',opts:['A security issue','Failure to meet agreed service standards','A contract renewal','A new service launch'],c:1,fb:{y:'Right! An SLA breach occurs when agreed service standards are not met.',n:'An SLA breach is a failure to meet the agreed service level standards.'}},
+    {q:'Which phrase is appropriate when apologising?',opts:['Sorry, not sorry','I sincerely apologise for the inconvenience','It',','],c:1,fb:{y:'Correct! This is a professional and sincere way to apologise.',n:'\'I sincerely apologise for the inconvenience'}},
+  ]},
+  {lesson:'Upselling & Cross-selling',file:'upselling-crossselling.html',module:'06',moduleName:'Sales & Client Management',questions:[
+    {q:'What is the difference between upselling and cross-selling?',opts:['They are the same thing','Upselling offers upgrades; cross-selling offers complementary products','Cross-selling is more expensive','Upselling is illegal'],c:1,fb:{y:'Correct! Upselling focuses on upgrades, while cross-selling suggests complementary products.',n:'Upselling means offering upgrades; cross-selling means suggesting complementary products.'}},
+    {q:'When is the best time to suggest an upgrade?',opts:['During a complaint','When the client has expressed satisfaction or a need','At random','After they cancel'],c:1,fb:{y:'Right! The best time is when the client is satisfied or has identified a need you can solve.',n:'The best time to suggest is when the client has expressed satisfaction or identified a need.'}},
+    {q:'Which phrase is appropriately soft for suggesting?',opts:['You have to buy this','You might find it useful to consider…','You',','],c:1,fb:{y:'Well done! Soft, non-pushy language like this builds trust and feels respectful.',n:'Use soft language like '}},
+    {q:'What is a ',opts:['A single product','A package of products sold together','A type of discount code','A marketing email'],c:1,fb:{y:'That',n:'A bundle is a package of products sold together, usually at a discounted price.'}},
+    {q:'What is a ',opts:['A traffic light','A cue that the client is ready to purchase','A sales report','A notification'],c:1,fb:{y:'Correct! Buying signals are verbal or behavioural cues that indicate readiness to buy.',n:'A buying signal is a cue — verbal or behavioural — that the client is ready to purchase.'}},
+    {q:'What does ',opts:['To say something nice','To go well together with another product','To compete with','To replace'],c:1,fb:{y:'Exactly! In sales, ',n:'\'To complement'}},
+    {q:'What is ARPU?',opts:['A type of software','Average Revenue Per User','Annual Report for Public Use','A customer segment'],c:1,fb:{y:'Right! ARPU stands for Average Revenue Per User — a key sales metric.',n:'ARPU stands for Average Revenue Per User — the average income generated per customer.'}},
+    {q:'Which approach is best when a client says no?',opts:['Keep pushing','Accept gracefully and move on','Offer a bigger discount immediately','Ignore their response'],c:1,fb:{y:'Correct! Respecting a ',n:'When a client says no, accept gracefully and move on — pushing damages trust.'}},
+    {q:'What is ',opts:['Remembering information','Keeping existing customers over time','A type of training','A legal contract'],c:1,fb:{y:'That',n:'Retention in business means keeping existing customers over time.'}},
+    {q:'Why is social proof effective in upselling?',opts:['It',',','Many clients find…',',','s the cheapest technique','It avoids conversation'],c:1,fb:{y:'Correct! Social proof like ',n:'Social proof works because phrases like '}},
+  ]},
+  {lesson:'Financial English',file:'financial-english.html',module:'07',moduleName:'Finance & Numbers',questions:[
+    {q:'What is revenue?',opts:['Profit after expenses','Total income from sales before deductions','Money in the bank','Shareholder equity'],c:1,fb:{y:'Correct! Revenue is the total income from sales before any deductions.',n:'Revenue is the total income from sales before any deductions are made.'}},
+    {q:'What is the formula for net profit?',opts:['Revenue + expenses','Revenue minus all expenses','Assets minus liabilities','Cash in minus cash out'],c:1,fb:{y:'That',n:'Net profit = revenue minus ALL expenses (COGS, OPEX, taxes, etc.).'}},
+    {q:'What are ',opts:['Bills to pay','Money owed to the company by customers','Bank statements','Tax returns'],c:1,fb:{y:'Correct! Accounts receivable is money that customers owe to the company.',n:'Accounts receivable refers to money owed to the company by its customers.'}},
+    {q:'What is the difference between OPEX and CAPEX?',opts:['They are the same','OPEX is day-to-day costs; CAPEX is long-term investment','OPEX is larger','CAPEX is monthly'],c:1,fb:{y:'Right! OPEX covers daily operations while CAPEX is for long-term asset investment.',n:'OPEX refers to day-to-day operating costs, while CAPEX is investment in long-term assets.'}},
+    {q:'What does a balance sheet show?',opts:['Only profits','Assets, liabilities, and equity','Monthly expenses','Employee salaries'],c:1,fb:{y:'Exactly! A balance sheet presents assets, liabilities, and equity at a point in time.',n:'A balance sheet shows three things: assets (what a company owns), liabilities (what it owes), and equity (the owners'}},
+    {q:'What does ',opts:['How much water a company uses','The ability to meet short-term obligations','Total revenue','Market share'],c:1,fb:{y:'Correct! Liquidity measures a company',n:'Liquidity measures a company'}},
+    {q:'What is ',opts:['Total revenue','Revenue minus COGS as a percentage','Net profit','Operating expenses'],c:1,fb:{y:'That',n:'Gross margin = (Revenue - COGS) / Revenue, expressed as a percentage.'}},
+    {q:'What does ',opts:['Increase in value','The decrease in value of an asset over time','A type of tax','A payment method'],c:1,fb:{y:'Correct! Depreciation is the gradual decrease in an asset',n:'Depreciation refers to the decrease in value of an asset over time due to wear, age, or obsolescence.'}},
+    {q:'What is a ',opts:['A calendar year','A 12-month period used for financial reporting','A tax deadline','A budget cycle'],c:1,fb:{y:'Right! A fiscal year is a 12-month period used for accounting and financial reporting.',n:'A fiscal year is a 12-month period that a company uses for financial reporting — it may or may not align with the calendar year.'}},
+    {q:'What does ',opts:['Water usage','The movement of money in and out of a business','Employee hours','Stock prices'],c:1,fb:{y:'Exactly! Cash flow tracks all the money coming into and going out of a business.',n:'Cash flow tracks the movement of money in and out of a business over a given period.'}},
+  ]},
+  {lesson:'Talking About Data',file:'talking-about-data.html',module:'07',moduleName:'Finance & Numbers',questions:[
+    {q:'Which verb describes a sharp upward movement?',opts:['Plateau','Surge','Fluctuate','Decline'],c:1,fb:{y:'Correct! ',n:'\'Surge'}},
+    {q:'What does ',opts:['To drop suddenly','To reach a level and remain flat','To increase sharply','To disappear'],c:1,fb:{y:'Right! To plateau means to reach a level and stay there without further change.',n:'\'To plateau'}},
+    {q:'How do you correctly describe a 10% increase?',opts:['\\','",','Sales rose with 10%\\',',','Sales rose in 10%\\',',','Sales rose at 10%\\'],c:0,fb:{y:'Correct! ',n:'The correct form is '}},
+    {q:'What is a KPI?',opts:['A type of chart','A measurable value tracking progress','A financial report','A presentation tool'],c:1,fb:{y:'That',n:'A KPI (Key Performance Indicator) is a measurable value that tracks progress toward a goal.'}},
+    {q:'Which phrase introduces a chart reference?',opts:['\\','",','As shown in Figure 2…\\',',','Here','",','Check this out\\'],c:1,fb:{y:'Correct! ',n:'Use '}},
+    {q:'What does ',opts:['To keep accounts','To represent a proportion of a total','To explain a mistake','To create an account'],c:1,fb:{y:'Right! In data context, ',n:'When discussing data, '}},
+    {q:'What is the difference between ',opts:['No difference','\'By','to',',','To',',','By'],c:1,fb:{y:'Exactly! ',n:'\'By 10%'}},
+    {q:'What does ',opts:['To stay constant','To rise and fall irregularly','To increase steadily','To decrease slowly'],c:1,fb:{y:'Correct! To fluctuate means to rise and fall irregularly over time.',n:'\'To fluctuate'}},
+    {q:'What is NPS?',opts:['Net Profit Share','Net Promoter Score','New Product Sales','National Payment System'],c:1,fb:{y:'That',n:'NPS stands for Net Promoter Score, a key metric for measuring customer satisfaction.'}},
+    {q:'Which approach is best when presenting data?',opts:['Show all the numbers at once','Lead with the insight, then show supporting data','Only use tables','Avoid percentages'],c:1,fb:{y:'Correct! Leading with the insight helps your audience understand the significance of the data.',n:'The best approach is to lead with the insight, then show the supporting data.'}},
+  ]},
+  {lesson:'Budgets & Forecasting',file:'budgets-forecasting.html',module:'07',moduleName:'Finance & Numbers',questions:[
+    {q:'What is a \\',opts:['A type of budget','The difference between budgeted and actual figures','A financial forecast','A spending limit'],c:1,fb:{y:'Correct! Variance measures how actual results compare to what was budgeted.',n:'A variance is the difference between budgeted and actual figures.'}},
+    {q:'What does \\',opts:['A budget cut','Actual results are better than planned','A positive forecast','Extra funding'],c:1,fb:{y:'That',n:'Favourable variance means actual results are better than what was planned.'}},
+    {q:'Which phrase is best for requesting budget approval?',opts:['\\','",','I','",','We need cash\\',',','Spend whatever is needed\\'],c:1,fb:{y:'Correct! This is professional, specific, and appropriate for a budget request.',n:'Use a professional, specific phrase like '}},
+    {q:'What is a \\',opts:['Monthly expenses','A reserve for unexpected costs','The main budget','A type of forecast'],c:1,fb:{y:'Right! A contingency budget is set aside for unforeseen expenses.',n:'A contingency budget is a reserve of funds kept for unexpected costs.'}},
+    {q:'What does \\',opts:['Breaking the budget','The point where revenue equals costs','Going bankrupt','Exceeding targets'],c:1,fb:{y:'Exactly! Break-even is when revenue matches costs — no profit, no loss.',n:'Break-even is the point where revenue equals costs.'}},
+    {q:'Which hedging phrase is appropriate for forecasts?',opts:['\\','",','We anticipate growth of approximately 12%\\',',','I guarantee the results\\',',','Trust me on this\\'],c:1,fb:{y:'Well done! Hedging language like ',n:'Use hedging language like '}},
+    {q:'What is a \\',opts:['Running fast','Spending more than budgeted','A type of expense','A cost reduction'],c:1,fb:{y:'Correct! A cost overrun occurs when actual spending exceeds the budget.',n:'A cost overrun means spending more than the budgeted amount.'}},
+    {q:'What does \\',opts:['To cancel a budget','To move funds from one area to another','To increase all budgets','To audit expenses'],c:1,fb:{y:'That',n:'To reallocate means to move funds from one area to another.'}},
+    {q:'What is \\',opts:['Counting heads in a meeting','The number of employees','A type of KPI','A budget category'],c:1,fb:{y:'Correct! Headcount refers to the number of employees in a team or company.',n:'Headcount is the number of employees in a team or company.'}},
+    {q:'Which approach is best when presenting a forecast?',opts:['Only show the best-case scenario','Present both optimistic and conservative estimates','Avoid numbers','Use only last year'],c:1,fb:{y:'Right! Presenting both scenarios shows thoroughness and credibility.',n:'Always present both optimistic and conservative estimates to show balanced analysis.'}},
+  ]},
+  {lesson:'Invoice & Payment Terms',file:'invoice-payment.html',module:'07',moduleName:'Finance & Numbers',questions:[
+    {q:'What does \\',opts:['30% discount','Payment due within 30 days','30 items minimum','30-day trial'],c:1,fb:{y:'Correct! Net 30 means the full payment is due within 30 days of the invoice date.',n:'Net 30 means payment is due within 30 days of the invoice date.'}},
+    {q:'What is a \\',opts:['A type of loan','A document reducing the amount owed','A receipt','A bank statement'],c:1,fb:{y:'That',n:'A credit note is a document that reduces the amount owed on an invoice.'}},
+    {q:'What does \\',opts:['An excellent balance','The amount still owed','A bank balance','Extra credit'],c:1,fb:{y:'Correct! Outstanding balance refers to the amount that has not yet been paid.',n:'Outstanding balance means the amount still owed — not yet paid.'}},
+    {q:'What is VAT?',opts:['A type of invoice','Value Added Tax','Variable Annual Total','Vendor Account Terms'],c:1,fb:{y:'Right! VAT stands for Value Added Tax, a consumption tax added to the price.',n:'VAT stands for Value Added Tax — a consumption tax added to the price of goods or services.'}},
+    {q:'Which phrase is appropriate for a first payment reminder?',opts:['\\','",','This is a friendly reminder that payment is due\\',',','We demand immediate payment\\',',','You'],c:1,fb:{y:'Well done! A first reminder should be friendly and professional.',n:'A first payment reminder should be friendly and professional: '}},
+    {q:'What is a \\',opts:['A professional invoice','A preliminary invoice sent before delivery','A final demand','A tax document'],c:1,fb:{y:'Correct! A pro forma invoice is sent before goods or services are delivered.',n:'A pro forma invoice is a preliminary invoice sent before goods or services are delivered.'}},
+    {q:'What does \\',opts:['A type of invoice','The act of sending payment','A reminder','A refund'],c:1,fb:{y:'That',n:'Remittance means the act of sending payment.'}},
+    {q:'What is a \\',opts:['A queue at the bank','An individual entry on an invoice','A type of product','A payment method'],c:1,fb:{y:'Correct! A line item is an individual entry on an invoice detailing a product or service.',n:'A line item is an individual entry on an invoice.'}},
+    {q:'What does \\',opts:['To open a new account','To pay all amounts owed','To close a bank','To dispute charges'],c:1,fb:{y:'Right! To settle an account means to pay all outstanding amounts.',n:'To settle an account means to pay all amounts owed.'}},
+    {q:'When should invoices be sent?',opts:['Only when asked','Promptly after delivering goods or services','At the end of the year','Only for large amounts'],c:1,fb:{y:'Correct! Invoices should be sent promptly — the sooner you invoice, the sooner you get paid.',n:'Invoices should be sent promptly after delivering goods or services.'}},
+  ]},
+  {lesson:'Tech English for Non-Developers',file:'tech-english.html',module:'08',moduleName:'Technology & Digital',questions:[
+    {q:'What does ',opts:['The database and server logic','The user-facing part of a website or app','The deployment process','The testing environment'],c:1,fb:{y:'Correct! Frontend is everything the user sees and interacts with.',n:'Frontend refers to the user-facing part of a website or application — what you see on screen.'}},
+    {q:'What is an API?',opts:['A type of programming language','A software bug','An interface that connects different software systems','A cloud hosting provider'],c:2,fb:{y:'Right! APIs allow different software systems to communicate with each other.',n:'An API (Application Programming Interface) is an interface that connects different software systems.'}},
+    {q:'What does ',opts:['Most Valuable Player','Minimum Viable Product','Maximum Version Protocol','Main Version Platform'],c:1,fb:{y:'Correct! MVP means the simplest version of a product that can be launched.',n:'MVP stands for Minimum Viable Product — the simplest version you can launch with to test your idea.'}},
+    {q:'What is ',opts:['The live environment users interact with','A planning meeting','A test environment that mirrors production','The design phase of a project'],c:2,fb:{y:'That',n:'Staging is a test environment that mirrors production — it'}},
+    {q:'What is a ',opts:['A quick bug fix','A fixed development period, usually 1–2 weeks','A type of deployment','Running code very fast'],c:1,fb:{y:'Correct! Sprints are fixed time periods used to plan and deliver work incrementally.',n:'A sprint is a fixed development period (usually 1–2 weeks) used in agile methodology.'}},
+    {q:'What does ',opts:['Testing the software internally','Releasing code to the live environment','Deleting old code','Creating a backup'],c:1,fb:{y:'Right! Deploying to production means making changes available to real users.',n:'Deploying to production means releasing code to the live environment where real users interact with it.'}},
+    {q:'What is a ',opts:['Going back to an older version','A new bug introduced by a recent fix or change','A type of database query','A performance improvement'],c:1,fb:{y:'Exactly! A regression is when a fix or change accidentally introduces a new bug.',n:'A regression is a new bug caused by a recent fix or change — something that used to work now doesn'}},
+    {q:'What does ',opts:['The speed of an application','The ability to handle increased demand or growth','The size of the codebase','How many developers work on a project'],c:1,fb:{y:'Correct! Scalability is about a system',n:'Scalability refers to a system'}},
+    {q:'What is ',opts:['Time spent debugging code','A period when a system or service is unavailable','The time between sprints','When developers take breaks'],c:1,fb:{y:'Right! Downtime is when a system is unavailable, often during maintenance or outages.',n:'Downtime is a period when a system or service is unavailable to users.'}},
+    {q:'Which is the best way to report a problem to a developer?',opts:['\'The thing is broken, please fix it.',',','The login page crashes on Safari mobile when I tap Submit — I see a white screen instead of a confirmation.',',','Something weird is happening on the website.',',','The website doesn'],c:1,fb:{y:'Well done! Being specific about what, where, and when helps developers find and fix the issue faster.',n:'Be specific: describe what you did, what happened, and what you expected. Vague reports slow down fixes.'}},
+  ]},
+  {lesson:'Cybersecurity Vocabulary',file:'cybersecurity-vocab.html',module:'08',moduleName:'Technology & Digital',questions:[
+    {q:'What is ',opts:['A type of firewall configuration','Fraudulent messages designed to steal sensitive information','A method for encrypting data','A password management technique'],c:1,fb:{y:'Correct! Phishing uses deceptive messages to trick people into revealing sensitive data.',n:'Phishing refers to fraudulent messages (emails, texts) designed to steal sensitive information like passwords or credit card numbers.'}},
+    {q:'What does MFA stand for?',opts:['Multiple File Access','Main Firewall Application','Multi-Factor Authentication','Managed Fraud Alert'],c:2,fb:{y:'Right! MFA adds extra layers of verification beyond just a password.',n:'MFA stands for Multi-Factor Authentication — it requires multiple forms of verification to log in.'}},
+    {q:'What is a ',opts:['A scheduled data backup','Unauthorised access to confidential data','A software update','A type of encryption'],c:1,fb:{y:'Correct! A data breach is when confidential information is accessed without authorisation.',n:'A data breach occurs when someone gains unauthorised access to confidential or sensitive data.'}},
+    {q:'What does a firewall do?',opts:['Encrypts all company emails','Monitors and controls network traffic to block threats','Manages employee passwords','Backs up data automatically'],c:1,fb:{y:'That',n:'A firewall monitors and controls incoming and outgoing network traffic based on security rules.'}},
+    {q:'What is ',opts:['Software that speeds up your computer','A tool for managing passwords','Malware that locks your data and demands payment','An antivirus program'],c:2,fb:{y:'Correct! Ransomware encrypts your files and demands money to restore access.',n:'Ransomware is a type of malware that encrypts your data and demands a ransom payment to unlock it.'}},
+    {q:'What does GDPR regulate?',opts:['Global software development','Data protection and privacy in the EU','Internet speed standards','Cloud computing services'],c:1,fb:{y:'Well done! GDPR is the EU',n:'GDPR (General Data Protection Regulation) regulates data protection and privacy for individuals in the European Union.'}},
+    {q:'What is a ',opts:['A physical repair to hardware','A software update that fixes vulnerabilities','A type of malware','A network cable connector'],c:1,fb:{y:'Exactly! Patches fix security vulnerabilities and bugs in software.',n:'A patch is a software update specifically designed to fix bugs or security vulnerabilities.'}},
+    {q:'What is ',opts:['A phishing attack targeted at a specific person or organisation','Fishing on the internet','A general spam email campaign','A type of firewall'],c:0,fb:{y:'Right! Spear phishing is personalised and targeted, making it more dangerous than generic phishing.',n:'Spear phishing is a targeted phishing attack aimed at a specific individual or organisation, using personal details to appear legitimate.'}},
+    {q:'What does VPN stand for?',opts:['Very Private Network','Virtual Protected Node','Virtual Private Network','Verified Personal Network'],c:2,fb:{y:'Correct! A VPN encrypts your internet connection for privacy and security.',n:'VPN stands for Virtual Private Network — it creates a secure, encrypted connection over the internet.'}},
+    {q:'What should you do if you receive a suspicious email?',opts:['Click the link to verify if it',',',',','re not sure','Delete it and forget about it'],c:2,fb:{y:'That',n:'You should report suspicious emails to your IT department immediately — even if you'}},
+  ]},
+  {lesson:'AI & Automation Terms',file:'ai-automation.html',module:'08',moduleName:'Technology & Digital',questions:[
+    {q:'What does ',opts:['Automated Integration','Artificial Intelligence','Advanced Interface','Algorithmic Input'],c:1,fb:{y:'Correct! AI stands for Artificial Intelligence — systems that simulate human intelligence.',n:'AI stands for Artificial Intelligence — systems designed to simulate human intelligence.'}},
+    {q:'What is ',opts:['Teaching machines to read','AI that learns and improves from data','A type of computer hardware','Software for creating presentations'],c:1,fb:{y:'Right! Machine learning is a subset of AI where systems learn and improve from data without being explicitly programmed.',n:'Machine learning is AI that learns and improves automatically through experience and data.'}},
+    {q:'What does ',opts:['New Language Program','Natural Language Processing','Network Learning Protocol','Neural Logic Processing'],c:1,fb:{y:'Exactly! NLP enables AI to understand and process human language.',n:'NLP stands for Natural Language Processing — it'}},
+    {q:'What is ',opts:['Rapid Programming Application','Remote Personal Assistant','Robotic Process Automation','Real-time Performance Analysis'],c:2,fb:{y:'Correct! RPA uses software bots to automate repetitive, rule-based tasks.',n:'RPA stands for Robotic Process Automation — software bots that handle repetitive tasks.'}},
+    {q:'What is an AI ',opts:['When AI sees images','When AI generates incorrect information confidently','When AI crashes','When AI runs too slowly'],c:1,fb:{y:'That',n:'An AI hallucination is when the system generates incorrect or fabricated information confidently.'}},
+    {q:'What does ',opts:['Humans working in circles','Keeping humans involved in AI decision-making','Training humans to behave like AI','Replacing humans with AI'],c:1,fb:{y:'Correct! Human-in-the-loop ensures people remain part of the AI decision process.',n:'Human-in-the-loop means keeping humans involved in AI-driven decisions for oversight and accountability.'}},
+    {q:'What is ',opts:['AI that generates electricity','AI that creates new content like text, images, or code','AI that only analyses data','AI used exclusively in manufacturing'],c:1,fb:{y:'Right! Generative AI creates new content — text, images, code, and more.',n:'Generative AI is AI that creates new content such as text, images, or code.'}},
+    {q:'What is ',opts:['A type of algorithm','Unfair patterns in AI decisions based on flawed data','A programming language','An AI training method'],c:1,fb:{y:'Exactly! AI bias leads to unfair outcomes when the training data or design contains prejudices.',n:'In AI, bias refers to unfair patterns in decisions that result from flawed or unrepresentative data.'}},
+    {q:'What is a ',opts:['An error message','A type of neural network','An instruction or input given to an AI system','A security feature'],c:2,fb:{y:'Correct! A prompt is the instruction you give to an AI to get a desired output.',n:'A prompt is an instruction or input given to an AI system to generate a response.'}},
+    {q:'What does ',opts:['AI managing a government','Policies and rules for responsible AI use','AI replacing managers','The speed at which AI operates'],c:1,fb:{y:'Right! AI governance ensures AI is used responsibly, ethically, and transparently.',n:'AI governance refers to policies and frameworks for the responsible and ethical use of AI.'}},
+  ]},
+  {lesson:'SaaS & Cloud Vocabulary',file:'saas-cloud.html',module:'08',moduleName:'Technology & Digital',questions:[
+    {q:'What does SaaS stand for?',opts:['Software and a Service','Software as a Service','System as a Service','Storage as a Service'],c:1,fb:{y:'Correct! SaaS stands for Software as a Service — ready-to-use applications accessed via browser.',n:'SaaS stands for Software as a Service — applications you access through your browser without installing locally.'}},
+    {q:'Which of these is an example of IaaS (Infrastructure as a Service)?',opts:['Google Docs','Salesforce','AWS EC2 (virtual servers)','Zapier'],c:2,fb:{y:'Right! AWS EC2 provides virtual servers — that',n:'IaaS provides raw computing infrastructure like servers and storage. AWS EC2 is a classic example.'}},
+    {q:'What does ',opts:['The price depends on office furniture','You pay based on the number of users','You pay for each computer in the office','The price is fixed regardless of usage'],c:1,fb:{y:'Exactly! Per-seat pricing means you pay for each user who accesses the software.',n:'Per-seat pricing means the cost is based on the number of users (seats) who will use the software.'}},
+    {q:'What is an API?',opts:['A type of cloud server','An Annual Payment Invoice','An Application Programming Interface','An Automated Process Integration'],c:2,fb:{y:'Correct! An API (Application Programming Interface) enables different software systems to communicate with each other.',n:'API stands for Application Programming Interface — it'}},
+    {q:'What does ',opts:['How long employees work each day','The percentage of time a service is available','How fast a website loads','The time it takes to set up software'],c:1,fb:{y:'Right! Uptime is the percentage of time a service is operational and accessible.',n:'Uptime measures the percentage of time a service is available — for example, 99.9% uptime means very little downtime.'}},
+    {q:'What is a ',opts:['Everything is free forever','A free trial that expires after 30 days','A free basic version with paid premium features','A premium product with no free option'],c:2,fb:{y:'Correct! Freemium offers a free basic version while charging for advanced features.',n:'Freemium = free + premium. The basic version is free, but you pay for advanced features and capabilities.'}},
+    {q:'What does SLA stand for?',opts:['Software License Agreement','Service Level Agreement','System Launch Authorization','Standard Legal Arrangement'],c:1,fb:{y:'Right! An SLA (Service Level Agreement) defines guaranteed performance terms like uptime percentages.',n:'SLA stands for Service Level Agreement — it guarantees specific performance metrics like 99.9% uptime.'}},
+    {q:'What does ',opts:['Moving offices to a new building','Switching from one email provider to another','Moving data and systems from one platform to another','Upgrading your internet connection'],c:2,fb:{y:'Correct! Cloud migration means moving data, applications, or systems from one platform (often on-premise) to another (often cloud).',n:'Migration means moving data and systems from one platform to another — for example, from on-premise servers to the cloud.'}},
+    {q:'What is a webhook?',opts:['A tool for building websites','An automated notification sent between systems when an event occurs','A type of cloud storage','A security certification'],c:1,fb:{y:'Exactly! A webhook is an automated message sent from one system to another when a specific event happens.',n:'A webhook is an automated notification between systems — when something happens in System A, it automatically notifies System B.'}},
+    {q:'Why is scalability important for cloud services?',opts:['It makes the software cheaper','It allows the system to grow without losing performance','It improves the user interface design','It reduces the number of integrations needed'],c:1,fb:{y:'Right! Scalability ensures your system can handle growth — more users, more data — without performance degradation.',n:'Scalability means the ability to grow (more users, more data) without losing performance — a key advantage of cloud services.'}},
+  ]},
+  {lesson:'Leadership Language',file:'leadership-language.html',module:'09',moduleName:'Leadership & Strategy',questions:[
+    {q:'Which pronoun should leaders use more often to foster a sense of teamwork?',opts:['I','You','We','They'],c:2,fb:{y:'Correct! ',n:'Leaders should use '}},
+    {q:'What is the best way to communicate a company vision?',opts:['Use vague, aspirational buzzwords','Be specific and paint a clear picture of the future','Keep it secret and only share with executives','Change it every quarter to stay flexible'],c:1,fb:{y:'Right! A good vision statement is specific and paints a clear picture of the future.',n:'Vision statements should be specific and paint a clear picture — avoid vague buzzwords.'}},
+    {q:'What does ',opts:['Purchasing shares in a company','Agreement and support from others for a plan','Forcing people to follow orders','A type of negotiation tactic'],c:1,fb:{y:'Exactly! Buy-in means getting agreement and support from stakeholders.',n:'\'Buy-in'}},
+    {q:'Which phrase best demonstrates empowerment?',opts:['Do exactly what I tell you','Check with me before every decision','You have full ownership of this project','I'],c:2,fb:{y:'That',n:'Empowerment means giving ownership, not just tasks — '}},
+    {q:'How should a leader address a missed deadline?',opts:['Publicly blame the person responsible','Ignore it and hope it doesn',',',','],c:2,fb:{y:'Correct! Good leaders seek to understand and support, not blame.',n:'Leaders should discuss what happened and offer support — accountability with clarity, not blame.'}},
+    {q:'What does ',opts:['Everyone sitting in a straight line','Everyone working toward the same goals','Everyone agreeing with the leader without question','A type of team-building exercise'],c:1,fb:{y:'Well done! Alignment ensures everyone is working toward shared objectives.',n:'Alignment means ensuring everyone on the team is working toward the same goals.'}},
+    {q:'Which is an example of specific praise?',opts:['Good work','Nice job','Great job on the client presentation — your data analysis was outstanding','You'],c:2,fb:{y:'Exactly! Specific praise tells people exactly what they did well.',n:'Specific praise beats generic praise — tell people exactly what they did well.'}},
+    {q:'What does ',opts:['Doing everything yourself to ensure quality','Assigning tasks and authority to others','Avoiding responsibility','Only giving easy tasks to your team'],c:1,fb:{y:'Correct! Delegation means assigning both tasks and the authority to complete them.',n:'Delegation means assigning tasks AND authority to others — not just giving orders.'}},
+    {q:'Why should leaders communicate the ',opts:['To waste time in meetings','Because people follow purpose, not orders','To show off their knowledge','It'],c:1,fb:{y:'Right! People are more motivated when they understand the purpose behind their work.',n:'People follow purpose, not orders — communicating the '}},
+    {q:'What is ',opts:['Sharing every single detail, including confidential information','Being invisible to your team','Open and honest communication with no hidden agendas','Only communicating good news'],c:2,fb:{y:'That',n:'Transparency means open and honest communication with no hidden agendas.'}},
+  ]},
+  {lesson:'Change Management',file:'change-management.html',module:'09',moduleName:'Leadership & Strategy',questions:[
+    {q:'What does ',opts:['Changing the company',',',',',','],c:1,fb:{y:'Correct! Change management is the structured approach to transitioning individuals, teams, and organisations.',n:'Change management refers to the process of guiding an organisation through transitions — not replacing managers.'}},
+    {q:'Which type of change involves reorganising teams or departments?',opts:['Cultural change','Technological change','Structural change','Process change'],c:2,fb:{y:'Right! Structural change involves reorganising teams, departments, or reporting lines.',n:'Reorganising teams or departments is a structural change.'}},
+    {q:'What is ',opts:['Purchasing new equipment','Agreement and support from people involved','A type of business acquisition','Buying shares in a company'],c:1,fb:{y:'Exactly! Buy-in means getting agreement and support from the people affected by the change.',n:'\'Buy-in'}},
+    {q:'Which phrase is most appropriate when addressing someone',opts:['You need to just accept it','Your concerns are valid — let',',','t up for discussion','Everyone else is fine with it'],c:1,fb:{y:'Well done! Acknowledging concerns and offering collaboration is the best approach to managing resistance.',n:'The best approach is to validate concerns: '}},
+    {q:'What does ',opts:['To cancel a project','To introduce or launch something new gradually','To roll back a change','To finish a project quickly'],c:1,fb:{y:'Correct! ',n:'\'To roll out'}},
+    {q:'What is a ',opts:['A fast business deal','An early, visible success that builds momentum','Winning an argument quickly','A shortcut to avoid proper planning'],c:1,fb:{y:'Right! Quick wins are early successes that build confidence and momentum for larger changes.',n:'A quick win is an early, visible success that builds momentum and confidence during a change process.'}},
+    {q:'What should you communicate when announcing a change?',opts:['Only the ','",','when',',','what','why','how','when',','],c:2,fb:{y:'Exactly! Effective change communication addresses what is changing, why, how it will happen, and when.',n:'You should address all four: the '}},
+    {q:'What does ',opts:['To cancel something gradually','To introduce something step by step over time','To phase out an old system','To do everything at once'],c:1,fb:{y:'Correct! ',n:'\'To phase in'}},
+    {q:'What is a ',opts:['A repeated complaint','A system for continuously receiving and acting on input','An email chain that goes in circles','A type of performance review'],c:1,fb:{y:'Well done! A feedback loop is a system for continuously gathering input and using it to improve.',n:'A feedback loop is a system for continuously receiving and acting on input to improve processes.'}},
+    {q:'Who is a ',opts:['The CEO only','A person who actively promotes and supports a change','Someone who resists change','An external consultant'],c:1,fb:{y:'Right! A champion of change is someone who actively promotes, supports, and advocates for a change initiative.',n:'A champion of change is a person who actively promotes and supports a change — they can be at any level of the organisation.'}},
+  ]},
+  {lesson:'OKRs & Goal Setting',file:'okrs-goal-setting.html',module:'09',moduleName:'Leadership & Strategy',questions:[
+    {q:'What does the ',opts:['Output','Objective','Opportunity','Outcome'],c:1,fb:{y:'Correct! OKR stands for Objectives and Key Results.',n:'The '}},
+    {q:'Which of the following is a well-written Key Result?',opts:['Improve customer satisfaction','Make customers happier','Increase NPS score from 45 to 60 by end of Q2','Work on customer experience'],c:2,fb:{y:'Right! Key Results must be specific and measurable with a clear target.',n:'A good Key Result is quantitative and measurable — '}},
+    {q:'What does the ',opts:['Motivating','Manageable','Measurable','Meaningful'],c:2,fb:{y:'Exactly! Measurable means you can track progress with numbers or clear evidence.',n:'The '}},
+    {q:'How often are OKRs typically set?',opts:['Weekly','Monthly','Quarterly','Annually'],c:2,fb:{y:'Correct! OKRs are most commonly set on a quarterly basis.',n:'OKRs are typically set quarterly — every three months — to maintain focus and adaptability.'}},
+    {q:'What does ',opts:['Abandoning goals that aren',',',',',','],c:1,fb:{y:'Well done! Cascading ensures alignment from company strategy down to individual contributors.',n:'Cascading means passing goals down through levels: company → department → team → individual.'}},
+    {q:'In a traffic light OKR review, what does ',opts:['The goal has been achieved','The goal is on track','The goal is at risk','The goal has been abandoned'],c:2,fb:{y:'Right! Amber means the goal is at risk and may need attention or course-correction.',n:'In the traffic light system, amber means '}},
+    {q:'What is a ',opts:['A goal that is easy to achieve','An ambitious target that pushes beyond comfort zones','A goal you set after missing the original one','A fitness-related workplace initiative'],c:1,fb:{y:'Correct! Stretch goals encourage teams to aim high, even if they don',n:'A stretch goal is an ambitious target designed to push teams beyond what seems easily achievable.'}},
+    {q:'What is the ideal number of Objectives per quarter?',opts:['1','3 to 5','10 to 15','As many as possible'],c:1,fb:{y:'That',n:'Best practice is 3-5 objectives per quarter — too many OKRs dilute focus.'}},
+    {q:'What is the difference between a KR and a task?',opts:['There is no difference','A KR measures an outcome; a task is an activity','A task is more important than a KR','KRs are for managers; tasks are for employees'],c:1,fb:{y:'Exactly! KRs measure outcomes (the result), while tasks describe activities (the work).',n:'Key Results measure outcomes — the impact of your work. Tasks are activities you do to get there.'}},
+    {q:'What does ',opts:['A metric that only executives can see','The single most important metric reflecting core value delivery','A metric used only in astronomy companies','The first KPI you ever tracked'],c:1,fb:{y:'Correct! The north star metric is the one number that best captures the value your product delivers.',n:'A north star metric is the single most important metric that reflects the core value your product or company delivers.'}},
+  ]},
+  {lesson:'Decision-Making Language',file:'decision-making.html',module:'09',moduleName:'Leadership & Strategy',questions:[
+    {q:'Which phrase is best for proposing a decision in a professional meeting?',opts:['I think we should just do it','Having considered the options, I recommend…','Let',',','t we wing it?'],c:1,fb:{y:'Correct! This phrase shows you',n:'\'Having considered the options, I recommend…'}},
+    {q:'What does ',opts:['A type of meeting','The reasons or logic behind a decision','A financial report','A deadline'],c:1,fb:{y:'Right! Rationale refers to the underlying reasons and logic that support a decision.',n:'Rationale means the reasons or logic behind a decision.'}},
+    {q:'Which approach is best when building consensus?',opts:['Make the decision and inform everyone','Ask for input but ignore it','Invite perspectives before finalising and clarify who decides','Avoid making any decision'],c:2,fb:{y:'Exactly! Good consensus-building involves hearing perspectives while being clear about the decision-making process.',n:'The best approach is to invite perspectives before finalising and clarify who makes the final call.'}},
+    {q:'What does ',opts:['A business deal','A compromise where you give up one thing to gain another','Trading stocks','Exchanging employees between teams'],c:1,fb:{y:'That',n:'A trade-off is a compromise where you give up one thing to gain another.'}},
+    {q:'How should you announce a major decision to your team?',opts:['Send a brief email with no explanation','Have a conversation explaining the decision, its reasoning, and next steps','Post it on social media','Wait for people to find out on their own'],c:1,fb:{y:'Correct! Major decisions should be communicated with context, reasoning, and clear next steps.',n:'Major decisions should be announced through a conversation that includes reasoning and next steps.'}},
+    {q:'What does ',opts:['Working overtime','Thorough research and analysis before making a decision','Following company rules','Attending all meetings'],c:1,fb:{y:'Right! Due diligence means doing thorough research and analysis before committing to a decision.',n:'Due diligence refers to thorough research and analysis before making a decision.'}},
+    {q:'Which phrase best introduces the reasoning behind a decision?',opts:['Because I said so','The rationale behind this decision is…','I just feel like it',','],c:1,fb:{y:'Well done! This phrase professionally introduces the logical reasoning behind a decision.',n:'\'The rationale behind this decision is…'}},
+    {q:'What does it mean ',opts:['To paint it green','To give approval or permission to proceed','To delay it','To cancel it'],c:1,fb:{y:'Exactly! To greenlight means to approve and give permission for something to move forward.',n:'To greenlight means to give approval or permission to proceed.'}},
+    {q:'Why is it important to acknowledge trade-offs when communicating a decision?',opts:['It makes you look indecisive','It shows transparency and builds trust','It',','],c:1,fb:{y:'Correct! Acknowledging trade-offs shows honesty and helps people understand the full picture.',n:'Acknowledging trade-offs shows transparency and builds trust with your team.'}},
+    {q:'What does ',opts:['To support a decision strongly','To reject or reverse someone else',',',','],c:1,fb:{y:'Right! To overrule means to use your authority to reject or reverse a decision made by someone else.',n:'To overrule means to reject or reverse someone else'}},
+  ]},
+  {lesson:'Office Small Talk & Idioms',file:'office-small-talk.html',module:'10',moduleName:'Everyday Office English',questions:[
+    {q:'What does ',opts:['To physically touch something','To check in briefly with someone','To finish a project','To start a meeting'],c:1,fb:{y:'Correct! ',n:'\'To touch base'}},
+    {q:'Which of these is a safe small talk topic in the office?',opts:['Salary and bonuses','Weekend plans','Religion','Office gossip'],c:1,fb:{y:'Right! Weekend plans are a safe and friendly topic for office small talk.',n:'Weekend plans are a safe topic. Avoid salary, religion, and gossip.'}},
+    {q:'What does ',opts:['A snack in the break room','Easy tasks or quick wins','Unimportant work','A type of reward'],c:1,fb:{y:'That',n:'\'Low-hanging fruit'}},
+    {q:'Which phrase is a good way to exit a conversation politely?',opts:['I don',',',',','d better get back to it!','This is boring.'],c:2,fb:{y:'Well done! ',n:'\'Well, I'}},
+    {q:'What does ',opts:['To read the same book','To be in agreement','To sit next to each other','To share a document'],c:1,fb:{y:'Correct! Being ',n:'\'To be on the same page'}},
+    {q:'Which filler phrase is used to introduce a new topic?',opts:['To be honest…','By the way…','In conclusion…','However…'],c:1,fb:{y:'Right! ',n:'\'By the way…'}},
+    {q:'What does ',opts:['To walk in circles','To return to a topic later','To agree with someone','To leave a meeting'],c:1,fb:{y:'Exactly! ',n:'\'To circle back'}},
+    {q:'What is a good Monday morning question?',opts:['How much do you earn?','Did you have a good weekend?','Why are you late?','Do you like your job?'],c:1,fb:{y:'That',n:'\'Did you have a good weekend?'}},
+    {q:'What does ',opts:['To play sports','To start something','To finish quickly','To delay a project'],c:1,fb:{y:'Correct! ',n:'\'To get the ball rolling'}},
+    {q:'What does ',opts:['Look at the ceiling','A type of meeting','A warning or advance notice','A compliment'],c:2,fb:{y:'Right! ',n:'\'Heads up'}},
+  ]},
+  {lesson:'Phone Calls & Voicemail',file:'phone-calls.html',module:'10',moduleName:'Everyday Office English',questions:[
+    {q:'How should you answer a business phone call?',opts:['Just say ','",',',',',','Who is this?'],c:1,fb:{y:'Correct! Always identify yourself and your company when answering a business call.',n:'Answer professionally with your name, company, and an offer to help: '}},
+    {q:'What should you say before putting someone on hold?',opts:['Just press the hold button','\'Would you mind holding for a moment?',',','Hold on.',','],c:1,fb:{y:'Right! Always ask politely before placing someone on hold.',n:'Always ask permission before putting someone on hold: '}},
+    {q:'What does ',opts:['To end the call','To transfer them to another person or department','To put them on speakerphone','To take a message'],c:1,fb:{y:'Exactly! ',n:'\'To put someone through'}},
+    {q:'When leaving a voicemail, what should you include?',opts:['Only your name','Your name, company, reason for calling, and callback number','A detailed 5-minute explanation','Just ask them to call back'],c:1,fb:{y:'Well done! A good voicemail includes your name, company, reason, and callback number — all in under 30 seconds.',n:'Include your name, company, reason for calling, and callback number. Keep it under 30 seconds.'}},
+    {q:'How long should a professional voicemail be?',opts:['As long as needed to explain everything','Under 30 seconds','At least 2 minutes','Exactly 1 minute'],c:1,fb:{y:'Correct! Keep voicemails under 30 seconds — be concise and to the point.',n:'Professional voicemails should be under 30 seconds. State the essentials and keep it brief.'}},
+    {q:'What should you do before hanging up a business call?',opts:['Just say ',' and hang up','Summarise action points and confirm next steps','Wait for the other person to hang up first','Nothing — just end the call'],c:1,fb:{y:'Right! Summarising action points ensures both parties are aligned before ending the call.',n:'Always summarise action points and confirm next steps before ending a business call.'}},
+    {q:'What does ',opts:['A longer phone call','An internal phone number within a company','A phone cord','Extra time on hold'],c:1,fb:{y:'Correct! An extension is an internal number used to reach a specific person or department within a company.',n:'An extension is an internal phone number within a company, used to reach specific people or departments.'}},
+    {q:'Which phrase is appropriate when someone asks for a colleague who is unavailable?',opts:['\'They','",','I','re in a meeting. Can I take a message?',',','I don','",','Try their mobile.'],c:1,fb:{y:'Well done! This is polite, informative, and offers a helpful alternative.',n:'The professional response is: '}},
+    {q:'What does ',opts:['To fix a phone line','To add someone to an ongoing call','To leave a voicemail','To block a caller'],c:1,fb:{y:'Exactly! ',n:'\'To patch someone in'}},
+    {q:'Why is it recommended to smile while speaking on the phone?',opts:['It makes the call shorter','It genuinely changes your tone of voice and sounds friendlier','It',','],c:1,fb:{y:'That',n:'Smiling while speaking on the phone genuinely changes your tone of voice, making you sound friendlier and more approachable.'}},
+  ]},
+  {lesson:'Socialising with Colleagues',file:'socialising-colleagues.html',module:'10',moduleName:'Everyday Office English',questions:[
+    {q:'Which phrase is a casual way to invite a colleague to eat together?',opts:['I formally request your presence at lunch','Would you like to grab lunch?','You must come to lunch with me','I demand you join us for food'],c:1,fb:{y:'Right! ',n:'\'Would you like to grab lunch?'}},
+    {q:'What does ',opts:['You want to check the weather','You',',','re declining now but want to accept another time','You'],c:2,fb:{y:'Correct! A rain check means you can',n:'\'Rain check'}},
+    {q:'Which response politely declines an invitation?',opts:['No way!','I',',',',','t want to go'],c:1,fb:{y:'Well done! This is polite and shows you appreciate the invitation.',n:'\'I'}},
+    {q:'What is a ',opts:['A type of lottery at work','A meal where everyone brings a dish to share','A lucky parking spot','A team meeting with food'],c:1,fb:{y:'That',n:'A potluck is a meal where everyone brings a dish to share.'}},
+    {q:'Which is a good open question for small talk at a team event?',opts:['How much do you earn?','Why are you still single?','Been on any trips lately?','Don'],c:2,fb:{y:'Correct! Travel is a safe, interesting small talk topic.',n:'\'Been on any trips lately?'}},
+    {q:'What does ',opts:['To sit alone in a corner','To move around and talk to different people','To leave early','To only talk to your best friend'],c:1,fb:{y:'Right! Mingling means circulating and chatting with various people.',n:'\'To mingle'}},
+    {q:'Which phrase would you use to start a toast?',opts:['Listen up, everyone!','I',',',','],c:1,fb:{y:'Perfect! ',n:'\'I'}},
+    {q:'What should you avoid at work social events?',opts:['Making small talk','Including new colleagues','Drinking too much','Attending team dinners'],c:2,fb:{y:'Correct! Staying professional means not overdoing it with alcohol at work events.',n:'You should avoid drinking too much at work events — always stay professional.'}},
+    {q:'How can you include a quieter colleague in a conversation?',opts:['Ignore them — they prefer it','Introduce them: ','",',',','re too quiet'],c:1,fb:{y:'Great! A simple introduction helps quieter colleagues feel welcome and included.',n:'Introducing them — '}},
+    {q:'What does ',opts:['To sign a legal contract','To argue with them','To develop a closer connection','To compete against them'],c:2,fb:{y:'That',n:'\'To bond'}},
+  ]},
+  {lesson:'Acronyms & Abbreviations',file:'acronyms-abbreviations.html',module:'10',moduleName:'Everyday Office English',questions:[
+    {q:'What does FYI stand for?',opts:['Fix Your Issues','For Your Information','File Your Invoice','Forward Your Input'],c:1,fb:{y:'Correct! FYI means ',n:'FYI stands for '}},
+    {q:'What does WIP mean?',opts:['Weekly Improvement Plan','Written In Pencil','Work In Progress','Wait In Place'],c:2,fb:{y:'That',n:'WIP means '}},
+    {q:'What does NDA stand for?',opts:['No Data Available','Non-Disclosure Agreement','New Deal Approved','National Development Agency'],c:1,fb:{y:'Correct! An NDA is a legal contract to keep information confidential.',n:'NDA stands for '}},
+    {q:'What does ASAP mean?',opts:['Always Send A Proposal','As Soon As Possible','After Saturday And Payday','Assign Someone A Project'],c:1,fb:{y:'Right! ASAP means something should be done urgently.',n:'ASAP means '}},
+    {q:'What does KPI stand for?',opts:['Key Performance Indicator','Knowledge Process Integration','Keep Producing Ideas','Key Project Information'],c:0,fb:{y:'Well done! KPIs are measurable values that show how effectively goals are being met.',n:'KPI stands for '}},
+    {q:'What does EOD mean in a business email?',opts:['End Of Discussion','Every Other Day','End Of Day','Either Option Delivered'],c:2,fb:{y:'Correct! EOD means ',n:'EOD means '}},
+    {q:'What does OOO mean?',opts:['Out Of Options','Out Of Office','On Or Off','Order Of Operations'],c:1,fb:{y:'That',n:'OOO stands for '}},
+    {q:'What does ROI stand for?',opts:['Rate Of Interest','Return On Investment','Review Of Information','Range Of Impact'],c:1,fb:{y:'Correct! ROI measures the profit or benefit relative to the cost of an investment.',n:'ROI stands for '}},
+    {q:'What does TBD mean?',opts:['To Be Delivered','To Be Determined','The Board Decided','Try Before Deploying'],c:1,fb:{y:'Right! TBD means something hasn',n:'TBD means '}},
+    {q:'What does SLA stand for?',opts:['Standard Legal Advice','Service Level Agreement','Sales Lead Analysis','System Launch Approval'],c:1,fb:{y:'Well done! An SLA defines the expected level of service between a provider and a client.',n:'SLA stands for '}},
+  ]},
+];
+
+
+var letters = ['A','B','C','D'];
+var currentMode = 'browse';
+var currentModule = 'all';
+var activeQuestions = [];
+var currentQ = 0;
+var score = 0;
+var answered = false;
+var lessonScores = {};
+
+function setMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(function(b) { b.classList.remove('active'); });
+  event.target.classList.add('active');
+
+  if (mode === 'browse') {
+    document.getElementById('filterBar').style.display = 'flex';
+    renderBrowse();
+  } else {
+    document.getElementById('filterBar').style.display = 'none';
+    startQuiz(mode);
+  }
+}
+
+function filterModule(mod) {
+  currentModule = mod;
+  document.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
+  event.target.classList.add('active');
+  renderBrowse();
+}
+
+function renderBrowse() {
+  var hub = document.getElementById('quizHub');
+  var html = '';
+
+  var grouped = {};
+  for (var i = 0; i < allQuizzes.length; i++) {
+    var lesson = allQuizzes[i];
+    if (currentModule !== 'all' && lesson.module !== currentModule) continue;
+    var key = lesson.module + ' — ' + lesson.moduleName;
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(lesson);
+  }
+
+  for (var modKey in grouped) {
+    html += '<div class="module-section"><div class="module-section-header">' + modKey + '</div><div class="lesson-grid">';
+    var lessons = grouped[modKey];
+    for (var j = 0; j < lessons.length; j++) {
+      var l = lessons[j];
+      var scoreHtml = lessonScores[l.file] ? '<div class="lesson-card-score">' + lessonScores[l.file] + '</div>' : '';
+      html += '<div class="lesson-card" onclick="startLessonQuiz(\'' + l.file + '\')">' +
+        '<div class="lesson-card-module">Module ' + l.module + '</div>' +
+        '<div class="lesson-card-title">' + l.lesson + '</div>' +
+        '<div class="lesson-card-count">' + l.questions.length + ' questions</div>' +
+        scoreHtml +
+        '</div>';
+    }
+    html += '</div></div>';
+  }
+
+  hub.innerHTML = html;
+}
+
+function startLessonQuiz(file) {
+  for (var i = 0; i < allQuizzes.length; i++) {
+    if (allQuizzes[i].file === file) {
+      activeQuestions = allQuizzes[i].questions.map(function(q) {
+        return {q: q.q, opts: q.opts, c: q.c, fb: q.fb, lesson: allQuizzes[i].lesson};
+      });
+      currentQ = 0;
+      score = 0;
+      renderQuestion();
+      return;
+    }
+  }
+}
+
+function startQuiz(mode) {
+  var pool = [];
+  for (var i = 0; i < allQuizzes.length; i++) {
+    var lesson = allQuizzes[i];
+    for (var j = 0; j < lesson.questions.length; j++) {
+      pool.push({q: lesson.questions[j].q, opts: lesson.questions[j].opts, c: lesson.questions[j].c, fb: lesson.questions[j].fb, lesson: lesson.lesson});
+    }
+  }
+
+  // Shuffle
+  for (var k = pool.length - 1; k > 0; k--) {
+    var r = Math.floor(Math.random() * (k + 1));
+    var tmp = pool[k]; pool[k] = pool[r]; pool[r] = tmp;
+  }
+
+  var count = mode === 'random10' ? 10 : mode === 'random25' ? 25 : pool.length;
+  activeQuestions = pool.slice(0, count);
+  currentQ = 0;
+  score = 0;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  var hub = document.getElementById('quizHub');
+
+  if (currentQ >= activeQuestions.length) {
+    var pct = Math.round((score / activeQuestions.length) * 100);
+    var msg = pct >= 80 ? 'Excellent work!' : pct >= 60 ? 'Good effort — review and try again!' : 'Keep studying — you\'ll get there!';
+    var color = pct >= 60 ? 'var(--success)' : 'var(--accent)';
+    hub.innerHTML =
+      '<div class="quiz-container"><div class="score-display">' +
+      '<div class="score-num" style="color:' + color + '">' + score + '/' + activeQuestions.length + '</div>' +
+      '<div class="score-label">' + pct + '% — ' + msg + '</div>' +
+      '<div class="score-details">' +
+      '<div class="score-detail"><div class="score-detail-num" style="color:var(--success)">' + score + '</div><div class="score-detail-label">Correct</div></div>' +
+      '<div class="score-detail"><div class="score-detail-num" style="color:var(--error)">' + (activeQuestions.length - score) + '</div><div class="score-detail-label">Wrong</div></div>' +
+      '</div>' +
+      '<button class="btn btn-primary" onclick="setMode(\'browse\')">Back to Lessons</button> ' +
+      '<button class="btn btn-secondary" onclick="startQuiz(\'random10\')">Random 10</button>' +
+      '</div></div>';
+    return;
+  }
+
+  var q = activeQuestions[currentQ];
+  var pctDone = Math.round(((currentQ) / activeQuestions.length) * 100);
+  hub.innerHTML =
+    '<div class="quiz-container">' +
+    '<div class="quiz-header">' +
+    '<div><div class="quiz-lesson-tag">' + q.lesson + '</div><h3>Question ' + (currentQ + 1) + '</h3></div>' +
+    '<div class="quiz-progress">' + (currentQ + 1) + ' / ' + activeQuestions.length + '</div>' +
+    '</div>' +
+    '<div class="progress-bar"><div class="progress-fill" style="width:' + pctDone + '%"></div></div>' +
+    '<div class="quiz-body">' +
+    '<div class="quiz-question">' + q.q + '</div>' +
+    '<div class="quiz-options">' +
+    q.opts.map(function(opt, i) {
+      return '<div class="quiz-option" onclick="selectAnswer(' + i + ')" id="opt-' + i + '">' +
+        '<div class="opt-letter">' + letters[i] + '</div><div>' + opt + '</div></div>';
+    }).join('') +
+    '</div>' +
+    '<div class="quiz-feedback" id="feedback"></div>' +
+    '</div>' +
+    '<div class="quiz-footer">' +
+    '<button class="btn btn-secondary" onclick="setMode(\'browse\')">Exit</button>' +
+    '<button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next &rarr;</button>' +
+    '</div></div>';
+  answered = false;
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answered = true;
+
+  var q = activeQuestions[currentQ];
+  var isCorrect = idx === q.c;
+  if (isCorrect) score++;
+
+  for (var i = 0; i < q.opts.length; i++) {
+    var el = document.getElementById('opt-' + i);
+    if (i === q.c) el.classList.add('correct');
+    else if (i === idx && !isCorrect) el.classList.add('wrong');
+    if (i !== idx && i !== q.c) el.classList.add('disabled');
+  }
+
+  var fb = document.getElementById('feedback');
+  fb.textContent = isCorrect ? q.fb.y : q.fb.n;
+  fb.className = 'quiz-feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+  document.getElementById('nextBtn').style.display = 'inline-flex';
+}
+
+function nextQuestion() {
+  currentQ++;
+  renderQuestion();
+  window.scrollTo({top: document.getElementById('quizHub').offsetTop - 80, behavior: 'smooth'});
+}
+
+// Init
+renderBrowse();
+</script>
+</body>
+</html>
