@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giving &amp; Receiving Feedback — Bia Business English</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/navbar.css">
 <style>
   :root {
     --bg: #F7F5F0; --surface: #FFFFFF; --text: #1A1A1A; --text-muted: #6B6560;
@@ -15,15 +16,6 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(247,245,240,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
-  nav .logo-group { display: flex; align-items: center; gap: 0.6rem; }
-  nav .nav-logo-img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-light); transition: transform 0.3s; }
-  nav .nav-logo-img:hover { transform: scale(1.1); }
-  nav .logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; letter-spacing: -0.02em; }
-  nav .logo span { color: var(--accent); }
-  nav ul { list-style: none; display: flex; gap: 2rem; }
-  nav ul li a { text-decoration: none; font-size: 0.82rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.3s; }
-  nav ul li a:hover { color: var(--accent); }
   .hero { padding: 10rem 2rem 5rem; max-width: 800px; margin: 0 auto; text-align: center; animation: fadeUp 0.8s ease-out; }
   .hero-mascot { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); box-shadow: 0 6px 24px rgba(5,150,105,0.18); margin: 0 auto 1.5rem; display: block; animation: float 4s ease-in-out infinite, fadeUp 0.8s ease-out; }
   .hero .tag { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
@@ -66,14 +58,11 @@
   footer{text-align:center;padding:3rem 2rem 2rem;font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border);max-width:740px;margin:2rem auto 0}
   .footer-logo{width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:.75rem;opacity:.7;transition:opacity .3s}.footer-logo:hover{opacity:1}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  @media(max-width:640px){nav ul{gap:1rem}nav ul li a{font-size:.72rem}.nav-logo-img{width:28px;height:28px}.hero{padding:8rem 1.5rem 3rem}.hero-mascot{width:72px;height:72px}.section{padding:3rem 1.5rem}.theory-card{grid-template-columns:1fr;gap:1rem}.theory-card .icon{width:44px;height:44px;font-size:1.2rem}.quiz-header,.quiz-body,.quiz-footer{padding-left:1.25rem;padding-right:1.25rem}.vocab-grid{grid-template-columns:1fr 1fr}.feedback-types{gap:.5rem}}
+  @media(max-width:640px){.hero{padding:8rem 1.5rem 3rem}.hero-mascot{width:72px;height:72px}.section{padding:3rem 1.5rem}.theory-card{grid-template-columns:1fr;gap:1rem}.theory-card .icon{width:44px;height:44px;font-size:1.2rem}.quiz-header,.quiz-body,.quiz-footer{padding-left:1.25rem;padding-right:1.25rem}.vocab-grid{grid-template-columns:1fr 1fr}.feedback-types{gap:.5rem}}
 </style>
 </head>
 <body>
-<nav>
-  <div class="logo-group"><img src="../assets/logo.png" alt="Logo" class="nav-logo-img" /><div class="logo">Feedback<span>.</span>skills</div></div>
-  <ul><li><a href="#theory">Theory</a></li><li><a href="#vocab">Vocab</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#practice">Practice</a></li></ul>
-</nav>
+<script src="../assets/navbar.js" data-title="Feedback" data-subtitle="skills" data-sections="theory,vocab,quiz,practice"></script>
 
 <section class="hero">
   <img src="../assets/logo.png" alt="Study mascot" class="hero-mascot" />

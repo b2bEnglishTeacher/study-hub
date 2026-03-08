@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STAR Method — Bia Business English</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/navbar.css">
 <style>
   :root {
     --bg: #F7F5F0;
@@ -38,49 +39,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(247,245,240,0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  nav .logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
-
-  nav .logo span { color: var(--accent); }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-  }
-
-  nav ul li a {
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-
-  nav ul li a:hover { color: var(--accent); }
 
   /* HERO */
   .hero {
@@ -613,24 +571,6 @@
 
   .footer-logo:hover { opacity: 1; }
 
-  /* NAV LOGO IMG */
-  .nav-logo-img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--accent-light);
-    transition: transform 0.3s;
-  }
-
-  .nav-logo-img:hover { transform: scale(1.1); }
-
-  .logo-group {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
   /* HERO MASCOT */
   .hero-mascot {
     width: 100px;
@@ -657,9 +597,6 @@
 
   /* RESPONSIVE */
   @media (max-width: 640px) {
-    nav ul { gap: 1rem; }
-    nav ul li a { font-size: 0.72rem; }
-    .nav-logo-img { width: 28px; height: 28px; }
     .hero { padding: 8rem 1.5rem 3rem; }
     .hero-mascot { width: 72px; height: 72px; }
     .section { padding: 3rem 1.5rem; }
@@ -673,19 +610,7 @@
 </head>
 <body>
 
-<nav>
-  <div class="logo-group">
-    <img src="../assets/logo.png" alt="Logo" class="nav-logo-img" />
-    <div class="logo">STAR<span>.</span>method</div>
-  </div>
-  <ul>
-    <li><a href="#video">Video</a></li>
-    <li><a href="#theory">Theory</a></li>
-    <li><a href="#vocab">Vocab</a></li>
-    <li><a href="#quiz">Quiz</a></li>
-    <li><a href="#practice">Practice</a></li>
-  </ul>
-</nav>
+<script src="../assets/navbar.js" data-title="STAR" data-subtitle="method" data-sections="video,theory,vocab,quiz,practice"></script>
 
 <!-- HERO -->
 <section class="hero">
