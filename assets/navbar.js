@@ -4,7 +4,6 @@
   var basePath = isIndex ? '' : '../';
 
   // Read page-specific config from the <script> tag's data attributes
-  // Usage: <script src="assets/navbar.js" data-title="Email" data-subtitle="etiquette" data-sections="theory,vocab,quiz,practice"></script>
   var scriptTag = document.currentScript;
   var title = scriptTag ? scriptTag.getAttribute('data-title') : null;
   var subtitle = scriptTag ? scriptTag.getAttribute('data-subtitle') : null;
@@ -18,35 +17,64 @@
     logoText = 'English<span>.</span>hub';
   }
 
+  // Modules data for mega-menu
+  var modules = [
+    { num: '01', name: 'Interview & Career', href: 'interview' },
+    { num: '02', name: 'Communication', href: 'communication' },
+    { num: '03', name: 'Professional Dev', href: 'development' },
+    { num: '04', name: 'Soft Skills', href: 'softskills' },
+    { num: '05', name: 'Writing & Docs', href: 'writing' },
+    { num: '06', name: 'Sales & Clients', href: 'sales' },
+    { num: '07', name: 'Finance & Numbers', href: 'finance' },
+    { num: '08', name: 'Tech & Digital', href: 'tech' },
+    { num: '09', name: 'Leadership', href: 'leadership' },
+    { num: '10', name: 'Office English', href: 'office' }
+  ];
+
+  // Build mega-menu grid items
+  var megaItems = '';
+  for (var i = 0; i < modules.length; i++) {
+    var m = modules[i];
+    var href = isIndex ? '#' + m.href : basePath + 'index.html#' + m.href;
+    megaItems += '<a href="' + href + '" class="mega-item" onclick="closeMega()">' +
+      '<span class="mega-num">' + m.num + '</span>' +
+      '<span class="mega-name">' + m.name + '</span>' +
+      '</a>';
+  }
+
   // Build nav links
   var linksHtml;
   if (isIndex) {
     linksHtml =
-      '<li><a href="#interview" onclick="closeMenu()">Interview</a></li>' +
-      '<li><a href="#communication" onclick="closeMenu()">Communication</a></li>' +
-      '<li><a href="#development" onclick="closeMenu()">Development</a></li>' +
-      '<li><a href="#softskills" onclick="closeMenu()">Soft Skills</a></li>' +
-      '<li><a href="#writing" onclick="closeMenu()">Writing</a></li>' +
-      '<li><a href="#sales" onclick="closeMenu()">Sales</a></li>' +
-      '<li><a href="#finance" onclick="closeMenu()">Finance</a></li>' +
-      '<li><a href="#tech" onclick="closeMenu()">Tech</a></li>' +
-      '<li><a href="#leadership" onclick="closeMenu()">Leadership</a></li>' +
-      '<li><a href="#office" onclick="closeMenu()">Office</a></li>';
+      '<li class="nav-dropdown">' +
+        '<button class="nav-dropdown-btn" onclick="toggleMega()">Modules <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button>' +
+        '<div class="mega-menu" id="megaMenu">' +
+          '<div class="mega-grid">' + megaItems + '</div>' +
+        '</div>' +
+      '</li>';
   } else {
     // Link back to the hub
     linksHtml = '<li><a href="' + basePath + 'index.html" onclick="closeMenu()">Home</a></li>';
+    // Modules dropdown on lesson pages too
+    linksHtml +=
+      '<li class="nav-dropdown">' +
+        '<button class="nav-dropdown-btn" onclick="toggleMega()">Modules <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button>' +
+        '<div class="mega-menu" id="megaMenu">' +
+          '<div class="mega-grid">' + megaItems + '</div>' +
+        '</div>' +
+      '</li>';
     // Page section links
     if (sections) {
       var parts = sections.split(',');
-      for (var i = 0; i < parts.length; i++) {
-        var s = parts[i].trim();
+      for (var j = 0; j < parts.length; j++) {
+        var s = parts[j].trim();
         var label = s.charAt(0).toUpperCase() + s.slice(1);
         linksHtml += '<li><a href="#' + s + '" onclick="closeMenu()">' + label + '</a></li>';
       }
     }
   }
 
-  // Build logo group - on lesson pages, logo links back to hub
+  // Build logo group
   var logoGroupStart = isIndex
     ? '<div class="logo-group">'
     : '<a href="' + basePath + 'index.html" class="logo-group">';
@@ -81,5 +109,28 @@
     document.querySelector('.hamburger').classList.remove('active');
     document.getElementById('navOverlay').classList.remove('active');
     document.body.style.overflow = '';
+    closeMega();
   };
+
+  window.toggleMega = function () {
+    var mega = document.getElementById('megaMenu');
+    var btn = document.querySelector('.nav-dropdown-btn');
+    mega.classList.toggle('open');
+    btn.classList.toggle('open');
+  };
+
+  window.closeMega = function () {
+    var mega = document.getElementById('megaMenu');
+    var btn = document.querySelector('.nav-dropdown-btn');
+    if (mega) mega.classList.remove('open');
+    if (btn) btn.classList.remove('open');
+  };
+
+  // Close mega-menu when clicking outside
+  document.addEventListener('click', function (e) {
+    var dropdown = document.querySelector('.nav-dropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+      closeMega();
+    }
+  });
 })();
