@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary — Bia Business English</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/navbar.css">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-muted: #6B6560;
+    --accent: #C45D3E;
+    --accent-light: #F4E8E3;
+    --border: #E8E4DD;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .hero {
+    padding: 10rem 2rem 4rem;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  .hero-mascot {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--surface);
+    box-shadow: 0 8px 32px rgba(196,93,62,0.15), 0 0 0 1px var(--border);
+    margin: 0 auto 2rem;
+    display: block;
+    animation: float 4s ease-in-out infinite, fadeUp 0.8s ease-out;
+  }
+
+  .hero .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.35rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 span { color: var(--accent); }
+
+  .hero p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* SEARCH */
+  .search-bar {
+    max-width: 740px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.85rem 1.25rem 0.85rem 3rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236B6560' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 1rem center;
+  }
+
+  .search-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+  }
+
+  .search-input::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+  .search-count {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    display: none;
+  }
+
+  /* SECTIONS */
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--border);
+    margin: 1rem auto;
+  }
+
+  .section {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    animation: fadeUp 0.6s ease-out;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .lesson-vocab {
+    margin-bottom: 2.5rem;
+  }
+
+  .lesson-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .lesson-title a {
+    text-decoration: none;
+    color: var(--text);
+    transition: color 0.3s;
+  }
+
+  .lesson-title a:hover { color: var(--accent); }
+
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .vocab-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .vocab-item:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 2px 12px rgba(196,93,62,0.06);
+  }
+
+  .vocab-item .word {
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 0.2rem;
+    color: var(--text);
+  }
+
+  .vocab-item .def {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .vocab-item.hidden { display: none; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    max-width: 740px;
+    margin: 2rem auto 0;
+  }
+
+  .footer-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+
+  .footer-logo:hover { opacity: 1; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  @media (max-width: 640px) {
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero-mascot { width: 72px; height: 72px; }
+    .section { padding: 2rem 1.5rem; }
+    .vocab-grid { grid-template-columns: 1fr; }
+    .stats { gap: 1.5rem; }
+    .stat-num { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<script src="../assets/navbar.js" data-title="Glossary" data-subtitle="hub" data-sections=""></script>
+
+<section class="hero">
+  <img src="../assets/logo.png" alt="Mascot" class="hero-mascot"/>
+  <div class="tag">Complete Reference</div>
+  <h1>Business English <span>Glossary</span></h1>
+  <p>All 492 vocabulary words and phrases from every lesson, organised by module.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">492</div><div class="stat-label">Words</div></div>
+    <div class="stat"><div class="stat-num">41</div><div class="stat-label">Lessons</div></div>
+    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Modules</div></div>
+  </div>
+</section>
+
+<div class="search-bar">
+  <input type="text" class="search-input" id="searchInput" placeholder="Search for a word or definition..." oninput="filterVocab()" />
+  <div class="search-count" id="searchCount"></div>
+</div>
+
+<div class="no-results" id="noResults">No words found matching your search.</div>
+
+<section class="section" id="interview">
+  <div class="section-header">
+    <div class="num">01 — INTERVIEW & CAREER SKILLS</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="star-method.html">Master the STAR Method</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Behavioural question</div><div class="def">A question asking you to describe past experiences</div></div>
+        <div class="vocab-item"><div class="word">Competency</div><div class="def">A skill or ability evaluated in an interview</div></div>
+        <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">A person with interest in the outcome of a project</div></div>
+        <div class="vocab-item"><div class="word">Deliverable</div><div class="def">A product or result that must be completed</div></div>
+        <div class="vocab-item"><div class="word">To take the lead</div><div class="def">To assume responsibility and guide others</div></div>
+        <div class="vocab-item"><div class="word">Deadline</div><div class="def">The latest time by which something must be done</div></div>
+        <div class="vocab-item"><div class="word">To prioritise</div><div class="def">To decide which tasks are most important</div></div>
+        <div class="vocab-item"><div class="word">Outcome</div><div class="def">The final result or consequence of an action</div></div>
+        <div class="vocab-item"><div class="word">To exceed expectations</div><div class="def">To do better than what was anticipated</div></div>
+        <div class="vocab-item"><div class="word">Conflict resolution</div><div class="def">The process of solving a disagreement</div></div>
+        <div class="vocab-item"><div class="word">Quantifiable</div><div class="def">Able to be measured with numbers</div></div>
+        <div class="vocab-item"><div class="word">To collaborate</div><div class="def">To work together with others towards a goal</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="elevator-pitch.html">The Elevator Pitch</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Elevator pitch</div><div class="def">A brief, persuasive self-introduction</div></div>
+        <div class="vocab-item"><div class="word">Value proposition</div><div class="def">What makes you or your offer unique</div></div>
+        <div class="vocab-item"><div class="word">To network</div><div class="def">To build professional relationships</div></div>
+        <div class="vocab-item"><div class="word">First impression</div><div class="def">The initial opinion someone forms of you</div></div>
+        <div class="vocab-item"><div class="word">Call to action</div><div class="def">An invitation for the next step</div></div>
+        <div class="vocab-item"><div class="word">To stand out</div><div class="def">To be noticeably different or better</div></div>
+        <div class="vocab-item"><div class="word">Concise</div><div class="def">Brief but covering all important points</div></div>
+        <div class="vocab-item"><div class="word">To tailor</div><div class="def">To adapt something for a specific purpose</div></div>
+        <div class="vocab-item"><div class="word">Compelling</div><div class="def">Very convincing or interesting</div></div>
+        <div class="vocab-item"><div class="word">To follow up</div><div class="def">To contact someone after an initial meeting</div></div>
+        <div class="vocab-item"><div class="word">Career fair</div><div class="def">An event where employers meet candidates</div></div>
+        <div class="vocab-item"><div class="word">Rapport</div><div class="def">A close, harmonious relationship</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="small-talk.html">Small Talk in Business</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Small talk</div><div class="def">Light, casual conversation about non-personal topics</div></div>
+        <div class="vocab-item"><div class="word">Icebreaker</div><div class="def">A question or activity that starts a conversation</div></div>
+        <div class="vocab-item"><div class="word">To break the ice</div><div class="def">To start conversation in a new or awkward situation</div></div>
+        <div class="vocab-item"><div class="word">Rapport</div><div class="def">A positive, trusting relationship</div></div>
+        <div class="vocab-item"><div class="word">Open-ended question</div><div class="def">A question that can't be answered with yes/no</div></div>
+        <div class="vocab-item"><div class="word">Follow-up question</div><div class="def">A question that digs deeper into a topic</div></div>
+        <div class="vocab-item"><div class="word">Common ground</div><div class="def">Shared interests or experiences</div></div>
+        <div class="vocab-item"><div class="word">To wrap up</div><div class="def">To bring something to a close</div></div>
+        <div class="vocab-item"><div class="word">Networking</div><div class="def">Meeting people for professional purposes</div></div>
+        <div class="vocab-item"><div class="word">Body language</div><div class="def">Non-verbal communication (gestures, posture)</div></div>
+        <div class="vocab-item"><div class="word">Active listening</div><div class="def">Fully concentrating on what someone says</div></div>
+        <div class="vocab-item"><div class="word">To touch base</div><div class="def">To make brief contact with someone</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="negotiation-language.html">Negotiation Language</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">To negotiate</div><div class="def">To discuss terms to reach an agreement</div></div>
+        <div class="vocab-item"><div class="word">Counteroffer</div><div class="def">A response to an initial offer with different terms</div></div>
+        <div class="vocab-item"><div class="word">Concession</div><div class="def">Something given up to reach agreement</div></div>
+        <div class="vocab-item"><div class="word">BATNA</div><div class="def">Best Alternative to a Negotiated Agreement</div></div>
+        <div class="vocab-item"><div class="word">Win-win</div><div class="def">A solution that benefits both sides</div></div>
+        <div class="vocab-item"><div class="word">Leverage</div><div class="def">Power or advantage in a negotiation</div></div>
+        <div class="vocab-item"><div class="word">Bottom line</div><div class="def">The minimum acceptable outcome</div></div>
+        <div class="vocab-item"><div class="word">Trade-off</div><div class="def">Giving up one thing to gain another</div></div>
+        <div class="vocab-item"><div class="word">To compromise</div><div class="def">To accept less than ideal from both sides</div></div>
+        <div class="vocab-item"><div class="word">Terms and conditions</div><div class="def">The rules and details of an agreement</div></div>
+        <div class="vocab-item"><div class="word">To reach an agreement</div><div class="def">To find a solution both sides accept</div></div>
+        <div class="vocab-item"><div class="word">Non-negotiable</div><div class="def">Something that cannot be changed</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="giving-receiving-feedback.html">Giving & Receiving Feedback</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Constructive feedback</div><div class="def">Feedback aimed at helping someone improve</div></div>
+        <div class="vocab-item"><div class="word">SBI model</div><div class="def">Situation–Behaviour–Impact framework</div></div>
+        <div class="vocab-item"><div class="word">To address</div><div class="def">To deal with or discuss an issue</div></div>
+        <div class="vocab-item"><div class="word">Going forward</div><div class="def">From this point on; in the future</div></div>
+        <div class="vocab-item"><div class="word">Performance review</div><div class="def">A formal assessment of an employee's work</div></div>
+        <div class="vocab-item"><div class="word">To acknowledge</div><div class="def">To accept or recognise something</div></div>
+        <div class="vocab-item"><div class="word">Actionable</div><div class="def">Practical; something that can be acted on</div></div>
+        <div class="vocab-item"><div class="word">Defensive</div><div class="def">Reacting by protecting yourself from criticism</div></div>
+        <div class="vocab-item"><div class="word">One-to-one / 1:1</div><div class="def">A private meeting between two people</div></div>
+        <div class="vocab-item"><div class="word">To reflect on</div><div class="def">To think carefully about something</div></div>
+        <div class="vocab-item"><div class="word">Improvement area</div><div class="def">A skill or area that needs development</div></div>
+        <div class="vocab-item"><div class="word">To take on board</div><div class="def">To accept and consider feedback seriously</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="communication">
+  <div class="section-header">
+    <div class="num">02 — BUSINESS COMMUNICATION</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="email-etiquette.html">Email Etiquette</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">I'm writing to…</div><div class="def">Standard opening to state your purpose</div></div>
+        <div class="vocab-item"><div class="word">Please find attached</div><div class="def">Formal way to reference an attachment</div></div>
+        <div class="vocab-item"><div class="word">As per our discussion</div><div class="def">Referring to a previous conversation</div></div>
+        <div class="vocab-item"><div class="word">At your earliest convenience</div><div class="def">Polite way to request a timely response</div></div>
+        <div class="vocab-item"><div class="word">I'd appreciate it if…</div><div class="def">Polite way to make a request</div></div>
+        <div class="vocab-item"><div class="word">Kind regards</div><div class="def">Warm, professional sign-off</div></div>
+        <div class="vocab-item"><div class="word">To follow up</div><div class="def">To check on the status of something</div></div>
+        <div class="vocab-item"><div class="word">CC / BCC</div><div class="def">Copy / Blind copy recipients</div></div>
+        <div class="vocab-item"><div class="word">To loop someone in</div><div class="def">To add someone to an email thread</div></div>
+        <div class="vocab-item"><div class="word">For your reference</div><div class="def">Providing info for someone to keep in mind</div></div>
+        <div class="vocab-item"><div class="word">I look forward to…</div><div class="def">Positive closing before sign-off</div></div>
+        <div class="vocab-item"><div class="word">Please don't hesitate to…</div><div class="def">Encouraging someone to reach out</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="meetings-calls.html">Meetings & Conference Calls</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Agenda</div><div class="def">A list of topics to be discussed</div></div>
+        <div class="vocab-item"><div class="word">Action item</div><div class="def">A task assigned to someone during a meeting</div></div>
+        <div class="vocab-item"><div class="word">Minutes</div><div class="def">A written record of what was discussed</div></div>
+        <div class="vocab-item"><div class="word">To chair a meeting</div><div class="def">To lead or facilitate a meeting</div></div>
+        <div class="vocab-item"><div class="word">To park something</div><div class="def">To set aside a topic for later discussion</div></div>
+        <div class="vocab-item"><div class="word">To circle back</div><div class="def">To return to a topic later</div></div>
+        <div class="vocab-item"><div class="word">Takeaway</div><div class="def">A key point or conclusion from a discussion</div></div>
+        <div class="vocab-item"><div class="word">To wrap up</div><div class="def">To bring the meeting to a close</div></div>
+        <div class="vocab-item"><div class="word">AOB (Any Other Business)</div><div class="def">Additional items not on the agenda</div></div>
+        <div class="vocab-item"><div class="word">To touch on</div><div class="def">To briefly mention or discuss a topic</div></div>
+        <div class="vocab-item"><div class="word">Dial in</div><div class="def">To join a meeting by phone or video</div></div>
+        <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">Someone with interest in the meeting's outcome</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="presentations.html">Presentations & Public Speaking</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Signposting</div><div class="def">Language that guides the audience through your talk</div></div>
+        <div class="vocab-item"><div class="word">As you can see…</div><div class="def">Drawing attention to a visual or data</div></div>
+        <div class="vocab-item"><div class="word">Moving on to…</div><div class="def">Transitioning to the next section</div></div>
+        <div class="vocab-item"><div class="word">To sum up</div><div class="def">To give a brief summary</div></div>
+        <div class="vocab-item"><div class="word">Key takeaway</div><div class="def">The most important point to remember</div></div>
+        <div class="vocab-item"><div class="word">To elaborate</div><div class="def">To explain something in more detail</div></div>
+        <div class="vocab-item"><div class="word">Let me illustrate…</div><div class="def">Introducing an example or visual</div></div>
+        <div class="vocab-item"><div class="word">Audience engagement</div><div class="def">Keeping the listeners interested and involved</div></div>
+        <div class="vocab-item"><div class="word">Call to action</div><div class="def">Telling the audience what to do next</div></div>
+        <div class="vocab-item"><div class="word">Q&amp;A session</div><div class="def">Time for questions from the audience</div></div>
+        <div class="vocab-item"><div class="word">Slide deck</div><div class="def">The set of slides used in a presentation</div></div>
+        <div class="vocab-item"><div class="word">That's a great question</div><div class="def">Polite response before answering a question</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="polite-disagreement.html">Polite Disagreement</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">I see your point, however…</div><div class="def">Acknowledging before presenting a different view</div></div>
+        <div class="vocab-item"><div class="word">With all due respect…</div><div class="def">Formal way to introduce a disagreement</div></div>
+        <div class="vocab-item"><div class="word">I'm not entirely sure…</div><div class="def">Softened way to express doubt</div></div>
+        <div class="vocab-item"><div class="word">That said…</div><div class="def">Introducing a contrasting point (softer than 'but')</div></div>
+        <div class="vocab-item"><div class="word">To play devil's advocate</div><div class="def">To argue the opposite side for discussion</div></div>
+        <div class="vocab-item"><div class="word">I take your point, but…</div><div class="def">Accepting validity while disagreeing</div></div>
+        <div class="vocab-item"><div class="word">Have we considered…?</div><div class="def">Indirect way to suggest an alternative</div></div>
+        <div class="vocab-item"><div class="word">To push back</div><div class="def">To resist or challenge an idea</div></div>
+        <div class="vocab-item"><div class="word">I'd argue that…</div><div class="def">Presenting your opposing viewpoint</div></div>
+        <div class="vocab-item"><div class="word">Constructive criticism</div><div class="def">Helpful feedback aimed at improvement</div></div>
+        <div class="vocab-item"><div class="word">To respectfully disagree</div><div class="def">To express opposition politely</div></div>
+        <div class="vocab-item"><div class="word">What if we…?</div><div class="def">Proposing an alternative solution diplomatically</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="development">
+  <div class="section-header">
+    <div class="num">03 — PROFESSIONAL DEVELOPMENT</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="action-verbs-cvs.html">Action Verbs for CVs</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Spearheaded</div><div class="def">Led or initiated a project or effort</div></div>
+        <div class="vocab-item"><div class="word">Streamlined</div><div class="def">Made a process more efficient</div></div>
+        <div class="vocab-item"><div class="word">Orchestrated</div><div class="def">Planned and coordinated something complex</div></div>
+        <div class="vocab-item"><div class="word">Boosted</div><div class="def">Increased or improved significantly</div></div>
+        <div class="vocab-item"><div class="word">Pioneered</div><div class="def">Was the first to develop or introduce</div></div>
+        <div class="vocab-item"><div class="word">Revamped</div><div class="def">Redesigned or improved significantly</div></div>
+        <div class="vocab-item"><div class="word">Facilitated</div><div class="def">Made a process or event easier</div></div>
+        <div class="vocab-item"><div class="word">Negotiated</div><div class="def">Discussed terms to reach an agreement</div></div>
+        <div class="vocab-item"><div class="word">Optimised</div><div class="def">Made the best or most effective use of</div></div>
+        <div class="vocab-item"><div class="word">Championed</div><div class="def">Advocated strongly for a cause or idea</div></div>
+        <div class="vocab-item"><div class="word">Exceeded</div><div class="def">Surpassed a target or expectation</div></div>
+        <div class="vocab-item"><div class="word">Liaised</div><div class="def">Communicated between groups or departments</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="linkedin-profile.html">LinkedIn Profile Writing</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Headline</div><div class="def">The text under your name on LinkedIn</div></div>
+        <div class="vocab-item"><div class="word">Open to opportunities</div><div class="def">Available and interested in new roles</div></div>
+        <div class="vocab-item"><div class="word">Keyword optimisation</div><div class="def">Including terms recruiters search for</div></div>
+        <div class="vocab-item"><div class="word">Endorsement</div><div class="def">A one-click confirmation of someone's skill</div></div>
+        <div class="vocab-item"><div class="word">Recommendation</div><div class="def">A written testimonial from a connection</div></div>
+        <div class="vocab-item"><div class="word">Personal branding</div><div class="def">How you present yourself professionally online</div></div>
+        <div class="vocab-item"><div class="word">Value proposition</div><div class="def">What you uniquely offer to employers/clients</div></div>
+        <div class="vocab-item"><div class="word">Thought leadership</div><div class="def">Sharing expert content to build credibility</div></div>
+        <div class="vocab-item"><div class="word">Let's connect</div><div class="def">Invitation to add someone to your network</div></div>
+        <div class="vocab-item"><div class="word">Passionate about…</div><div class="def">Common phrase to express strong interest</div></div>
+        <div class="vocab-item"><div class="word">Track record</div><div class="def">History of achievements and results</div></div>
+        <div class="vocab-item"><div class="word">Results-driven</div><div class="def">Focused on achieving measurable outcomes</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="swot-analysis.html">SWOT Analysis Vocabulary</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Competitive advantage</div><div class="def">Something that puts you ahead of competitors</div></div>
+        <div class="vocab-item"><div class="word">Market share</div><div class="def">Percentage of total sales in an industry</div></div>
+        <div class="vocab-item"><div class="word">To leverage</div><div class="def">To use a strength to your advantage</div></div>
+        <div class="vocab-item"><div class="word">To mitigate</div><div class="def">To reduce the impact of a risk or threat</div></div>
+        <div class="vocab-item"><div class="word">Gap in the market</div><div class="def">An unmet need or untapped opportunity</div></div>
+        <div class="vocab-item"><div class="word">Revenue stream</div><div class="def">A source of income for a business</div></div>
+        <div class="vocab-item"><div class="word">Regulatory compliance</div><div class="def">Following laws and regulations</div></div>
+        <div class="vocab-item"><div class="word">Core competency</div><div class="def">A key ability that defines a business</div></div>
+        <div class="vocab-item"><div class="word">Market disruption</div><div class="def">A significant change that transforms an industry</div></div>
+        <div class="vocab-item"><div class="word">Scalability</div><div class="def">Ability to grow without losing efficiency</div></div>
+        <div class="vocab-item"><div class="word">To capitalise on</div><div class="def">To take advantage of a favourable situation</div></div>
+        <div class="vocab-item"><div class="word">Vulnerability</div><div class="def">A weakness that can be exploited</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="agile-scrum.html">Agile & Scrum Terminology</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Sprint</div><div class="def">A time-boxed work cycle (1–4 weeks)</div></div>
+        <div class="vocab-item"><div class="word">Backlog</div><div class="def">Prioritised list of features and tasks</div></div>
+        <div class="vocab-item"><div class="word">Stand-up</div><div class="def">A brief daily meeting (15 min max)</div></div>
+        <div class="vocab-item"><div class="word">User story</div><div class="def">A feature described from the user's perspective</div></div>
+        <div class="vocab-item"><div class="word">Story points</div><div class="def">A unit estimating the effort of a task</div></div>
+        <div class="vocab-item"><div class="word">Blocker</div><div class="def">An obstacle preventing progress</div></div>
+        <div class="vocab-item"><div class="word">MVP</div><div class="def">Minimum Viable Product — simplest version</div></div>
+        <div class="vocab-item"><div class="word">Velocity</div><div class="def">Amount of work completed per sprint</div></div>
+        <div class="vocab-item"><div class="word">Retrospective</div><div class="def">Meeting to reflect on what to improve</div></div>
+        <div class="vocab-item"><div class="word">Definition of Done</div><div class="def">Criteria for a task to be considered complete</div></div>
+        <div class="vocab-item"><div class="word">Technical debt</div><div class="def">Shortcuts in code that need future fixing</div></div>
+        <div class="vocab-item"><div class="word">Scrum Master</div><div class="def">Person who facilitates the Scrum process</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="softskills">
+  <div class="section-header">
+    <div class="num">04 — SOFT SKILLS & WORKPLACE</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="conflict-resolution.html">Conflict Resolution</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">To address an issue</div><div class="def">To deal with or discuss a problem</div></div>
+        <div class="vocab-item"><div class="word">To escalate</div><div class="def">To make a situation more intense or serious</div></div>
+        <div class="vocab-item"><div class="word">To de-escalate</div><div class="def">To calm down a tense situation</div></div>
+        <div class="vocab-item"><div class="word">Common ground</div><div class="def">Shared interests or agreement between parties</div></div>
+        <div class="vocab-item"><div class="word">Mediation</div><div class="def">A third party helping resolve a dispute</div></div>
+        <div class="vocab-item"><div class="word">To compromise</div><div class="def">Each side gives up something to reach agreement</div></div>
+        <div class="vocab-item"><div class="word">Perspective</div><div class="def">A person's point of view or way of seeing things</div></div>
+        <div class="vocab-item"><div class="word">To clear the air</div><div class="def">To resolve tension through honest conversation</div></div>
+        <div class="vocab-item"><div class="word">Grievance</div><div class="def">A formal complaint about unfair treatment</div></div>
+        <div class="vocab-item"><div class="word">Mutual respect</div><div class="def">Both sides treating each other with dignity</div></div>
+        <div class="vocab-item"><div class="word">To see eye to eye</div><div class="def">To agree with someone</div></div>
+        <div class="vocab-item"><div class="word">To meet halfway</div><div class="def">To compromise equally from both sides</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="time-management.html">Time Management Vocabulary</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Deadline</div><div class="def">The latest time something must be done</div></div>
+        <div class="vocab-item"><div class="word">EOD / COB</div><div class="def">End of Day / Close of Business</div></div>
+        <div class="vocab-item"><div class="word">Bandwidth</div><div class="def">Available capacity to take on work</div></div>
+        <div class="vocab-item"><div class="word">To prioritise</div><div class="def">To decide what is most important</div></div>
+        <div class="vocab-item"><div class="word">To delegate</div><div class="def">To assign a task to someone else</div></div>
+        <div class="vocab-item"><div class="word">Quick win</div><div class="def">An easy task with immediate positive impact</div></div>
+        <div class="vocab-item"><div class="word">To time-box</div><div class="def">To set a fixed time limit for an activity</div></div>
+        <div class="vocab-item"><div class="word">Turnaround time</div><div class="def">Time needed to complete and return work</div></div>
+        <div class="vocab-item"><div class="word">To deprioritise</div><div class="def">To lower the importance of a task</div></div>
+        <div class="vocab-item"><div class="word">Bottleneck</div><div class="def">A point that slows down the whole process</div></div>
+        <div class="vocab-item"><div class="word">ASAP</div><div class="def">As Soon As Possible</div></div>
+        <div class="vocab-item"><div class="word">To push back a deadline</div><div class="def">To move a deadline to a later date</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="cross-cultural.html">Cross-Cultural Communication</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Cultural intelligence (CQ)</div><div class="def">Ability to adapt to different cultural contexts</div></div>
+        <div class="vocab-item"><div class="word">Direct communication</div><div class="def">Saying exactly what you mean, explicitly</div></div>
+        <div class="vocab-item"><div class="word">Indirect communication</div><div class="def">Using context and implication rather than bluntness</div></div>
+        <div class="vocab-item"><div class="word">Hierarchy</div><div class="def">A system where people are ranked by authority</div></div>
+        <div class="vocab-item"><div class="word">Inclusive language</div><div class="def">Words that don't exclude any group of people</div></div>
+        <div class="vocab-item"><div class="word">Monochronic</div><div class="def">Culture focused on schedules and punctuality</div></div>
+        <div class="vocab-item"><div class="word">Polychronic</div><div class="def">Culture where time is flexible, relationships first</div></div>
+        <div class="vocab-item"><div class="word">Cultural awareness</div><div class="def">Understanding that differences exist between cultures</div></div>
+        <div class="vocab-item"><div class="word">Stereotype</div><div class="def">An oversimplified assumption about a group</div></div>
+        <div class="vocab-item"><div class="word">To adapt</div><div class="def">To adjust behaviour for a different context</div></div>
+        <div class="vocab-item"><div class="word">Non-verbal cues</div><div class="def">Communication through body language, tone, gestures</div></div>
+        <div class="vocab-item"><div class="word">Lost in translation</div><div class="def">Meaning changed or lost when moving between languages</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="remote-work.html">Remote Work Language</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Async / Asynchronous</div><div class="def">Communication that doesn't require everyone online at once</div></div>
+        <div class="vocab-item"><div class="word">Sync / Synchronous</div><div class="def">Real-time communication (calls, meetings)</div></div>
+        <div class="vocab-item"><div class="word">Heads down</div><div class="def">Focused deep work, not available for chat</div></div>
+        <div class="vocab-item"><div class="word">To loop in</div><div class="def">To add someone to a conversation or thread</div></div>
+        <div class="vocab-item"><div class="word">Loom</div><div class="def">Tool for recording short video messages</div></div>
+        <div class="vocab-item"><div class="word">Thread</div><div class="def">A sub-conversation within a Slack channel</div></div>
+        <div class="vocab-item"><div class="word">Heads up</div><div class="def">An advance warning or notification</div></div>
+        <div class="vocab-item"><div class="word">OOO (Out of Office)</div><div class="def">Away from work, not available</div></div>
+        <div class="vocab-item"><div class="word">WFH (Work From Home)</div><div class="def">Working remotely from home</div></div>
+        <div class="vocab-item"><div class="word">Deep work</div><div class="def">Uninterrupted, focused work on complex tasks</div></div>
+        <div class="vocab-item"><div class="word">To ping someone</div><div class="def">To send a quick message to someone</div></div>
+        <div class="vocab-item"><div class="word">ETA</div><div class="def">Estimated Time of Arrival / completion</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="writing">
+  <div class="section-header">
+    <div class="num">05 — WRITING & DOCUMENTS</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="report-writing.html">Report Writing</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Executive summary</div><div class="def">A brief overview of the report's key points</div></div>
+        <div class="vocab-item"><div class="word">Findings</div><div class="def">The results or data discovered during research</div></div>
+        <div class="vocab-item"><div class="word">To recommend</div><div class="def">To suggest a course of action</div></div>
+        <div class="vocab-item"><div class="word">Year-on-year (YoY)</div><div class="def">Comparing data to the same period last year</div></div>
+        <div class="vocab-item"><div class="word">To attribute to</div><div class="def">To identify the cause of something</div></div>
+        <div class="vocab-item"><div class="word">Benchmark</div><div class="def">A standard for comparing performance</div></div>
+        <div class="vocab-item"><div class="word">To outline</div><div class="def">To describe the main features or structure</div></div>
+        <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">A person with an interest in the outcome</div></div>
+        <div class="vocab-item"><div class="word">Scope</div><div class="def">The range or extent of the report's focus</div></div>
+        <div class="vocab-item"><div class="word">Methodology</div><div class="def">The approach or methods used in research</div></div>
+        <div class="vocab-item"><div class="word">To conclude</div><div class="def">To reach a final decision or summary</div></div>
+        <div class="vocab-item"><div class="word">Actionable</div><div class="def">Practical and able to be acted upon</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="minutes-summaries.html">Minutes & Summaries</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Minutes</div><div class="def">A written record of what happened in a meeting</div></div>
+        <div class="vocab-item"><div class="word">Agenda</div><div class="def">A list of topics to be discussed</div></div>
+        <div class="vocab-item"><div class="word">Action item</div><div class="def">A task assigned to someone with a deadline</div></div>
+        <div class="vocab-item"><div class="word">To chair (a meeting)</div><div class="def">To lead or facilitate a meeting</div></div>
+        <div class="vocab-item"><div class="word">Attendees</div><div class="def">People present at a meeting</div></div>
+        <div class="vocab-item"><div class="word">Apologies</div><div class="def">Formal note that someone could not attend</div></div>
+        <div class="vocab-item"><div class="word">To carry forward</div><div class="def">To move an unresolved item to the next meeting</div></div>
+        <div class="vocab-item"><div class="word">To second (a motion)</div><div class="def">To formally support a proposal</div></div>
+        <div class="vocab-item"><div class="word">AOB (Any Other Business)</div><div class="def">Additional topics not on the agenda</div></div>
+        <div class="vocab-item"><div class="word">To table (an item)</div><div class="def">To postpone discussion to a later time</div></div>
+        <div class="vocab-item"><div class="word">Quorum</div><div class="def">The minimum number of people needed for valid decisions</div></div>
+        <div class="vocab-item"><div class="word">To minute</div><div class="def">To formally record something in the minutes</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="proposal-writing.html">Proposal Writing</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Proposal</div><div class="def">A formal document offering a solution to a problem</div></div>
+        <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">A person with an interest or concern in the project</div></div>
+        <div class="vocab-item"><div class="word">Deliverable</div><div class="def">A tangible result or output of a project phase</div></div>
+        <div class="vocab-item"><div class="word">ROI (Return on Investment)</div><div class="def">The financial benefit compared to the cost</div></div>
+        <div class="vocab-item"><div class="word">To scope</div><div class="def">To define the boundaries of a project</div></div>
+        <div class="vocab-item"><div class="word">Milestone</div><div class="def">A significant point or event in a project timeline</div></div>
+        <div class="vocab-item"><div class="word">Value proposition</div><div class="def">A statement of the benefits you offer</div></div>
+        <div class="vocab-item"><div class="word">To pitch</div><div class="def">To present an idea or proposal persuasively</div></div>
+        <div class="vocab-item"><div class="word">Buy-in</div><div class="def">Agreement or support from key decision-makers</div></div>
+        <div class="vocab-item"><div class="word">Competitive advantage</div><div class="def">What makes your offer better than alternatives</div></div>
+        <div class="vocab-item"><div class="word">Feasibility</div><div class="def">Whether a plan is practical and achievable</div></div>
+        <div class="vocab-item"><div class="word">To onboard</div><div class="def">To integrate a new client or system</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="proofreading-editing.html">Proofreading & Editing</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Typo</div><div class="def">A small error in typed or printed text</div></div>
+        <div class="vocab-item"><div class="word">To proofread</div><div class="def">To read and correct errors in a text</div></div>
+        <div class="vocab-item"><div class="word">Clarity</div><div class="def">The quality of being clear and easy to understand</div></div>
+        <div class="vocab-item"><div class="word">Concise</div><div class="def">Expressing much in few words; brief and clear</div></div>
+        <div class="vocab-item"><div class="word">Tone</div><div class="def">The attitude or feeling conveyed by the writing</div></div>
+        <div class="vocab-item"><div class="word">Run-on sentence</div><div class="def">Two or more sentences incorrectly joined</div></div>
+        <div class="vocab-item"><div class="word">Subject-verb agreement</div><div class="def">Matching singular/plural subjects with verbs</div></div>
+        <div class="vocab-item"><div class="word">Oxford comma</div><div class="def">A comma before "and" in a list of three or more</div></div>
+        <div class="vocab-item"><div class="word">Passive voice</div><div class="def">A sentence where the subject receives the action</div></div>
+        <div class="vocab-item"><div class="word">Dangling modifier</div><div class="def">A phrase that doesn't clearly relate to the word it modifies</div></div>
+        <div class="vocab-item"><div class="word">Consistency</div><div class="def">Using the same style, format, or terminology throughout</div></div>
+        <div class="vocab-item"><div class="word">To revise</div><div class="def">To re-examine and make corrections to a text</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="sales">
+  <div class="section-header">
+    <div class="num">06 — SALES & CLIENT MANAGEMENT</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="sales-vocabulary.html">Sales Vocabulary</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Lead</div><div class="def">A potential customer who has shown interest</div></div>
+        <div class="vocab-item"><div class="word">Prospect</div><div class="def">A qualified potential customer</div></div>
+        <div class="vocab-item"><div class="word">Pipeline</div><div class="def">A visual overview of deals at each stage</div></div>
+        <div class="vocab-item"><div class="word">To close (a deal)</div><div class="def">To finalise a sale or agreement</div></div>
+        <div class="vocab-item"><div class="word">Conversion rate</div><div class="def">The percentage of leads that become customers</div></div>
+        <div class="vocab-item"><div class="word">Cold call</div><div class="def">Contacting someone without prior relationship</div></div>
+        <div class="vocab-item"><div class="word">Churn rate</div><div class="def">The rate at which customers stop doing business</div></div>
+        <div class="vocab-item"><div class="word">Upsell</div><div class="def">Selling a higher-value product to an existing customer</div></div>
+        <div class="vocab-item"><div class="word">Quota</div><div class="def">A sales target set for a specific period</div></div>
+        <div class="vocab-item"><div class="word">Commission</div><div class="def">Earnings based on sales performance</div></div>
+        <div class="vocab-item"><div class="word">ROI (Return on Investment)</div><div class="def">Financial benefit compared to cost</div></div>
+        <div class="vocab-item"><div class="word">Touchpoint</div><div class="def">Any interaction between a company and a customer</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="client-onboarding.html">Client Onboarding</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Onboarding</div><div class="def">The process of integrating a new client</div></div>
+        <div class="vocab-item"><div class="word">Kickoff meeting</div><div class="def">The initial meeting to launch a project</div></div>
+        <div class="vocab-item"><div class="word">Point of contact</div><div class="def">The main person responsible for communication</div></div>
+        <div class="vocab-item"><div class="word">Milestone</div><div class="def">A significant checkpoint in a project</div></div>
+        <div class="vocab-item"><div class="word">Deliverable</div><div class="def">A tangible output or result</div></div>
+        <div class="vocab-item"><div class="word">To align (on)</div><div class="def">To reach agreement or shared understanding</div></div>
+        <div class="vocab-item"><div class="word">Escalation path</div><div class="def">The process for raising unresolved issues</div></div>
+        <div class="vocab-item"><div class="word">SLA (Service Level Agreement)</div><div class="def">A contract defining service standards</div></div>
+        <div class="vocab-item"><div class="word">To hand over</div><div class="def">To transfer responsibility to another person</div></div>
+        <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">A person with an interest in the project's outcome</div></div>
+        <div class="vocab-item"><div class="word">Check-in</div><div class="def">A regular meeting to review progress</div></div>
+        <div class="vocab-item"><div class="word">To onboard</div><div class="def">To bring a new client through the setup process</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="handling-complaints.html">Handling Complaints</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Complaint</div><div class="def">A formal expression of dissatisfaction</div></div>
+        <div class="vocab-item"><div class="word">To escalate</div><div class="def">To raise an issue to a higher level of authority</div></div>
+        <div class="vocab-item"><div class="word">To acknowledge</div><div class="def">To recognise that a problem exists</div></div>
+        <div class="vocab-item"><div class="word">Goodwill gesture</div><div class="def">A voluntary act to maintain a positive relationship</div></div>
+        <div class="vocab-item"><div class="word">To resolve</div><div class="def">To find a solution to a problem</div></div>
+        <div class="vocab-item"><div class="word">Compensation</div><div class="def">Something given to make up for a loss or inconvenience</div></div>
+        <div class="vocab-item"><div class="word">To follow up</div><div class="def">To check on the status or outcome of something</div></div>
+        <div class="vocab-item"><div class="word">Service recovery</div><div class="def">The process of turning a negative experience positive</div></div>
+        <div class="vocab-item"><div class="word">Dissatisfaction</div><div class="def">The feeling of being unhappy with a product or service</div></div>
+        <div class="vocab-item"><div class="word">To lodge (a complaint)</div><div class="def">To formally submit a complaint</div></div>
+        <div class="vocab-item"><div class="word">Recurring issue</div><div class="def">A problem that happens repeatedly</div></div>
+        <div class="vocab-item"><div class="word">SLA breach</div><div class="def">Failure to meet agreed service standards</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="upselling-crossselling.html">Upselling & Cross-selling</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Upselling</div><div class="def">Suggesting a higher-value product or upgrade</div></div>
+        <div class="vocab-item"><div class="word">Cross-selling</div><div class="def">Suggesting complementary products or services</div></div>
+        <div class="vocab-item"><div class="word">Bundle</div><div class="def">A package of products sold together at a discount</div></div>
+        <div class="vocab-item"><div class="word">Upgrade</div><div class="def">Moving to a higher-tier product or plan</div></div>
+        <div class="vocab-item"><div class="word">Value proposition</div><div class="def">A clear statement of the benefits offered</div></div>
+        <div class="vocab-item"><div class="word">Buying signal</div><div class="def">A verbal or behavioural cue that a client is ready to buy</div></div>
+        <div class="vocab-item"><div class="word">Add-on</div><div class="def">An additional feature or product added to a purchase</div></div>
+        <div class="vocab-item"><div class="word">Premium</div><div class="def">A higher-quality, higher-priced version</div></div>
+        <div class="vocab-item"><div class="word">To complement</div><div class="def">To go well together with something else</div></div>
+        <div class="vocab-item"><div class="word">Incentive</div><div class="def">A reward or benefit to encourage a purchase</div></div>
+        <div class="vocab-item"><div class="word">Retention</div><div class="def">Keeping existing customers over time</div></div>
+        <div class="vocab-item"><div class="word">ARPU</div><div class="def">Average Revenue Per User — average income generated per customer</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="finance">
+  <div class="section-header">
+    <div class="num">07 — FINANCE & NUMBERS</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="financial-english.html">Financial English</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Revenue</div><div class="def">Total income from sales before any deductions</div></div>
+        <div class="vocab-item"><div class="word">Net profit</div><div class="def">Income remaining after all expenses are deducted</div></div>
+        <div class="vocab-item"><div class="word">Gross margin</div><div class="def">Revenue minus cost of goods sold, as a percentage</div></div>
+        <div class="vocab-item"><div class="word">OPEX</div><div class="def">Operating expenses; day-to-day running costs</div></div>
+        <div class="vocab-item"><div class="word">CAPEX</div><div class="def">Capital expenditure; investment in long-term assets</div></div>
+        <div class="vocab-item"><div class="word">Balance sheet</div><div class="def">A financial statement showing assets, liabilities, and equity</div></div>
+        <div class="vocab-item"><div class="word">Cash flow</div><div class="def">The movement of money in and out of a business</div></div>
+        <div class="vocab-item"><div class="word">Accounts receivable</div><div class="def">Money owed to the company by customers</div></div>
+        <div class="vocab-item"><div class="word">Accounts payable</div><div class="def">Money the company owes to suppliers</div></div>
+        <div class="vocab-item"><div class="word">Liquidity</div><div class="def">The ability to meet short-term financial obligations</div></div>
+        <div class="vocab-item"><div class="word">Depreciation</div><div class="def">The decrease in value of an asset over time</div></div>
+        <div class="vocab-item"><div class="word">Fiscal year</div><div class="def">A 12-month period used for financial reporting</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="talking-about-data.html">Talking About Data</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">KPI</div><div class="def">Key Performance Indicator; a measurable value tracking progress</div></div>
+        <div class="vocab-item"><div class="word">Trend</div><div class="def">The general direction in which something is developing</div></div>
+        <div class="vocab-item"><div class="word">To plateau</div><div class="def">To reach a level and stay there without further change</div></div>
+        <div class="vocab-item"><div class="word">To fluctuate</div><div class="def">To rise and fall irregularly</div></div>
+        <div class="vocab-item"><div class="word">Year-on-year (YoY)</div><div class="def">Comparing data to the same period last year</div></div>
+        <div class="vocab-item"><div class="word">Quarter-on-quarter (QoQ)</div><div class="def">Comparing data to the previous quarter</div></div>
+        <div class="vocab-item"><div class="word">Benchmark</div><div class="def">A standard against which performance is measured</div></div>
+        <div class="vocab-item"><div class="word">To peak</div><div class="def">To reach the highest point</div></div>
+        <div class="vocab-item"><div class="word">To account for</div><div class="def">To represent a specific proportion of a total</div></div>
+        <div class="vocab-item"><div class="word">Correlation</div><div class="def">A relationship between two variables</div></div>
+        <div class="vocab-item"><div class="word">Metric</div><div class="def">A quantifiable measure used to track performance</div></div>
+        <div class="vocab-item"><div class="word">Forecast</div><div class="def">A prediction of future trends based on data</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="budgets-forecasting.html">Budgets & Forecasting</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Budget</div><div class="def">A financial plan outlining expected income and expenses</div></div>
+        <div class="vocab-item"><div class="word">Forecast</div><div class="def">A prediction of future financial performance</div></div>
+        <div class="vocab-item"><div class="word">Allocation</div><div class="def">The distribution of resources to specific areas</div></div>
+        <div class="vocab-item"><div class="word">Variance</div><div class="def">The difference between budgeted and actual figures</div></div>
+        <div class="vocab-item"><div class="word">Favourable variance</div><div class="def">When actual results are better than budgeted</div></div>
+        <div class="vocab-item"><div class="word">Adverse variance</div><div class="def">When actual results are worse than budgeted</div></div>
+        <div class="vocab-item"><div class="word">To project</div><div class="def">To estimate future performance based on data</div></div>
+        <div class="vocab-item"><div class="word">Contingency</div><div class="def">A reserve of funds for unexpected expenses</div></div>
+        <div class="vocab-item"><div class="word">Cost overrun</div><div class="def">Spending more than the budgeted amount</div></div>
+        <div class="vocab-item"><div class="word">Break-even</div><div class="def">The point where revenue equals costs</div></div>
+        <div class="vocab-item"><div class="word">To reallocate</div><div class="def">To move funds from one area to another</div></div>
+        <div class="vocab-item"><div class="word">Headcount</div><div class="def">The number of employees in a team or company</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="invoice-payment.html">Invoice & Payment Terms</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Invoice</div><div class="def">A formal document requesting payment for goods or services</div></div>
+        <div class="vocab-item"><div class="word">Payment terms</div><div class="def">The conditions under which payment is expected</div></div>
+        <div class="vocab-item"><div class="word">Net 30</div><div class="def">Payment due within 30 days of the invoice date</div></div>
+        <div class="vocab-item"><div class="word">Due date</div><div class="def">The date by which payment must be received</div></div>
+        <div class="vocab-item"><div class="word">Overdue</div><div class="def">Past the payment deadline</div></div>
+        <div class="vocab-item"><div class="word">Credit note</div><div class="def">A document reducing the amount owed on an invoice</div></div>
+        <div class="vocab-item"><div class="word">VAT (Value Added Tax)</div><div class="def">A consumption tax added to the price</div></div>
+        <div class="vocab-item"><div class="word">Line item</div><div class="def">An individual entry on an invoice</div></div>
+        <div class="vocab-item"><div class="word">Remittance</div><div class="def">The act of sending payment</div></div>
+        <div class="vocab-item"><div class="word">Outstanding balance</div><div class="def">The amount still owed</div></div>
+        <div class="vocab-item"><div class="word">Pro forma invoice</div><div class="def">A preliminary invoice sent before goods/services are delivered</div></div>
+        <div class="vocab-item"><div class="word">To settle (an account)</div><div class="def">To pay all amounts owed</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="tech">
+  <div class="section-header">
+    <div class="num">08 — TECHNOLOGY & DIGITAL</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="tech-english.html">Tech English for Non-Developers</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">API</div><div class="def">Application Programming Interface — connects different software systems</div></div>
+        <div class="vocab-item"><div class="word">Frontend</div><div class="def">The user-facing part of a website or application</div></div>
+        <div class="vocab-item"><div class="word">Backend</div><div class="def">The server-side logic, databases, and infrastructure</div></div>
+        <div class="vocab-item"><div class="word">Deploy</div><div class="def">To release code or updates to a live environment</div></div>
+        <div class="vocab-item"><div class="word">Bug</div><div class="def">A defect or error in software that causes unexpected behaviour</div></div>
+        <div class="vocab-item"><div class="word">Sprint</div><div class="def">A fixed development period, usually 1–2 weeks</div></div>
+        <div class="vocab-item"><div class="word">MVP</div><div class="def">Minimum Viable Product — the simplest version to launch with</div></div>
+        <div class="vocab-item"><div class="word">QA</div><div class="def">Quality Assurance — the process of testing software for bugs</div></div>
+        <div class="vocab-item"><div class="word">Staging</div><div class="def">A test environment that mirrors production</div></div>
+        <div class="vocab-item"><div class="word">Production</div><div class="def">The live environment that real users interact with</div></div>
+        <div class="vocab-item"><div class="word">Scalability</div><div class="def">The ability of a system to handle increased demand</div></div>
+        <div class="vocab-item"><div class="word">Downtime</div><div class="def">A period when a system or service is unavailable</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="cybersecurity-vocab.html">Cybersecurity Vocabulary</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Phishing</div><div class="def">Fraudulent messages designed to steal sensitive information</div></div>
+        <div class="vocab-item"><div class="word">Malware</div><div class="def">Malicious software such as viruses, ransomware, and trojans</div></div>
+        <div class="vocab-item"><div class="word">Encryption</div><div class="def">Converting data into unreadable code for security</div></div>
+        <div class="vocab-item"><div class="word">Firewall</div><div class="def">A security system that monitors and controls network traffic</div></div>
+        <div class="vocab-item"><div class="word">Data breach</div><div class="def">Unauthorised access to confidential data</div></div>
+        <div class="vocab-item"><div class="word">MFA</div><div class="def">Multi-factor authentication — extra verification steps for login</div></div>
+        <div class="vocab-item"><div class="word">Ransomware</div><div class="def">Malware that locks data and demands payment to unlock it</div></div>
+        <div class="vocab-item"><div class="word">Patch</div><div class="def">A software update that fixes bugs or security vulnerabilities</div></div>
+        <div class="vocab-item"><div class="word">VPN</div><div class="def">Virtual Private Network — encrypts your internet connection</div></div>
+        <div class="vocab-item"><div class="word">GDPR</div><div class="def">EU regulation for data protection and privacy</div></div>
+        <div class="vocab-item"><div class="word">PII</div><div class="def">Personally Identifiable Information — data that can identify a person</div></div>
+        <div class="vocab-item"><div class="word">Incident response</div><div class="def">The process and plan for handling a security breach</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="ai-automation.html">AI & Automation Terms</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Artificial intelligence</div><div class="def">Systems that simulate human intelligence to perform tasks</div></div>
+        <div class="vocab-item"><div class="word">Machine learning</div><div class="def">AI that improves automatically through experience and data</div></div>
+        <div class="vocab-item"><div class="word">Algorithm</div><div class="def">A set of rules or instructions for solving a problem</div></div>
+        <div class="vocab-item"><div class="word">NLP</div><div class="def">Natural Language Processing — AI understanding human language</div></div>
+        <div class="vocab-item"><div class="word">RPA</div><div class="def">Robotic Process Automation — bots doing repetitive tasks</div></div>
+        <div class="vocab-item"><div class="word">Chatbot</div><div class="def">AI-powered conversational interface for users</div></div>
+        <div class="vocab-item"><div class="word">Generative AI</div><div class="def">AI that creates new content such as text, images, or code</div></div>
+        <div class="vocab-item"><div class="word">Prompt</div><div class="def">An instruction or input given to an AI system</div></div>
+        <div class="vocab-item"><div class="word">Hallucination</div><div class="def">When AI generates incorrect information confidently</div></div>
+        <div class="vocab-item"><div class="word">Bias</div><div class="def">Unfair patterns in AI decisions based on flawed data</div></div>
+        <div class="vocab-item"><div class="word">Automation</div><div class="def">Using technology to perform tasks without human input</div></div>
+        <div class="vocab-item"><div class="word">Human-in-the-loop</div><div class="def">Keeping humans involved in AI-driven decisions</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="saas-cloud.html">SaaS & Cloud Vocabulary</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">SaaS</div><div class="def">Software as a Service — apps accessed via browser</div></div>
+        <div class="vocab-item"><div class="word">Cloud computing</div><div class="def">Using remote servers over the internet for computing</div></div>
+        <div class="vocab-item"><div class="word">Subscription</div><div class="def">Recurring payment model for software access</div></div>
+        <div class="vocab-item"><div class="word">Integration</div><div class="def">Connecting two or more software systems together</div></div>
+        <div class="vocab-item"><div class="word">API</div><div class="def">Application Programming Interface — enables system communication</div></div>
+        <div class="vocab-item"><div class="word">Uptime</div><div class="def">The percentage of time a service is available</div></div>
+        <div class="vocab-item"><div class="word">SLA</div><div class="def">Service Level Agreement — guaranteed performance terms</div></div>
+        <div class="vocab-item"><div class="word">Migration</div><div class="def">Moving data or systems from one platform to another</div></div>
+        <div class="vocab-item"><div class="word">On-premise</div><div class="def">Software hosted on local servers, not in the cloud</div></div>
+        <div class="vocab-item"><div class="word">Freemium</div><div class="def">Free basic version with paid premium features</div></div>
+        <div class="vocab-item"><div class="word">Per-seat pricing</div><div class="def">Charging based on the number of users</div></div>
+        <div class="vocab-item"><div class="word">Scalability</div><div class="def">Ability to grow without losing performance</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="leadership">
+  <div class="section-header">
+    <div class="num">09 — LEADERSHIP & STRATEGY</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="leadership-language.html">Leadership Language</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Vision</div><div class="def">A clear picture of the future a leader wants to create</div></div>
+        <div class="vocab-item"><div class="word">Mission</div><div class="def">The purpose and core objective of an organisation</div></div>
+        <div class="vocab-item"><div class="word">Empowerment</div><div class="def">Giving people authority and confidence to act</div></div>
+        <div class="vocab-item"><div class="word">Accountability</div><div class="def">Taking responsibility for outcomes and commitments</div></div>
+        <div class="vocab-item"><div class="word">Delegation</div><div class="def">Assigning tasks and authority to others</div></div>
+        <div class="vocab-item"><div class="word">Alignment</div><div class="def">Ensuring everyone works toward the same goals</div></div>
+        <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">A person with interest or concern in an organisation</div></div>
+        <div class="vocab-item"><div class="word">To inspire</div><div class="def">To fill someone with motivation and enthusiasm</div></div>
+        <div class="vocab-item"><div class="word">To mentor</div><div class="def">To guide and support someone's professional growth</div></div>
+        <div class="vocab-item"><div class="word">Transparency</div><div class="def">Open and honest communication with no hidden agendas</div></div>
+        <div class="vocab-item"><div class="word">Buy-in</div><div class="def">Agreement and support from others for a plan or idea</div></div>
+        <div class="vocab-item"><div class="word">Culture</div><div class="def">The shared values, behaviours, and norms of a team</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="change-management.html">Change Management</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Change management</div><div class="def">The process of guiding an organisation through transitions</div></div>
+        <div class="vocab-item"><div class="word">Transition</div><div class="def">The period of moving from one state to another</div></div>
+        <div class="vocab-item"><div class="word">Resistance</div><div class="def">Opposition or reluctance to accept change</div></div>
+        <div class="vocab-item"><div class="word">Adoption</div><div class="def">The process of accepting and using something new</div></div>
+        <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">A person with an interest or concern in the organisation</div></div>
+        <div class="vocab-item"><div class="word">Restructuring</div><div class="def">Reorganising the structure of a company or team</div></div>
+        <div class="vocab-item"><div class="word">To roll out</div><div class="def">To introduce or launch something new gradually</div></div>
+        <div class="vocab-item"><div class="word">Buy-in</div><div class="def">Agreement and support from people involved</div></div>
+        <div class="vocab-item"><div class="word">Quick win</div><div class="def">An early, visible success that builds momentum</div></div>
+        <div class="vocab-item"><div class="word">Feedback loop</div><div class="def">A system for continuously receiving and acting on input</div></div>
+        <div class="vocab-item"><div class="word">To phase in</div><div class="def">To introduce something step by step over time</div></div>
+        <div class="vocab-item"><div class="word">Champion (of change)</div><div class="def">A person who actively promotes and supports a change</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="okrs-goal-setting.html">OKRs & Goal Setting</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Objective</div><div class="def">A qualitative, inspiring goal you want to achieve</div></div>
+        <div class="vocab-item"><div class="word">Key result</div><div class="def">A measurable outcome that shows progress toward an objective</div></div>
+        <div class="vocab-item"><div class="word">SMART goal</div><div class="def">A goal that is Specific, Measurable, Achievable, Relevant, Time-bound</div></div>
+        <div class="vocab-item"><div class="word">KPI</div><div class="def">Key Performance Indicator — a metric used to evaluate success</div></div>
+        <div class="vocab-item"><div class="word">To cascade</div><div class="def">To pass goals down through levels of an organisation</div></div>
+        <div class="vocab-item"><div class="word">Alignment</div><div class="def">Ensuring all teams work toward the same strategic outcomes</div></div>
+        <div class="vocab-item"><div class="word">Milestone</div><div class="def">A significant checkpoint or achievement along the way</div></div>
+        <div class="vocab-item"><div class="word">Stretch goal</div><div class="def">An ambitious target that pushes beyond what seems easily achievable</div></div>
+        <div class="vocab-item"><div class="word">Quarterly review</div><div class="def">A check-in every three months to assess goal progress</div></div>
+        <div class="vocab-item"><div class="word">To track</div><div class="def">To monitor and measure progress over time</div></div>
+        <div class="vocab-item"><div class="word">Accountability</div><div class="def">Being responsible for delivering on commitments</div></div>
+        <div class="vocab-item"><div class="word">North star metric</div><div class="def">The single most important metric that reflects core value delivery</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="decision-making.html">Decision-Making Language</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">Rationale</div><div class="def">The reasons or logic behind a decision</div></div>
+        <div class="vocab-item"><div class="word">Consensus</div><div class="def">General agreement among a group</div></div>
+        <div class="vocab-item"><div class="word">Trade-off</div><div class="def">A compromise where you give up one thing to gain another</div></div>
+        <div class="vocab-item"><div class="word">To weigh (options)</div><div class="def">To carefully consider and compare alternatives</div></div>
+        <div class="vocab-item"><div class="word">Stakeholder</div><div class="def">A person with an interest or concern in the decision</div></div>
+        <div class="vocab-item"><div class="word">To propose</div><div class="def">To put forward an idea or plan for consideration</div></div>
+        <div class="vocab-item"><div class="word">To endorse</div><div class="def">To publicly support or approve a decision</div></div>
+        <div class="vocab-item"><div class="word">To overrule</div><div class="def">To reject or reverse someone else's decision</div></div>
+        <div class="vocab-item"><div class="word">Due diligence</div><div class="def">Thorough research and analysis before making a decision</div></div>
+        <div class="vocab-item"><div class="word">Risk assessment</div><div class="def">Evaluating potential risks and their impact</div></div>
+        <div class="vocab-item"><div class="word">To greenlight</div><div class="def">To give approval or permission to proceed</div></div>
+        <div class="vocab-item"><div class="word">Outcome</div><div class="def">The result or consequence of a decision</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="office">
+  <div class="section-header">
+    <div class="num">10 — EVERYDAY OFFICE ENGLISH</div>
+  </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="office-small-talk.html">Office Small Talk & Idioms</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">To touch base</div><div class="def">To check in briefly with someone</div></div>
+        <div class="vocab-item"><div class="word">On the same page</div><div class="def">In agreement or having the same understanding</div></div>
+        <div class="vocab-item"><div class="word">Low-hanging fruit</div><div class="def">Easy tasks or quick wins</div></div>
+        <div class="vocab-item"><div class="word">To circle back</div><div class="def">To return to a topic later</div></div>
+        <div class="vocab-item"><div class="word">To get the ball rolling</div><div class="def">To start something; to begin a process</div></div>
+        <div class="vocab-item"><div class="word">Heads up</div><div class="def">A warning or advance notice</div></div>
+        <div class="vocab-item"><div class="word">To be swamped</div><div class="def">To be extremely busy or overwhelmed</div></div>
+        <div class="vocab-item"><div class="word">To crunch numbers</div><div class="def">To do calculations or analyse data</div></div>
+        <div class="vocab-item"><div class="word">To think outside the box</div><div class="def">To be creative or find unconventional solutions</div></div>
+        <div class="vocab-item"><div class="word">Game plan</div><div class="def">A strategy or plan of action</div></div>
+        <div class="vocab-item"><div class="word">To keep someone in the loop</div><div class="def">To keep someone informed and updated</div></div>
+        <div class="vocab-item"><div class="word">To wrap up</div><div class="def">To finish or bring something to a close</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="phone-calls.html">Phone Calls & Voicemail</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">To put through</div><div class="def">To connect a caller to another person or department</div></div>
+        <div class="vocab-item"><div class="word">To hold (the line)</div><div class="def">To wait on the phone without hanging up</div></div>
+        <div class="vocab-item"><div class="word">Voicemail</div><div class="def">A recorded message left when someone can't answer</div></div>
+        <div class="vocab-item"><div class="word">Extension</div><div class="def">An internal phone number within a company</div></div>
+        <div class="vocab-item"><div class="word">To return a call</div><div class="def">To call someone back after they called you</div></div>
+        <div class="vocab-item"><div class="word">Callback</div><div class="def">A return phone call, often requested or scheduled</div></div>
+        <div class="vocab-item"><div class="word">To dial</div><div class="def">To enter a phone number to make a call</div></div>
+        <div class="vocab-item"><div class="word">Conference call</div><div class="def">A phone call with three or more participants</div></div>
+        <div class="vocab-item"><div class="word">To patch someone in</div><div class="def">To add someone to an ongoing phone call</div></div>
+        <div class="vocab-item"><div class="word">Caller ID</div><div class="def">A feature that displays the caller's phone number or name</div></div>
+        <div class="vocab-item"><div class="word">To hang up</div><div class="def">To end a phone call by disconnecting</div></div>
+        <div class="vocab-item"><div class="word">Reception / Switchboard</div><div class="def">The front desk or system that routes incoming calls</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="socialising-colleagues.html">Socialising with Colleagues</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">To grab lunch</div><div class="def">To go out for a casual meal together</div></div>
+        <div class="vocab-item"><div class="word">Happy hour</div><div class="def">After-work drinks, usually with discounts</div></div>
+        <div class="vocab-item"><div class="word">Team building</div><div class="def">Activities designed to strengthen team bonds</div></div>
+        <div class="vocab-item"><div class="word">Potluck</div><div class="def">A meal where everyone brings a dish to share</div></div>
+        <div class="vocab-item"><div class="word">To catch up</div><div class="def">To talk and share recent news with someone</div></div>
+        <div class="vocab-item"><div class="word">Rain check</div><div class="def">A polite way to decline now but accept later</div></div>
+        <div class="vocab-item"><div class="word">Icebreaker</div><div class="def">An activity or question to help people start talking</div></div>
+        <div class="vocab-item"><div class="word">To mingle</div><div class="def">To move around and talk to different people</div></div>
+        <div class="vocab-item"><div class="word">Networking</div><div class="def">Building professional relationships socially</div></div>
+        <div class="vocab-item"><div class="word">After-work drinks</div><div class="def">Socialising at a bar or restaurant after the workday</div></div>
+        <div class="vocab-item"><div class="word">Team outing</div><div class="def">A group activity outside the office</div></div>
+        <div class="vocab-item"><div class="word">To bond</div><div class="def">To develop a closer connection with someone</div></div>
+      </div>
+    </div>
+    <div class="lesson-vocab">
+      <h3 class="lesson-title"><a href="acronyms-abbreviations.html">Acronyms & Abbreviations</a></h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="word">FYI</div><div class="def">For Your Information — sharing info, no action needed</div></div>
+        <div class="vocab-item"><div class="word">ASAP</div><div class="def">As Soon As Possible — do it urgently</div></div>
+        <div class="vocab-item"><div class="word">TBD</div><div class="def">To Be Determined — not yet decided</div></div>
+        <div class="vocab-item"><div class="word">WIP</div><div class="def">Work In Progress — still being worked on</div></div>
+        <div class="vocab-item"><div class="word">NDA</div><div class="def">Non-Disclosure Agreement — a confidentiality contract</div></div>
+        <div class="vocab-item"><div class="word">KPI</div><div class="def">Key Performance Indicator — a measurable target</div></div>
+        <div class="vocab-item"><div class="word">ROI</div><div class="def">Return On Investment — profit relative to cost</div></div>
+        <div class="vocab-item"><div class="word">SLA</div><div class="def">Service Level Agreement — guaranteed service standards</div></div>
+        <div class="vocab-item"><div class="word">EOD</div><div class="def">End Of Day — by close of business today</div></div>
+        <div class="vocab-item"><div class="word">OOO</div><div class="def">Out Of Office — not available / away</div></div>
+        <div class="vocab-item"><div class="word">MVP</div><div class="def">Minimum Viable Product — simplest working version</div></div>
+        <div class="vocab-item"><div class="word">P&amp;L</div><div class="def">Profit &amp; Loss — a financial performance statement</div></div>
+      </div>
+    </div>
+</section>
+<div class="divider"></div>
+
+<footer>
+  <img src="../assets/logo.png" alt="Bia" class="footer-logo"/>
+  <p>Bia Business English &mdash; Your complete glossary reference</p>
+</footer>
+
+<script>
+function filterVocab() {
+  var query = document.getElementById('searchInput').value.toLowerCase().trim();
+  var items = document.querySelectorAll('.vocab-item');
+  var lessons = document.querySelectorAll('.lesson-vocab');
+  var sections = document.querySelectorAll('.section');
+  var dividers = document.querySelectorAll('.divider');
+  var visibleCount = 0;
+
+  for (var i = 0; i < items.length; i++) {
+    var word = items[i].querySelector('.word').textContent.toLowerCase();
+    var def = items[i].querySelector('.def').textContent.toLowerCase();
+    var match = !query || word.indexOf(query) !== -1 || def.indexOf(query) !== -1;
+    items[i].classList.toggle('hidden', !match);
+    if (match) visibleCount++;
+  }
+
+  // Hide empty lessons
+  for (var j = 0; j < lessons.length; j++) {
+    var visibleItems = lessons[j].querySelectorAll('.vocab-item:not(.hidden)');
+    lessons[j].style.display = visibleItems.length === 0 ? 'none' : '';
+  }
+
+  // Hide empty sections
+  for (var k = 0; k < sections.length; k++) {
+    var visibleLessons = sections[k].querySelectorAll('.lesson-vocab');
+    var anyVisible = false;
+    for (var l = 0; l < visibleLessons.length; l++) {
+      if (visibleLessons[l].style.display !== 'none') { anyVisible = true; break; }
+    }
+    sections[k].style.display = anyVisible ? '' : 'none';
+  }
+
+  var countEl = document.getElementById('searchCount');
+  var noResults = document.getElementById('noResults');
+  if (query) {
+    countEl.textContent = visibleCount + ' word' + (visibleCount !== 1 ? 's' : '') + ' found';
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  } else {
+    countEl.textContent = '';
+    noResults.style.display = 'none';
+  }
+}
+</script>
+</body>
+</html>

@@ -51,7 +51,8 @@
         '<div class="mega-menu" id="megaMenu">' +
           '<div class="mega-grid">' + megaItems + '</div>' +
         '</div>' +
-      '</li>';
+      '</li>' +
+      '<li><a href="pages/glossary.html">Glossary</a></li>';
   } else {
     // Link back to the hub
     linksHtml = '<li><a href="' + basePath + 'index.html" onclick="closeMenu()">Home</a></li>';
@@ -63,6 +64,8 @@
           '<div class="mega-grid">' + megaItems + '</div>' +
         '</div>' +
       '</li>';
+    // Glossary link
+    linksHtml += '<li><a href="' + basePath + 'pages/glossary.html" onclick="closeMenu()">Glossary</a></li>';
     // Page section links
     if (sections) {
       var parts = sections.split(',');
