@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minutes & Summaries — Bia Business English</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/navbar.css">
+<style>
+  :root{--bg:#F7F5F0;--surface:#FFFFFF;--text:#1A1A1A;--text-muted:#6B6560;--accent:#6366F1;--accent-light:#EEF2FF;--accent-dark:#4F46E5;--border:#E8E4DD;--success:#3A7D5C;--success-light:#E4F2EA;--error:#C45D3E;--error-light:#FCEAE5;--c1:#6366F1;--c2:#EC4899;--c3:#F59E0B;--c4:#10B981}
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+  .hero{padding:10rem 2rem 5rem;max-width:800px;margin:0 auto;text-align:center;animation:fadeUp .8s ease-out}.hero-mascot{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--surface);box-shadow:0 6px 24px rgba(99,102,241,.18);margin:0 auto 1.5rem;display:block;animation:float 4s ease-in-out infinite,fadeUp .8s ease-out}.hero .tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.35rem 1rem;border-radius:100px;margin-bottom:1.5rem}.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem}.hero p{font-size:1.1rem;color:var(--text-muted);max-width:540px;margin:0 auto;font-weight:300}
+  .email-parts{display:flex;justify-content:center;gap:.8rem;margin:3rem auto 0;max-width:560px;flex-wrap:wrap}.email-part{padding:.5rem 1.1rem;border-radius:100px;background:var(--surface);border:1px solid var(--border);font-size:.78rem;font-weight:500;color:var(--text-muted);transition:all .3s;cursor:default}.email-part:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+  .section{max-width:740px;margin:0 auto;padding:4rem 2rem}.section-header{margin-bottom:2.5rem}.section-header .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;color:var(--accent);letter-spacing:.06em;margin-bottom:.5rem}.section-header h2{font-family:'DM Serif Display',serif;font-size:2rem;letter-spacing:-.02em;line-height:1.2}.divider{width:100%;max-width:740px;margin:0 auto;height:1px;background:var(--border)}
+  .theory-grid{display:grid;gap:1.25rem}.theory-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;display:grid;grid-template-columns:56px 1fr;gap:1.5rem;transition:transform .3s,box-shadow .3s;animation:fadeUp .6s ease-out both}.theory-card:nth-child(1){animation-delay:.05s}.theory-card:nth-child(2){animation-delay:.1s}.theory-card:nth-child(3){animation-delay:.15s}.theory-card:nth-child(4){animation-delay:.2s}.theory-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.04)}.theory-card .icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff}.theory-card:nth-child(1) .icon{background:var(--c1)}.theory-card:nth-child(2) .icon{background:var(--c2)}.theory-card:nth-child(3) .icon{background:var(--c3)}.theory-card:nth-child(4) .icon{background:var(--c4)}.theory-card h3{font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:.5rem}.theory-card p{color:var(--text-muted);font-size:.92rem;line-height:1.7}.theory-card .example{margin-top:1rem;padding:1rem 1.25rem;background:var(--bg);border-radius:8px;font-size:.85rem;color:var(--text);font-style:italic;border-left:3px solid var(--border)}
+  .tips-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-top:1.5rem}.tips-box h3{font-family:'DM Serif Display',serif;font-size:1.15rem;margin-bottom:1rem}.tip-item{display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.8rem;font-size:.92rem;color:var(--text-muted)}.tip-item .bullet{width:6px;height:6px;min-width:6px;background:var(--accent);border-radius:50%;margin-top:.55rem}
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-top:1rem}.vocab-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;transition:transform .2s}.vocab-item:hover{transform:translateY(-2px)}.vocab-item .word{font-weight:600;font-size:.88rem;margin-bottom:.25rem}.vocab-item .def{font-size:.78rem;color:var(--text-muted);line-height:1.5}
+  .quiz-container{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.5rem}.quiz-header{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}.quiz-header h3{font-family:'DM Serif Display',serif;font-size:1.1rem}.quiz-progress{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-muted)}.quiz-body{padding:2rem}.quiz-question{font-size:1rem;font-weight:500;margin-bottom:1.5rem;line-height:1.6}.quiz-options{display:grid;gap:.6rem}.quiz-option{padding:1rem 1.25rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;font-size:.9rem;transition:all .25s;background:var(--surface);display:flex;align-items:center;gap:.75rem}.quiz-option:hover:not(.disabled){border-color:var(--accent);background:var(--accent-light)}.quiz-option .opt-letter{width:28px;height:28px;min-width:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:500;background:var(--bg);color:var(--text-muted);transition:all .25s}.quiz-option.correct{border-color:var(--success);background:var(--success-light)}.quiz-option.correct .opt-letter{background:var(--success);color:#fff}.quiz-option.wrong{border-color:var(--error);background:var(--error-light)}.quiz-option.wrong .opt-letter{background:var(--error);color:#fff}.quiz-option.disabled{pointer-events:none;opacity:.6}.quiz-option.correct.disabled,.quiz-option.wrong.disabled{opacity:1}.quiz-feedback{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:.88rem;line-height:1.6;display:none}.quiz-feedback.show{display:block}.quiz-feedback.correct-fb{background:var(--success-light);color:var(--success)}.quiz-feedback.wrong-fb{background:var(--error-light);color:var(--error)}.quiz-footer{padding:1.25rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
+  .btn{padding:.6rem 1.5rem;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .25s}.btn-primary{background:var(--text);color:#fff}.btn-primary:hover{background:#333}
+  .score-display{text-align:center;padding:3rem 2rem}.score-display .score-num{font-family:'DM Serif Display',serif;font-size:4rem;line-height:1;margin-bottom:.5rem}.score-display .score-label{font-size:.88rem;color:var(--text-muted);margin-bottom:2rem}
+  .exercise-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.25rem}.exercise-card h4{font-family:'DM Serif Display',serif;font-size:1.05rem;margin-bottom:.75rem}.exercise-card p{font-size:.9rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6}.exercise-card textarea{width:100%;min-height:120px;padding:1rem;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.9rem;line-height:1.6;resize:vertical;background:var(--bg);color:var(--text);transition:border-color .3s}.exercise-card textarea:focus{outline:none;border-color:var(--accent)}.exercise-card textarea::placeholder{color:#B5AFA8}
+  .exercise-label{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;margin-bottom:.75rem}.label-1{background:rgba(99,102,241,.12);color:var(--c1)}.label-2{background:rgba(236,72,153,.12);color:var(--c2)}.label-3{background:rgba(245,158,11,.12);color:var(--c3)}.label-4{background:rgba(16,185,129,.12);color:var(--c4)}
+  footer{text-align:center;padding:3rem 2rem 2rem;font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border);max-width:740px;margin:2rem auto 0}.footer-logo{width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:.75rem;opacity:.7;transition:opacity .3s}.footer-logo:hover{opacity:1}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @media(max-width:640px){.hero{padding:8rem 1.5rem 3rem}.hero-mascot{width:72px;height:72px}.section{padding:3rem 1.5rem}.theory-card{grid-template-columns:1fr;gap:1rem}.theory-card .icon{width:44px;height:44px;font-size:1.2rem}.quiz-header,.quiz-body,.quiz-footer{padding-left:1.25rem;padding-right:1.25rem}.vocab-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<script src="../assets/navbar.js" data-title="Minutes" data-subtitle="summaries" data-sections="theory,vocab,quiz,practice"></script>
+
+<section class="hero">
+  <img src="../assets/logo.png" alt="Mascot" class="hero-mascot"/>
+  <div class="tag">English Study Guide — Writing &amp; Documents</div>
+  <h1>Minutes &amp; Summaries</h1>
+  <p>Learn to document meetings, decisions, and action items clearly — so nothing gets lost and everyone stays aligned.</p>
+  <div class="email-parts">
+    <div class="email-part">Attendees</div><div class="email-part">Agenda</div><div class="email-part">Discussion</div>
+    <div class="email-part">Decisions</div><div class="email-part">Action Items</div><div class="email-part">Next Steps</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="theory">
+  <div class="section-header"><div class="num">01 — THEORY</div><h2>Anatomy of Meeting Minutes</h2></div>
+  <p style="color:var(--text-muted);font-size:.95rem;margin-bottom:2rem;line-height:1.8">
+    Good meeting minutes capture what was discussed, what was decided, and what needs to happen next. They serve as an official record, keep absent colleagues informed, and ensure accountability for action items.
+  </p>
+  <div class="theory-grid">
+    <div class="theory-card">
+      <div class="icon">📝</div>
+      <div><h3>Header &amp; Attendees</h3><p>Minutes start with metadata: date, time, location (or "virtual"), attendees, absentees, and the chairperson. This provides context and accountability.</p>
+      <div class="example">Meeting: Weekly Product Sync | Date: 12 March 2026 | Attendees: J. Silva, M. Chen, R. Patel | Absent: K. Lee</div></div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">💬</div>
+      <div><h3>Agenda &amp; Discussion</h3><p>List the agenda items and summarise each discussion point objectively. Don't transcribe word-for-word — capture the essence. Use reported speech: "Maria suggested that…", "The team discussed…".</p>
+      <div class="example">Item 2 — Launch Timeline: The team discussed moving the launch date from April to May. Maria noted that the QA team needs two additional weeks.</div></div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">✅</div>
+      <div><h3>Decisions &amp; Action Items</h3><p>Clearly record what was decided and who is responsible for each action, with deadlines. Use strong verbs: "It was agreed that…", "ACTION: [Name] to [task] by [date]".</p>
+      <div class="example">Decision: The launch will be postponed to 15 May. ACTION: Raj to update the project timeline by Friday 14 March.</div></div>
+    </div>
+    <div class="theory-card">
+      <div class="icon">📅</div>
+      <div><h3>Summary &amp; Next Meeting</h3><p>End with a brief overall summary, the date/time of the next meeting, and any items to carry forward.</p>
+      <div class="example">Summary: Three of five agenda items were resolved. Open items (budget approval, vendor selection) to be discussed next meeting. Next meeting: 19 March, 10:00 GMT.</div></div>
+    </div>
+  </div>
+  <div class="tips-box">
+    <h3>Minutes Do's &amp; Don'ts</h3>
+    <div class="tip-item"><div class="bullet"></div><div><strong>Do</strong> write minutes as soon as possible after the meeting while details are fresh.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div><strong>Do</strong> use a consistent template for every meeting — it makes minutes easier to follow.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div><strong>Do</strong> clearly distinguish between discussion, decisions, and action items.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div><strong>Don't</strong> include every word spoken — summarise, don't transcribe.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div><strong>Don't</strong> add your personal opinions — minutes should be neutral and factual.</div></div>
+    <div class="tip-item"><div class="bullet"></div><div><strong>Don't</strong> leave action items without an owner and a deadline.</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="vocab">
+  <div class="section-header"><div class="num">02 — VOCABULARY</div><h2>Useful Words &amp; Phrases</h2></div>
+  <div class="vocab-grid">
+    <div class="vocab-item"><div class="word">Minutes</div><div class="def">A written record of what happened in a meeting</div></div>
+    <div class="vocab-item"><div class="word">Agenda</div><div class="def">A list of topics to be discussed</div></div>
+    <div class="vocab-item"><div class="word">Action item</div><div class="def">A task assigned to someone with a deadline</div></div>
+    <div class="vocab-item"><div class="word">To chair (a meeting)</div><div class="def">To lead or facilitate a meeting</div></div>
+    <div class="vocab-item"><div class="word">Attendees</div><div class="def">People present at a meeting</div></div>
+    <div class="vocab-item"><div class="word">Apologies</div><div class="def">Formal note that someone could not attend</div></div>
+    <div class="vocab-item"><div class="word">To carry forward</div><div class="def">To move an unresolved item to the next meeting</div></div>
+    <div class="vocab-item"><div class="word">To second (a motion)</div><div class="def">To formally support a proposal</div></div>
+    <div class="vocab-item"><div class="word">AOB (Any Other Business)</div><div class="def">Additional topics not on the agenda</div></div>
+    <div class="vocab-item"><div class="word">To table (an item)</div><div class="def">To postpone discussion to a later time</div></div>
+    <div class="vocab-item"><div class="word">Quorum</div><div class="def">The minimum number of people needed for valid decisions</div></div>
+    <div class="vocab-item"><div class="word">To minute</div><div class="def">To formally record something in the minutes</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="quiz">
+  <div class="section-header"><div class="num">03 — QUIZ</div><h2>Test Your Knowledge</h2></div>
+  <div id="quizArea"></div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="practice">
+  <div class="section-header"><div class="num">04 — PRACTICE</div><h2>Writing Exercises</h2></div>
+  <p style="color:var(--text-muted);font-size:.92rem;margin-bottom:2rem">Practice writing meeting minutes and summaries for the following scenarios.</p>
+  <div class="exercise-card">
+    <span class="exercise-label label-1">Meeting Minutes</span>
+    <h4>Write meeting minutes</h4>
+    <p>You attended a 30-minute team meeting about a product launch delay. Write the minutes including: header (date, attendees), 2 discussion points, 1 decision, and 2 action items.</p>
+    <textarea placeholder="Meeting: Product Launch Sync&#10;Date: 12 March 2026&#10;Attendees: …&#10;&#10;Agenda Item 1 —…"></textarea>
+  </div>
+  <div class="exercise-card">
+    <span class="exercise-label label-2">Summary Email</span>
+    <h4>Summarise a meeting in an email</h4>
+    <p>After a client meeting, write a follow-up email summarising the key points discussed, decisions made, and next steps.</p>
+    <textarea placeholder="Hi [Client],&#10;&#10;Thank you for your time today. Here's a summary of what we discussed…"></textarea>
+  </div>
+  <div class="exercise-card">
+    <span class="exercise-label label-3">Action Items</span>
+    <h4>Create an action item list</h4>
+    <p>From the following notes, extract and format clear action items: 'Sarah mentioned she'd look into the vendor pricing. Tom said he'd draft the proposal. We need budget approval from Finance by end of month.'</p>
+    <textarea placeholder="ACTION ITEMS:&#10;1. Sarah — …"></textarea>
+  </div>
+</section>
+
+<footer><img src="../assets/logo.png" alt="Logo" class="footer-logo"/><br>Minutes &amp; Summaries — Bia Business English</footer>
+
+<script>
+const quizData=[
+  {question:"What is the primary purpose of meeting minutes?",options:["To record every word spoken","To document decisions and action items","To replace the meeting","To evaluate attendees"],correct:1,feedback:{correct:"Correct! Minutes exist to document key decisions and action items, not to transcribe everything.",wrong:"The primary purpose of minutes is to document decisions and action items — not to record every word."}},
+  {question:"What should every action item include?",options:["Only the task","A responsible person and a deadline","A budget","An apology"],correct:1,feedback:{correct:"Right! Every action item needs a clear owner and a deadline to ensure accountability.",wrong:"Action items should always include a responsible person and a deadline."}},
+  {question:"What does 'AOB' stand for?",options:["All Over Business","Any Other Business","Annual Operating Budget","Association of Businesses"],correct:1,feedback:{correct:"Correct! AOB stands for 'Any Other Business' — additional topics not on the original agenda.",wrong:"AOB stands for 'Any Other Business' — it covers topics not on the original agenda."}},
+  {question:"What does it mean to 'table' a discussion?",options:["To put it on the table","To postpone it to a later meeting","To resolve it immediately","To cancel it"],correct:1,feedback:{correct:"That's right! To 'table' a discussion means to postpone it for later.",wrong:"To 'table' a discussion means to postpone it to a later meeting."}},
+  {question:"Which phrase is best for recording a decision?",options:["Everyone seemed to agree","It was decided that…","Most people liked the idea","The vibe was positive"],correct:1,feedback:{correct:"Correct! 'It was decided that…' is clear, formal, and unambiguous.",wrong:"Use clear, formal language like 'It was decided that…' when recording decisions."}},
+  {question:"What are 'apologies' in the context of meeting minutes?",options:["Saying sorry for mistakes","A note that someone couldn't attend","Corrections to previous minutes","Complaints"],correct:1,feedback:{correct:"Right! In meeting minutes, 'apologies' refers to a formal note that someone could not attend.",wrong:"In meeting minutes, 'apologies' means a formal note that someone couldn't attend."}},
+  {question:"What does 'quorum' mean?",options:["A type of meeting room","The minimum number of people for valid decisions","A voting system","A quarterly report"],correct:1,feedback:{correct:"Correct! A quorum is the minimum number of people required for decisions to be valid.",wrong:"A quorum is the minimum number of people needed to make valid decisions."}},
+  {question:"What is the best approach to writing discussion summaries?",options:["Copy conversations word for word","Summarise the key points objectively","Only record what the chair said","Write in bullet points only"],correct:1,feedback:{correct:"That's right! Summarise key points objectively rather than transcribing everything.",wrong:"The best approach is to summarise the key points objectively — don't transcribe word for word."}},
+  {question:"When should minutes ideally be written?",options:["A week later","As soon as possible after the meeting","Before the meeting","Only if requested"],correct:1,feedback:{correct:"Correct! Writing minutes promptly ensures accuracy while details are still fresh.",wrong:"Minutes should be written as soon as possible after the meeting while details are fresh."}},
+  {question:"What does 'to carry forward' mean?",options:["To physically carry documents","To move an unresolved item to the next meeting","To delete an item","To complete a task"],correct:1,feedback:{correct:"Right! 'To carry forward' means moving an unresolved item to the next meeting's agenda.",wrong:"'To carry forward' means to move an unresolved item to the next meeting."}}
+];
+const letters=['A','B','C','D'];let currentQ=0,score=0,answered=false;
+function renderQuiz(){const a=document.getElementById('quizArea');if(currentQ>=quizData.length){const p=Math.round(score/quizData.length*100);let m=p>=80?"Excellent!":p>=60?"Good effort!":"Keep studying!";a.innerHTML=`<div class="quiz-container"><div class="score-display"><div class="score-num" style="color:${p>=60?'var(--success)':'var(--error)'}">${score}/${quizData.length}</div><div class="score-label">${p}% — ${m}</div><button class="btn btn-primary" onclick="resetQuiz()">Restart Quiz</button></div></div>`;return;}const q=quizData[currentQ];a.innerHTML=`<div class="quiz-container"><div class="quiz-header"><h3>Question ${currentQ+1}</h3><div class="quiz-progress">${currentQ+1} / ${quizData.length}</div></div><div class="quiz-body"><div class="quiz-question">${q.question}</div><div class="quiz-options">${q.options.map((o,i)=>`<div class="quiz-option" onclick="selectAnswer(${i})" id="opt-${i}"><div class="opt-letter">${letters[i]}</div><div>${o}</div></div>`).join('')}</div><div class="quiz-feedback" id="feedback"></div></div><div class="quiz-footer"><button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next →</button></div></div>`;answered=false;}
+function selectAnswer(i){if(answered)return;answered=true;const q=quizData[currentQ],c=i===q.correct;if(c)score++;for(let j=0;j<q.options.length;j++){const e=document.getElementById('opt-'+j);if(j===q.correct)e.classList.add('correct');else if(j===i&&!c)e.classList.add('wrong');if(j!==i&&j!==q.correct)e.classList.add('disabled');}const f=document.getElementById('feedback');f.textContent=c?q.feedback.correct:q.feedback.wrong;f.className=`quiz-feedback show ${c?'correct-fb':'wrong-fb'}`;document.getElementById('nextBtn').style.display='inline-flex';}
+function nextQuestion(){currentQ++;renderQuiz();}function resetQuiz(){currentQ=0;score=0;renderQuiz();}renderQuiz();
+</script>
+</body>
+</html>
