@@ -134,7 +134,6 @@
   }
 
   .section-header {
-    margin-bottom: 2.5rem;
     text-align: center;
   }
 
@@ -168,6 +167,48 @@
     margin: 0 auto;
     height: 1px;
     background: var(--border);
+  }
+
+  /* MODULE ACCORDION */
+  .section-header {
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-header::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .section-header.open::after {
+    transform: rotate(-135deg);
+  }
+
+  .module-grid-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .module-grid-wrapper.open {
+    grid-template-rows: 1fr;
+  }
+
+  .module-grid-wrapper > .module-grid {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .module-grid-wrapper.open > .module-grid {
+    padding-top: 2rem;
   }
 
   /* MODULE GRID */
@@ -414,12 +455,13 @@
 
 <!-- INTERVIEW & CAREER SKILLS -->
 <section class="section" id="interview">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 01</div>
     <h2>Interview &amp; Career Skills</h2>
     <p>Master the techniques and vocabulary for job interviews, networking, and professional growth.</p>
   </div>
 
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/star-method.html" class="lesson-card card-star">
       <div class="card-icon">⭐</div>
@@ -471,17 +513,19 @@
       </div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- BUSINESS COMMUNICATION -->
 <section class="section" id="communication">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 02</div>
     <h2>Business Communication</h2>
     <p>Professional writing and speaking for emails, meetings, presentations, and disagreements.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/email-etiquette.html" class="lesson-card" style="--card-c:#6366F1">
       <div class="card-icon" style="background:#6366F1">📧</div><h3>Email Etiquette</h3><div class="desc">Structure, tone, and key expressions for professional business emails.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -496,17 +540,19 @@
       <div class="card-icon" style="background:#14B8A6">🤔</div><h3>Polite Disagreement</h3><div class="desc">How to disagree professionally without damaging relationships.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- PROFESSIONAL DEVELOPMENT -->
 <section class="section" id="development">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 03</div>
     <h2>Professional Development</h2>
     <p>Build your professional profile and master industry vocabulary.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/action-verbs-cvs.html" class="lesson-card" style="--card-c:#EF4444">
       <div class="card-icon" style="background:#EF4444">📝</div><h3>Action Verbs for CVs</h3><div class="desc">Power verbs that make your CV stand out to recruiters.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -521,17 +567,19 @@
       <div class="card-icon" style="background:#06B6D4">🔄</div><h3>Agile &amp; Scrum Terms</h3><div class="desc">Key vocabulary for tech teams and project management.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- SOFT SKILLS -->
 <section class="section" id="softskills">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 04</div>
     <h2>Soft Skills &amp; Workplace</h2>
     <p>Navigate workplace dynamics and cross-cultural communication in English.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/conflict-resolution.html" class="lesson-card" style="--card-c:#DC2626">
       <div class="card-icon" style="background:#DC2626">🔥</div><h3>Conflict Resolution</h3><div class="desc">Language for handling workplace disagreements constructively.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -546,17 +594,19 @@
       <div class="card-icon" style="background:#6366F1">🏠</div><h3>Remote Work Language</h3><div class="desc">Vocabulary for async, Slack, and distributed team communication.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- WRITING & DOCUMENTS -->
 <section class="section" id="writing">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 05</div>
     <h2>Writing &amp; Documents</h2>
     <p>Professional writing skills for reports, meeting minutes, proposals, and proofreading.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/report-writing.html" class="lesson-card" style="--card-c:#0891B2">
       <div class="card-icon" style="background:#0891B2">📋</div><h3>Report Writing</h3><div class="desc">Structure and language for professional business reports.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -571,17 +621,19 @@
       <div class="card-icon" style="background:#DC2626">🔍</div><h3>Proofreading &amp; Editing</h3><div class="desc">Common errors and how to review texts in English.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- SALES & CLIENT MANAGEMENT -->
 <section class="section" id="sales">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 06</div>
     <h2>Sales &amp; Client Management</h2>
     <p>Sales vocabulary, client onboarding, complaint handling, and revenue growth strategies.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/sales-vocabulary.html" class="lesson-card" style="--card-c:#0D9488">
       <div class="card-icon" style="background:#0D9488">💰</div><h3>Sales Vocabulary</h3><div class="desc">Essential terms for pipeline, conversion, and deal management.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -596,17 +648,19 @@
       <div class="card-icon" style="background:#9333EA">💎</div><h3>Upselling &amp; Cross-selling</h3><div class="desc">How to suggest upgrades and complementary products.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- FINANCE & NUMBERS -->
 <section class="section" id="finance">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 07</div>
     <h2>Finance &amp; Numbers</h2>
     <p>Financial vocabulary, data analysis, budgeting, and invoicing in professional English.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/financial-english.html" class="lesson-card" style="--card-c:#059669">
       <div class="card-icon" style="background:#059669">💰</div><h3>Financial English</h3><div class="desc">Balance sheets, revenue, costs, margins, and key financial terms.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -621,17 +675,19 @@
       <div class="card-icon" style="background:#DC2626">📄</div><h3>Invoice &amp; Payment Terms</h3><div class="desc">Invoicing terminology, payment terms, and financial correspondence.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- TECHNOLOGY & DIGITAL -->
 <section class="section" id="tech">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 08</div>
     <h2>Technology &amp; Digital</h2>
     <p>Tech vocabulary, cybersecurity, AI, and cloud computing for non-technical professionals.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/tech-english.html" class="lesson-card" style="--card-c:#0EA5E9">
       <div class="card-icon" style="background:#0EA5E9">💻</div><h3>Tech English</h3><div class="desc">Tech terms for non-developers — APIs, sprints, deployments.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -646,17 +702,19 @@
       <div class="card-icon" style="background:#059669">☁️</div><h3>SaaS &amp; Cloud Vocabulary</h3><div class="desc">Software subscriptions, cloud infrastructure, and integrations.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- LEADERSHIP & STRATEGY -->
 <section class="section" id="leadership">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 09</div>
     <h2>Leadership &amp; Strategy</h2>
     <p>Leadership communication, change management, goal-setting, and strategic decision-making.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/leadership-language.html" class="lesson-card" style="--card-c:#D97706">
       <div class="card-icon" style="background:#D97706">🎯</div><h3>Leadership Language</h3><div class="desc">How to motivate, inspire, and communicate vision.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -671,17 +729,19 @@
       <div class="card-icon" style="background:#E11D48">⚖️</div><h3>Decision-Making Language</h3><div class="desc">How to propose, justify, and announce decisions.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- EVERYDAY OFFICE ENGLISH -->
 <section class="section" id="office">
-  <div class="section-header">
+  <div class="section-header" onclick="toggleModule(this)">
     <div class="num">MODULE 10</div>
     <h2>Everyday Office English</h2>
     <p>Daily office interactions — small talk, phone calls, socialising, and common acronyms.</p>
   </div>
+  <div class="module-grid-wrapper">
   <div class="module-grid">
     <a href="pages/office-small-talk.html" class="lesson-card" style="--card-c:#F97316">
       <div class="card-icon" style="background:#F97316">💬</div><h3>Office Small Talk &amp; Idioms</h3><div class="desc">Everyday expressions and business idioms for the office.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
@@ -696,6 +756,7 @@
       <div class="card-icon" style="background:#6366F1">🔤</div><h3>Acronyms &amp; Abbreviations</h3><div class="desc">FYI, TBD, WIP, NDA, KPI and all the business acronyms.</div><div class="card-footer"><div class="tags"><span class="tag-sm">Theory</span><span class="tag-sm">Quiz</span><span class="tag-sm">Practice</span></div><div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
     </a>
   </div>
+  </div>
 </section>
 
 <footer>
@@ -703,6 +764,31 @@
   Bia Business English — Study Hub<br>
   <span style="margin-top:0.5rem;display:inline-block;opacity:0.7;">Made with care by Bia for her students</span>
 </footer>
+
+<script>
+function toggleModule(header) {
+  var wrapper = header.nextElementSibling;
+  header.classList.toggle('open');
+  wrapper.classList.toggle('open');
+}
+
+// Auto-open module when navigating via hash (navbar links)
+function openModuleByHash() {
+  var hash = location.hash;
+  if (!hash) return;
+  var section = document.querySelector(hash);
+  if (!section || !section.classList.contains('section')) return;
+  var header = section.querySelector('.section-header');
+  var wrapper = section.querySelector('.module-grid-wrapper');
+  if (header && wrapper && !wrapper.classList.contains('open')) {
+    header.classList.add('open');
+    wrapper.classList.add('open');
+  }
+}
+
+openModuleByHash();
+window.addEventListener('hashchange', openModuleByHash);
+</script>
 
 </body>
 </html>
