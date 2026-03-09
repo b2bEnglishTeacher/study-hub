@@ -8,9 +8,9 @@
  */
 
 const FIREBASE_CONFIG = {
-  apiKey:            "AIzaSyAv8ZxsWvTQBLBLp2G8qd-mypihUmgoZK0",
-  authDomain: "bia-business-english.firebaseapp.com",
-  projectId: "bia-business-english",
+  apiKey:            "API-KEY-HERE",
+  authDomain: "AUTH-DOMAIN-HERE.firebaseapp.com",
+  projectId: "PROJECT-ID-HERE",
 };
 
 /* ── Carregar SDK Firebase via CDN ── */
