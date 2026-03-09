@@ -86,27 +86,28 @@ function requireAuth() {
   });
 }
 
-/* ── UI Helper: Injeta botão de logout na navbar ── */
+/* ── UI Helper: Injeta auth como item da navbar ── */
 function injectAuthUI() {
   onAuthChange(user => {
-    let el = document.getElementById('auth-ui');
-    if (!el) {
-      el = document.createElement('div');
-      el.id = 'auth-ui';
-      el.style.cssText = 'position:fixed;top:1rem;right:1rem;z-index:10001;display:flex;align-items:center;gap:.5rem;';
-      document.body.appendChild(el);
-    }
+    // Remove item anterior se existir
+    const old = document.getElementById('auth-nav-item');
+    if (old) old.remove();
 
-    if (user) {
-      const logoutPath = location.pathname.includes('/pages/') ? 'login.html' : 'pages/login.html';
-      el.innerHTML = `
-        <img src="${user.photoURL || ''}" alt="" style="width:32px;height:32px;border-radius:50%;border:2px solid #E8E4DD;">
-        <span style="font-family:'DM Sans',sans-serif;font-size:.78rem;color:#6B6560;">${user.displayName || user.email}</span>
-        <button onclick="logout().then(()=>location.replace('${logoutPath}'))" style="font-family:'DM Sans',sans-serif;font-size:.72rem;padding:.3rem .8rem;border:1px solid #E8E4DD;border-radius:6px;background:#fff;color:#6B6560;cursor:pointer;">Sair</button>
-      `;
-    } else {
-      el.innerHTML = '';
-    }
+    if (!user) return;
+
+    const navMenu = document.getElementById('navMenu');
+    if (!navMenu) return;
+
+    const logoutPath = location.pathname.includes('/pages/') ? 'login.html' : 'pages/login.html';
+    const li = document.createElement('li');
+    li.id = 'auth-nav-item';
+    li.style.cssText = 'display:flex;align-items:center;gap:.5rem;margin-left:auto;';
+    li.innerHTML = `
+      <img src="${user.photoURL || ''}" alt="" style="width:26px;height:26px;border-radius:50%;border:2px solid #E8E4DD;">
+      <span style="font-size:.78rem;font-weight:500;color:var(--text-muted);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${user.displayName || user.email}</span>
+      <button onclick="logout().then(()=>location.replace('${logoutPath}'))" style="font-family:'DM Sans',sans-serif;font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-muted);cursor:pointer;text-transform:uppercase;letter-spacing:.04em;transition:all .2s;">Sair</button>
+    `;
+    navMenu.appendChild(li);
   });
 }
 

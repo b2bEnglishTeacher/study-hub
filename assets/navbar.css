@@ -290,4 +290,11 @@ nav ul li a:hover { color: var(--accent); }
   .nav-overlay.active { display: block; opacity: 1; }
 
   .nav-logo-img { width: 28px; height: 28px; }
+
+  #auth-nav-item {
+    margin-left: 0 !important;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
 }
