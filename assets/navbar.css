@@ -209,12 +209,6 @@ nav ul li a:hover { color: var(--accent); }
 
 /* RESPONSIVE */
 @media (max-width: 640px) {
-  nav {
-    background: #F7F5F0;
-    top: -50px;
-    padding-top: 50px;
-  }
-
   .hamburger { display: flex; }
 
   nav ul {
