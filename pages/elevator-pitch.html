@@ -290,7 +290,11 @@
   Elevator Pitch Study Guide — Bia Business English
 </footer>
 
+<script src="../assets/auth.js"></script>
+<script>requireAuth();</script>
+<script src="../assets/quiz-report.js"></script>
 <script>
+const LESSON_NAME = "Elevator Pitch";
 const quizData = [
   { question: "How long should an elevator pitch typically last?", options: ["5 minutes", "30–60 seconds", "2–3 minutes", "10 seconds"], correct: 1, feedback: { correct: "That's right! An elevator pitch should be 30–60 seconds — short, focused, and memorable.", wrong: "An elevator pitch should last 30–60 seconds — enough time for a short elevator ride." } },
   { question: "What is the main purpose of the 'hook' in an elevator pitch?", options: ["To list your qualifications", "To grab the listener's attention", "To ask for a job", "To describe your education"], correct: 1, feedback: { correct: "Exactly! The hook is designed to capture interest immediately.", wrong: "The hook is meant to grab the listener's attention right from the start." } },
@@ -312,7 +316,7 @@ function renderQuiz() {
   if (currentQ >= quizData.length) {
     const pct = Math.round((score / quizData.length) * 100);
     let msg = pct >= 80 ? "Excellent work!" : pct >= 60 ? "Good effort — review the theory!" : "Keep studying!";
-    area.innerHTML = `<div class="quiz-container"><div class="score-display"><div class="score-num" style="color:${pct >= 60 ? 'var(--success)' : 'var(--error)'}">${score}/${quizData.length}</div><div class="score-label">${pct}% — ${msg}</div><button class="btn btn-primary" onclick="resetQuiz()">Restart Quiz</button></div></div>`;
+    area.innerHTML = `<div class="quiz-container"><div class="score-display"><div class="score-num" style="color:${pct >= 60 ? 'var(--success)' : 'var(--error)'}">${score}/${quizData.length}</div><div class="score-label">${pct}% — ${msg}</div><button class="btn btn-primary" onclick="handleSendReport()" id="sendBtn" style="margin-bottom:.75rem">Send Results to Teacher</button><br><button class="btn btn-primary" onclick="resetQuiz()" style="background:var(--surface);color:var(--text);border:1px solid var(--border);">Restart Quiz</button><div id="sendStatus" style="margin-top:1rem;font-size:.82rem;color:var(--text-muted)"></div></div></div>`;
     return;
   }
   const q = quizData[currentQ];
@@ -321,7 +325,7 @@ function renderQuiz() {
 }
 
 function selectAnswer(idx) {
-  if (answered) return; answered = true;
+  if (answered) return; answered = true; userAnswers[currentQ]=idx;
   const q = quizData[currentQ], isCorrect = idx === q.correct;
   if (isCorrect) score++;
   for (let i = 0; i < q.options.length; i++) { const el = document.getElementById('opt-'+i); if (i===q.correct) el.classList.add('correct'); else if (i===idx&&!isCorrect) el.classList.add('wrong'); if (i!==idx&&i!==q.correct) el.classList.add('disabled'); }
@@ -329,7 +333,8 @@ function selectAnswer(idx) {
   document.getElementById('nextBtn').style.display = 'inline-flex';
 }
 function nextQuestion() { currentQ++; renderQuiz(); }
-function resetQuiz() { currentQ=0; score=0; renderQuiz(); }
+function resetQuiz() { currentQ=0; score=0; userAnswers.length=0; renderQuiz(); }
+async function handleSendReport(){const btn=document.getElementById('sendBtn');const status=document.getElementById('sendStatus');btn.disabled=true;btn.textContent='Sending...';status.textContent='';try{await sendQuizReport(LESSON_NAME,quizData,userAnswers,score);btn.textContent='Sent!';btn.style.background='var(--success)';status.textContent='Report sent successfully!';status.style.color='var(--success)';}catch(e){btn.textContent='Send Results to Teacher';btn.disabled=false;status.textContent='Error sending. Try again.';status.style.color='var(--error)';console.error(e);}}
 renderQuiz();
 </script>
 </body>

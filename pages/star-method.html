@@ -805,7 +805,11 @@
   STAR Method Study Guide — Bia Business English
 </footer>
 
+<script src="../assets/auth.js"></script>
+<script>requireAuth();</script>
+<script src="../assets/quiz-report.js"></script>
 <script>
+const LESSON_NAME = "STAR Method";
 const quizData = [
   {
     question: "What does the \"S\" in STAR stand for?",
@@ -945,7 +949,7 @@ function renderQuiz() {
         <div class="score-display">
           <div class="score-num" style="color:${pct >= 60 ? 'var(--success)' : 'var(--accent)'}">${score}/${quizData.length}</div>
           <div class="score-label">${pct}% — ${msg}</div>
-          <button class="btn btn-primary" onclick="resetQuiz()">Restart Quiz</button>
+          <button class="btn btn-primary" onclick="handleSendReport()" id="sendBtn" style="margin-bottom:.75rem">Send Results to Teacher</button><br><button class="btn btn-primary" onclick="resetQuiz()" style="background:var(--surface);color:var(--text);border:1px solid var(--border);">Restart Quiz</button><div id="sendStatus" style="margin-top:1rem;font-size:.82rem;color:var(--text-muted)"></div>
         </div>
       </div>`;
     return;
@@ -980,6 +984,7 @@ function renderQuiz() {
 function selectAnswer(idx) {
   if (answered) return;
   answered = true;
+  userAnswers[currentQ]=idx;
 
   const q = quizData[currentQ];
   const isCorrect = idx === q.correct;
@@ -1010,9 +1015,11 @@ function nextQuestion() {
 function resetQuiz() {
   currentQ = 0;
   score = 0;
+  userAnswers.length=0;
   renderQuiz();
 }
 
+async function handleSendReport(){const btn=document.getElementById('sendBtn');const status=document.getElementById('sendStatus');btn.disabled=true;btn.textContent='Sending...';status.textContent='';try{await sendQuizReport(LESSON_NAME,quizData,userAnswers,score);btn.textContent='Sent!';btn.style.background='var(--success)';status.textContent='Report sent successfully!';status.style.color='var(--success)';}catch(e){btn.textContent='Send Results to Teacher';btn.disabled=false;status.textContent='Error sending. Try again.';status.style.color='var(--error)';console.error(e);}}
 renderQuiz();
 </script>
 
